@@ -7,4 +7,6 @@ Passos para instalar:
 
 ver 0.1
 -----------------------------
-1- Criar Gerência de Usuarios
+- Criar Gerência de Usuários -> ok
+- Criar Testes de Usuários -> ok
+- Criar CRUD de Usuários (servidores e pesquisadores)

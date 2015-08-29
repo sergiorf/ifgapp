@@ -4,10 +4,32 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.contrib import auth
+from models import Permissao, Pesquisador, Servidor, Grupo
+from django.shortcuts import render
+from decorators import has_permission
+
 
 @login_required()
 def index(request):
     return render_to_response('index.html', locals())
+
+
+@login_required()
+@has_permission([Permissao.VER_PESSOA])
+def listing_pesquisadores(request):
+    return __listing_objects(request, Pesquisador.objects.all(), 'usuario_list.html', "Pesquisador")
+
+
+@login_required()
+@has_permission([Permissao.VER_PESSOA])
+def listing_servidores(request):
+    return __listing_objects(request, Servidor.objects.all(), 'usuario_list.html', "Servidor")
+
+
+@login_required()
+@has_permission([Permissao.VER_PESSOA])
+def listing_grupos(request):
+    return __listing_objects(request, Grupo.objects.all(), 'grupo_list.html', "Grupo")
 
 
 def login_user(request):
@@ -35,3 +57,10 @@ def login_user(request):
 def logout_user(request):
     auth.logout(request)
     return HttpResponseRedirect("/accounts/login")
+
+
+# ------------------------------------------------------------------
+# PRIVATE
+
+def __listing_objects(request, queryset, template, klass_name=None):
+    return render(request, template, {'objects_tolist': queryset, "klass_name": klass_name})

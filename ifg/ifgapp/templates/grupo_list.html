@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load pagination_tags %}
+{% block content %}
+<a href='{% url "adicionar_grupo" %}'>Adicionar grupo</a>
+{% if objects_tolist %}
+    <table id="grupos">
+        {% autopaginate objects_tolist 8 %}
+        {% for grupo in objects_tolist %}
+            <tr>
+                <td>{{ grupo.nome }}</td>
+                <td><a href='{% url "edit_grupo" grupo.id %}' class="see_detail">Editar</a></td>
+                <td><a href='{% url "remover_grupo" grupo.id %}' class="see_detail">Remover</a></td>
+            </tr>
+        {% endfor %}
+     </table>
+     {% paginate %}
+{% else %}
+    <p>Nenhum grupo!!! :(</p>
+{% endif %}
+{% endblock %}

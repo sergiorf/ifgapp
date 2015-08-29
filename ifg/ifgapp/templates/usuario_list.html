@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load pagination_tags %}
+{% load ifgapp_filters %}
+{% block content %}
+{% if klass_name == "Servidor" %}
+   <a href= '{% url "adicionar_servidor" %}'>Adicionar servidor</a>
+{% elif klass_name == "Aluno" %}
+   <a href= '{% url "adicionar_pesquisador" %}'>Adicionar pesquisador</a>
+{% endif %}
+{% if objects_tolist %}
+    <table id="usuarios">
+        {% autopaginate objects_tolist 8 %}
+        {% for usuario in objects_tolist %}
+            <tr>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.email }}</td>
+                {% if usuario|isinst:"models.Servidor" %}
+                    <td>{{ usuario.matricula }}</td>
+                    <td><a href='{% url "edit_servidor" usuario.id %}' class="see_detail">Editar</a></td>
+                {% elif usuario|isinst:"models.Pesquisador" %}
+                    <td>{{ usuario.cpf }}</td>
+                    <td><a href='{% url "edit_pesquisador" usuario.id %}' class="see_detail">Editar</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+     </table>
+     {% paginate %}
+{% else %}
+    <p>Nenhum {{ klass_name }}!!! :(</p>
+{% endif %}
+{% endblock %}

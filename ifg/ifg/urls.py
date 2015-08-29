@@ -7,5 +7,5 @@ urlpatterns = patterns('',
     # url(r'^$', 'ifg.views.home', name='home'),
     (r'^accounts/login/$', 'ifgapp.views.login_user'),
     (r'^accounts/logout/$', 'ifgapp.views.logout_user'),
-    url(r'^$', include('ifgapp.urls')),
+    url(r'^', include('ifgapp.urls')),
 )
