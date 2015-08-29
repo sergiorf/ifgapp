@@ -130,3 +130,6 @@ class Especialidade(models.Model):
         return u'%s' % self.descricao
 
 
+
+
+

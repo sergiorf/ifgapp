@@ -127,6 +127,7 @@ def __edit_object(request, pk, obj_klass, template_name, list_url):
     #    print form
     #    print form.errors
     aux = []
+    return render(request, template_name, {'form': form, 'object': obj, 'aux': aux})
 
 
 def __remover_object(request, pk, obj_klass, list_url):
