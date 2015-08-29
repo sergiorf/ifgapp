@@ -14,10 +14,10 @@
             <tr>
                 <td>{{ usuario.username }}</td>
                 <td>{{ usuario.email }}</td>
-                {% if usuario|isinst:"models.Servidor" %}
+                {% if usuario|isinst:"ifgapp.models.Servidor" %}
                     <td>{{ usuario.matricula }}</td>
                     <td><a href='{% url "edit_servidor" usuario.id %}' class="see_detail">Editar</a></td>
-                {% elif usuario|isinst:"models.Pesquisador" %}
+                {% elif usuario|isinst:"ifgapp.models.Pesquisador" %}
                     <td>{{ usuario.cpf }}</td>
                     <td><a href='{% url "edit_pesquisador" usuario.id %}' class="see_detail">Editar</a></td>
                 {% endif %}

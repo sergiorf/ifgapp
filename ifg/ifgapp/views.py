@@ -5,8 +5,11 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from models import Permissao, Pesquisador, Servidor, Grupo
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from decorators import has_permission
+from django.core.urlresolvers import reverse
+from django.template import RequestContext
+from forms import GrupoForm, ServidorForm, PesquisadorForm
 
 
 @login_required()
@@ -30,6 +33,51 @@ def listing_servidores(request):
 @has_permission([Permissao.VER_PESSOA])
 def listing_grupos(request):
     return __listing_objects(request, Grupo.objects.all(), 'grupo_list.html', "Grupo")
+
+
+@login_required()
+def edit_servidor(request, pk):
+    return __edit_object(request, pk, Servidor, 'servidor_edit.html', "lista_servidores")
+
+
+@login_required()
+def edit_pesquisador(request, pk):
+    return __edit_object(request, pk, Pesquisador, 'pesquisador_edit.html', "lista_pesquisadores")
+
+
+@login_required()
+def edit_grupo(request, pk):
+    return __edit_object(request, pk, Grupo, 'grupo_edit.html', "lista_grupos")
+
+
+@login_required()
+def remover_servidor(request, pk):
+    return __remover_object(request, pk, Servidor, 'lista_servidores')
+
+
+@login_required()
+def remover_pesquisador(request, pk):
+    return __remover_object(request, pk, Pesquisador, 'lista_pesquisadores')
+
+
+@login_required()
+def remover_grupo(request, pk):
+    return __remover_object(request, pk, Grupo, 'lista_grupos')
+
+
+@login_required()
+def adicionar_servidor(request):
+    return __adicionar_obj(request, ServidorForm, listing_servidores, 'servidor_add.html')
+
+
+@login_required()
+def adicionar_pesquisador(request):
+    return __adicionar_obj(request, PesquisadorForm, listing_servidores, 'pesquisador_add.html')
+
+
+@login_required()
+def adicionar_grupo(request):
+    return __adicionar_obj(request, GrupoForm, listing_grupos, 'grupo_add.html')
 
 
 def login_user(request):
@@ -64,3 +112,41 @@ def logout_user(request):
 
 def __listing_objects(request, queryset, template, klass_name=None):
     return render(request, template, {'objects_tolist': queryset, "klass_name": klass_name})
+
+
+def __edit_object(request, pk, obj_klass, template_name, list_url):
+    obj = get_object_or_404(obj_klass, pk=pk)
+    form_klass = obj_klass.__name__ + "Form"
+    constructor = globals()[form_klass]
+    form = constructor(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse(list_url))
+    #Not working with chained selects
+    #else:
+    #    print form
+    #    print form.errors
+    aux = []
+
+
+def __remover_object(request, pk, obj_klass, list_url):
+    obj = get_object_or_404(obj_klass, pk=pk)
+    if request.method == 'POST':
+        obj.delete()
+        return HttpResponseRedirect(reverse(list_url))
+    return render(request, 'confirm_delete.html', {'object': obj})
+
+
+def __adicionar_obj(request, form_klass, listing_fn, template_name):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        form = form_klass(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return listing_fn(request)
+        else:
+            print form
+            print form.errors
+    else:
+        form = form_klass()
+    return render_to_response(template_name, {'form': form}, context)
