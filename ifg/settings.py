@@ -1,16 +1,11 @@
-"""
-Django settings for ifg project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+from os.path import abspath, dirname, join
+
+PROJECT_PATH = abspath(dirname(__file__))
+PROJECT_NAME = PROJECT_PATH.split('/')[-1]
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,22 +26,25 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'pagination',
-    'django.contrib.admin',
+    'smart_selects',
+    #'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+   # 'django.contrib.messages',
+   # 'django.contrib.staticfiles',
     'ifgapp'
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'pagination.middleware.PaginationMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+   # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    #'django.contrib.messages.middleware.MessageMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'ifg.urls'

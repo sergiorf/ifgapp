@@ -5,5 +5,5 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('',
-    url(r'^index/?$', 'ifgapp.views.index', name='index'),
+    url(r'^$', 'ifgapp.views.index', name='index'),
 )

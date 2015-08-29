@@ -3,6 +3,7 @@
 from django.db import models
 from django.contrib.auth.models import Group, User
 
+
 class Permissao(models.Model):
     VER_TECNOLOGIA = u'Ver Tecnologia'
     VER_PESSOA = u'Ver Pessoa'

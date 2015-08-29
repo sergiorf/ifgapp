@@ -1,0 +1,68 @@
+{% load i18n %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+	<title>SGI: Sistema de Gestão da Inovação</title>
+	{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+    <link rel="shortcut icon" href="/static/comum/img/favicon.ico" />
+	<link type="text/css" rel="stylesheet" href="/static/comum/css/estilo.css" />
+	<link type="text/css" rel="stylesheet" href="/static/comum/css/forms.css" />
+	<link type="text/css" rel="stylesheet" href="/static/comum/css/login.css" />
+</head>
+
+<body class="login">
+<div id="container">
+    <div id="content">
+        <h2 class="oculto">Sistema de Proteção Intelectual</h2>
+        {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
+            <p class="errornote">
+                {% blocktrans count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+            </p>
+        {% endif %}
+        {% if form.non_field_errors or form.this_is_the_login_form.errors %}
+            {% for error in form.non_field_errors %}
+                <p class="errornote">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        {% endif %}
+        <div id="login-ifgapp">
+        </div>
+        <div id="content-main">
+            <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+                <div class="form-row">
+                    {% if not form.this_is_the_login_form.errors %}{{ form.username.errors }}{% endif %}
+                    <label for="username">User name:</label>
+                    <input type="text" name="username" value="{{ username}}" /><br />
+                </div>
+                <div class="form-row">
+                    {% if not form.this_is_the_login_form.errors %}{{ form.password.errors }}{% endif %}
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" value="" /><br />
+                    <input type="hidden" name="this_is_the_login_form" value="1" />
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </div>                
+                <div class="submit-row">
+                    <input type="submit" value="{% trans 'Log in' %}" />
+                </div>
+                <div class="form-row">
+                    <a href="/comum/solicitar_trocar_senha/">Esqueceu sua senha?</a>
+                </div>
+            </form>
+            <script>
+                document.getElementById('id_username').focus();
+            </script>
+        </div>
+    </div>
+    <ul id="servicos">
+        <li><a href="/comum/solicitar_trocar_senha/">Solicitação de mudança de senha</a></li>
+    </ul>
+    
+    <div id="login-footer">
+        <p class="login-footer-esq">Desenvolvimento: <a href="http://www.ifg.edu.br">Instituto Federal de Goiás</a></p>
+        <p class="login-footer-dir">IFG &copy; 2015</p>
+    </div>
+</div>
+</body>
+</html>
