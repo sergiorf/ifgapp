@@ -130,6 +130,8 @@ class Especialidade(models.Model):
         return u'%s' % self.descricao
 
 
+class Tecnologia(models.Model):
+    solicitacao_protecao = models.DateTimeField(u'Data de solicitação da proteção')
 
 
 

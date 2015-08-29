@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm
-from models import Pesquisador, Servidor, Grupo
+from models import Pesquisador, Servidor, Grupo, Tecnologia
 
 
 class ServidorForm(ModelForm):
@@ -19,3 +19,8 @@ class GrupoForm(ModelForm):
     class Meta:
         model = Grupo
         exclude = ('group',)
+
+
+class TecnologiaForm(ModelForm):
+    class Meta:
+        model = Tecnologia

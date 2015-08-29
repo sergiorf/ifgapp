@@ -10,4 +10,4 @@ ver 0.1
 - Criar Gerência de Usuários -> ok
 - Criar Testes de Usuários -> ok
 - Criar CRUD de Usuários (servidores e pesquisadores) e Grupos de permissões -> ok
--
+- Criar CRUD básico de Tecnologia

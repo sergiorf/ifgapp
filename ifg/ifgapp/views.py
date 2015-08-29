@@ -4,12 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from models import Permissao, Pesquisador, Servidor, Grupo
 from django.shortcuts import render, get_object_or_404
 from decorators import has_permission
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from forms import GrupoForm, ServidorForm, PesquisadorForm
+from models import Permissao, Pesquisador, Servidor, Grupo, Tecnologia
+from forms import GrupoForm, ServidorForm, PesquisadorForm, TecnologiaForm
 
 
 @login_required()
@@ -36,6 +36,11 @@ def listing_grupos(request):
 
 
 @login_required()
+def listing_tecnologias(request):
+    return __listing_objects(request, Tecnologia.objects.all(), 'tecnologias_list.html', "Tecnologia")
+
+
+@login_required()
 def edit_servidor(request, pk):
     return __edit_object(request, pk, Servidor, 'servidor_edit.html', "lista_servidores")
 
@@ -48,6 +53,11 @@ def edit_pesquisador(request, pk):
 @login_required()
 def edit_grupo(request, pk):
     return __edit_object(request, pk, Grupo, 'grupo_edit.html', "lista_grupos")
+
+
+@login_required()
+def edit_tecnologia(request, pk):
+    return __edit_object(request, pk, Tecnologia, 'tecnologia_edit.html', "lista_tecnologias")
 
 
 @login_required()
@@ -66,6 +76,11 @@ def remover_grupo(request, pk):
 
 
 @login_required()
+def remover_tecnologia(request, pk):
+    return __remover_object(request, pk, Tecnologia, 'lista_tecnologia')
+
+
+@login_required()
 def adicionar_servidor(request):
     return __adicionar_obj(request, ServidorForm, listing_servidores, 'servidor_add.html')
 
@@ -78,6 +93,11 @@ def adicionar_pesquisador(request):
 @login_required()
 def adicionar_grupo(request):
     return __adicionar_obj(request, GrupoForm, listing_grupos, 'grupo_add.html')
+
+
+@login_required()
+def adicionar_tecnologia(request):
+    return __adicionar_obj(request, TecnologiaForm, listing_tecnologias, 'tecnologia_add.html')
 
 
 def login_user(request):

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <a href="{% url 'lista_tecnologias' %}">Tecnologia</a>
+    <h1>Adicionar uma Tecnologia</h1>
+    <form id="colaborador_form" method="post" action="/adicionar/tecnologia/">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}
+            {{ field.label }}
+            {{ field }}
+        {% endfor %}
+        <input type="submit" name="submit" value="Adicionar Tecnologia" />
+    </form>
+{% endblock %}
