@@ -91,3 +91,41 @@ class Pesquisador(PessoaFisica):
         verbose_name_plural = u'Pesquisador'
 
 
+class AreaConhecimento(models.Model):
+    codigo = models.CharField(u'Código', max_length=8, unique=True)
+    descricao = models.CharField(u'Descrição', max_length=255)
+
+    class Meta:
+        verbose_name = u'Área do Conhecimento'
+        verbose_name_plural = u'Áreas de Conhecimento'
+
+    def __unicode__(self):
+        return u'%s' % self.descricao
+
+
+class SubAreaConhecimento(models.Model):
+    area = models.ForeignKey('ifgapp.AreaConhecimento', null=True, verbose_name=u'Área')
+    codigo = models.CharField(u'Código', max_length=8, unique=True)
+    descricao = models.CharField(u'Descrição', max_length=255)
+
+    class Meta:
+        verbose_name = u'Sub-Área do Conhecimento'
+        verbose_name_plural = u'Sub-Áreas de Conhecimento'
+
+    def __unicode__(self):
+        return u'%s' % self.descricao
+
+
+class Especialidade(models.Model):
+    subarea = models.ForeignKey('ifgapp.SubAreaConhecimento', null=True, verbose_name=u'Sub-Área')
+    codigo = models.CharField(u'Código', max_length=8, unique=True)
+    descricao = models.CharField(u'Descrição', max_length=255)
+
+    class Meta:
+        verbose_name = u'Especialidade'
+        verbose_name_plural = u'Especialidades'
+
+    def __unicode__(self):
+        return u'%s' % self.descricao
+
+

@@ -3,6 +3,7 @@ Passos para instalar:
 * Criar banco 'ifgapp' em PostgreSQL.
 * Executa 'python manage.py flush'
 * Executa 'python manage.py syncdb --noinput' (This will create the model and some initial data)
+* Executa 'python manage.py runserver' para executar o app usando o webserver embutido do Django
 
 Ver. 0.1
 -----------------------------
