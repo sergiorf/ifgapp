@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-
 from django.db import models
 from django.contrib.auth.models import Group, User
+from smart_selects.db_fields import ChainedForeignKey
 
 
 class Permissao(models.Model):
@@ -131,7 +131,25 @@ class Especialidade(models.Model):
 
 
 class Tecnologia(models.Model):
+    INPI = 'INPI'
+    FBN = 'FBN'
+    EBA = 'EBA'
+    ORGAOS_REGISTRO = (
+        (INPI, 'INPI'),
+        (FBN, 'Fundação Biblioteca Nacional'),
+        (EBA, 'Escola de Belas Artes')
+    )
     solicitacao_protecao = models.DateTimeField(u'Data de solicitação da proteção')
+    reuniao_com_comissao = models.DateTimeField(u'Data de reunião com comissão')
+    pedido = models.DateTimeField(u'Data do pedido')
+    protocolo = models.CharField(u'Número de protocolo', max_length=8)
+    orgao_registro = models.CharField(max_length=4, choices=ORGAOS_REGISTRO, default=INPI)
+    area_conhecimento = models.ForeignKey(AreaConhecimento, verbose_name=u'Área do Conhecimento',
+                                          related_name=u'area_conhecimento', null=True, blank=True)
+    subarea_conhecimento = ChainedForeignKey(SubAreaConhecimento, chained_field='area_conhecimento',
+                                             chained_model_field="area", blank=True, null=True)
+    especialidade = ChainedForeignKey(Especialidade, chained_field='subarea_conhecimento',
+                                      chained_model_field='subarea', blank=True, null=True)
 
 
 

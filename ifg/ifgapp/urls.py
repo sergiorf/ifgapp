@@ -5,6 +5,9 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('',
+    url(r'^accounts/login/$', 'ifgapp.views.login_user', name='login'),
+    url(r'^accounts/logout/$', 'ifgapp.views.logout_user', name='logout'),
+
     url(r'^grupos', 'ifgapp.views.listing_grupos', name='lista_grupos'),
     url(r'^pesquisadores', 'ifgapp.views.listing_pesquisadores', name='lista_pesquisadores'),
     url(r'^servidores', 'ifgapp.views.listing_servidores', name='lista_servidores'),
@@ -25,5 +28,7 @@ urlpatterns = patterns('',
     url(r'^adicionar/grupo', 'ifgapp.views.adicionar_grupo', name='adicionar_grupo'),
     url(r'^adicionar/tecnologia', 'ifgapp.views.adicionar_tecnologia', name='adicionar_tecnologia'),
 
-    url(r'^', 'ifgapp.views.index', name='index'),
+    url(r'^chaining/', include('smart_selects.urls')),
+
+    url(r'^$', 'ifgapp.views.index', name='index'),
 )
