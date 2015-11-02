@@ -155,28 +155,36 @@ class Subcategoria(models.Model):
 
 
 class Tecnologia(models.Model):
+    ANCINE = 'ANCINE'
+    CONFEA = 'CONFEA'
     INPI = 'INPI'
-    FBN = 'FBN'
+    EM = 'EM'
     EBA = 'EBA'
+    FBN = 'FBN'
+    SNPC = 'SNPC'
     ORGAOS_REGISTRO = (
-        (INPI, 'INPI'),
-        (FBN, 'Fundação Biblioteca Nacional'),
-        (EBA, 'Escola de Belas Artes')
+        (ANCINE, 'Agência Nacional de Cinema'),
+        (CONFEA, 'Conselho Federal de Engenharia, Arquitetura e Agronomia - CONFEA'),
+        (INPI, 'Instituto Nacional da Propriedade Industrial - INPI'),
+        (EM, 'Escola de Música da Universidade Federal do Rio de Janeiro - EM'),
+        (EBA, 'Escola de Belas Artes - EBA'),
+        (FBN, 'Fundação Biblioteca Nacional - FBN'),
+        (SNPC, 'Serviço Nacional de Proteção de Cultivares - SNPC')
     )
     nome = models.CharField(u'Título', max_length=120)
+    categoria = models.ForeignKey(Categoria)
+    subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria', chained_model_field="categoria")
     solicitacao_protecao = models.DateTimeField(u'Data de solicitação da proteção')
     reuniao_com_comissao = models.DateTimeField(u'Data da reunião com Comissão')
     pedido = models.DateTimeField(u'Data do protocolo do pedido')
-    protocolo = models.CharField(u'Número de protocolo', max_length=8, default=utils.gen_protocol, unique=True)
-    orgao_registro = models.CharField(max_length=4, choices=ORGAOS_REGISTRO, default=INPI)
+    numero_processo = models.CharField(u'Número de processo', max_length=8, default=utils.gen_protocol, unique=True)
+    orgao_registro = models.CharField(u'Órgão de registro', max_length=4, choices=ORGAOS_REGISTRO, default=INPI)
     area_conhecimento = models.ForeignKey(AreaConhecimento, verbose_name=u'Área do Conhecimento',
                                           related_name=u'area_conhecimento', null=True, blank=True)
     subarea_conhecimento = ChainedForeignKey(SubAreaConhecimento, chained_field='area_conhecimento',
                                              chained_model_field="area", blank=True, null=True)
     especialidade = ChainedForeignKey(Especialidade, chained_field='subarea_conhecimento',
                                       chained_model_field='subarea', blank=True, null=True)
-    categoria = models.ForeignKey(Categoria)
-    subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria', chained_model_field="categoria")
 
 
 
