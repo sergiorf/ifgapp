@@ -130,6 +130,29 @@ class Especialidade(models.Model):
         return u'%s' % self.descricao
 
 
+class Categoria(models.Model):
+    nome = models.CharField(u'Nome', max_length=255, unique=True)
+
+    class Meta:
+        verbose_name = u'Categoria de Tecnologia'
+        verbose_name_plural = u'Categorias de Tecnologia'
+
+    def __unicode__(self):
+        return u'%s' % self.nome
+
+
+class Subcategoria(models.Model):
+    categoria = models.ForeignKey('ifgapp.Categoria', null=True, verbose_name=u'Sub-Categoria')
+    nome = models.CharField(u'Nome', max_length=255, unique=True)
+
+    class Meta:
+        verbose_name = u'Sub-Categoria de Tecnologia'
+        verbose_name_plural = u'Sub-Categorias de Tecnologia'
+
+    def __unicode__(self):
+        return u'%s' % self.nome
+
+
 class Tecnologia(models.Model):
     INPI = 'INPI'
     FBN = 'FBN'
@@ -139,6 +162,7 @@ class Tecnologia(models.Model):
         (FBN, 'Fundação Biblioteca Nacional'),
         (EBA, 'Escola de Belas Artes')
     )
+    nome = models.CharField(u'Título', max_length=120)
     solicitacao_protecao = models.DateTimeField(u'Data de solicitação da proteção')
     reuniao_com_comissao = models.DateTimeField(u'Data de reunião com comissão')
     pedido = models.DateTimeField(u'Data do pedido')
@@ -150,6 +174,9 @@ class Tecnologia(models.Model):
                                              chained_model_field="area", blank=True, null=True)
     especialidade = ChainedForeignKey(Especialidade, chained_field='subarea_conhecimento',
                                       chained_model_field='subarea', blank=True, null=True)
+    categoria = models.ForeignKey(Categoria)
+    subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria', chained_model_field="categoria")
+
 
 
 

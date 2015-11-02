@@ -1,4 +1,5 @@
-import os, errno
+import os
+import errno
 
 
 def create_obj2(klass_obj, params):

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
-from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, Grupo, Permissao, Servidor, Pesquisador
+from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, \
+    Grupo, Permissao, Servidor, Pesquisador, Categoria, Subcategoria
 from ifgapp.utils import create_obj
 import string
 import os
@@ -10,6 +11,7 @@ import re
 class Command(BaseCommand):
     def handle(self, *args, **options):
         Command.insert_areacon()
+        Command.insert_categorias()
         index = 1
         grupo = create_obj(dict(nome=u'Admin'), Grupo, dict(
             nome=u'Admin',
@@ -36,6 +38,30 @@ class Command(BaseCommand):
                 email=u'pesquisador%s@ifg.com.br' % index,
                 grupo=grupo,
             ))
+
+    @staticmethod
+    def insert_categorias():
+        fname = os.path.join(os.getcwd(), os.path.dirname(__file__)) + '\\categorias.txt'
+        with open(fname, 'r') as f:
+            cats = {}
+            lastline = ''
+            for line in f.readlines():
+                line = unicode(line, 'utf-8').strip()
+                if not line.startswith('#'):
+                    cats[line] = []
+                    lastline = line
+                elif lastline:
+                    cats[lastline].append(line[1:].strip())
+            print cats
+            for key, value in cats.iteritems():
+                c = create_obj(dict(nome=key), Categoria, dict(
+                    nome=key,
+                ))
+                for sub in value:
+                    create_obj(dict(nome=sub), Subcategoria, dict(
+                        nome=sub,
+                        categoria=c
+                    ))
 
     @staticmethod
     def insert_areacon():

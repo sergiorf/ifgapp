@@ -1,0 +1,36 @@
+Cultivar
+Desenho Industrial
+Indicação Geográfica
+# Denominação de origem
+# Indicação de procedência
+Marca
+# Nominativa de produto
+# Nominativa de serviço
+# Nominativa de empresa
+# Nominativa de uso coletivo
+# Nominativa de certificação
+# Nominativa de alto renome
+# Figurativa de produto
+# Figurativa de serviço
+# Figurativa de empresa
+# Figurativa de uso coletivo
+# Figurativa de certificação
+# Figurativa de alto renome
+# Mista de produto
+# Mista de serviço
+# Mista de empresa
+# Mista de uso coletivo
+# Mista de certificação
+# Mista de alto renome
+# Tridimensional de produto
+# Tridimensional de serviço
+# Tridimensional de empresa
+# Tridimensional de uso coletivo
+# Tridimensional de certificação
+# Tridimensional de alto renome
+Obra
+Patente
+# Patente de Invenção
+# Modelo de Utilidade
+Programa de Computador
+Topografia de Circuito Integrado
