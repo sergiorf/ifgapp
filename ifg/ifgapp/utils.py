@@ -1,5 +1,6 @@
 import os
 import errno
+import uuid
 
 
 def create_obj2(klass_obj, params):
@@ -28,4 +29,11 @@ def mkdir_p(path):
     except OSError as exc:
         if exc.errno == errno.EEXIST and os.path.isdir(path):
             pass
-        else: raise
+        else:
+            raise
+
+
+def gen_protocol():
+    d = uuid.uuid4()
+    res = d.hex
+    return 'BR' + res[0:6]

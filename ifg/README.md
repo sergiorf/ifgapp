@@ -16,7 +16,7 @@ ver 0.1
 
 ver 0.2 (dev) -- enviar e-mail para clarificar varios pontos
 -----------------------------
-- CRUD Tecnologia: Dados gerais: Nome e Categorias
+- CRUD Tecnologia: Dados gerais: Nome, Categorias, Número de Protocolo
 
 
 
