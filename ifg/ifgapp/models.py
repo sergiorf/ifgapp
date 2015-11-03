@@ -46,6 +46,8 @@ class Instituicao(models.Model):
     estado = models.CharField(u'Estado', max_length=2, choices=UF_CHOICES)
     categoria = models.CharField(u'Estado', max_length=3, choices=CAT_INSTITUICOES)
 
+    def __unicode__(self):
+        return u'%s' % self.nome
 
 class Permissao(models.Model):
     VER_TECNOLOGIA = u'Ver Tecnologia'
@@ -227,6 +229,8 @@ class Tecnologia(models.Model):
                                              chained_model_field="area", blank=True, null=True)
     especialidade = ChainedForeignKey(Especialidade, chained_field='subarea_conhecimento',
                                       chained_model_field='subarea', blank=True, null=True)
+    cotitulares = models.ManyToManyField('ifgapp.Instituicao', verbose_name=u'Instituições co-titulares')
+
 
 
 
