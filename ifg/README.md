@@ -14,11 +14,14 @@ ver 0.1
 - Criar CRUD de Usuários (servidores e pesquisadores) e Grupos de permissões
 - Criar CRUD básico de Tecnologia
 
-ver 0.2 (dev) -- enviar e-mail para clarificar varios pontos
+ver 0.2
 -----------------------------
-- CRUD Tecnologia: Dados gerais: Nome, Categorias, Número de Protocolo
+- CRUD Tecnologia: Dados gerais, Nome, Categorias, Número de Protocolo
 - CRUD Instituição
 
+ver 0.3 (dev)
+-----------------------------
+- Finalizar CRUD Tecnologia
 
 
 
