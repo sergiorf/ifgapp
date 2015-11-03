@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load pagination_tags %}
+{% block content %}
+<a href='{% url "adicionar_instituicao" %}'>Adicionar Instituição</a>
+{% if objects_tolist %}
+    <table id="instituicao">
+        {% autopaginate objects_tolist 8 %}
+        {% for instituicao in objects_tolist %}
+            <tr>
+                <td>{{ instituicao.nome }}</td>
+                <td><a href='{% url "edit_instituicao" instituicao.id %}' class="see_detail">Editar</a></td>
+                <td><a href='{% url "remover_instituicao" instituicao.id %}' class="see_detail">Remover</a></td>
+            </tr>
+        {% endfor %}
+     </table>
+     {% paginate %}
+{% else %}
+    <p>Nenhuma instituição!!! :(</p>
+{% endif %}
+{% endblock %}
+

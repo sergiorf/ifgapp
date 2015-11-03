@@ -5,6 +5,48 @@ from smart_selects.db_fields import ChainedForeignKey
 import utils
 
 
+UF_CHOICES = (
+    ('AC', 'Acre'),
+    ('AL', 'Alagoas'),
+    ('AP', 'Amapá'),
+    ('BA', 'Bahia'),
+    ('CE', 'Ceará'),
+    ('DF', 'Distrito Federal'),
+    ('ES', 'Espírito Santo'),
+    ('GO', 'Goiás'),
+    ('MA', 'Maranhão'),
+    ('MG', 'Minas Gerais'),
+    ('MS', 'Mato Grosso do Sul'),
+    ('MT', 'Mato Grosso'),
+    ('PA', 'Pará'),
+    ('PB', 'Paraíba'),
+    ('PE', 'Pernanbuco'),
+    ('PI', 'Piauí'),
+    ('PR', 'Paraná'),
+    ('RJ', 'Rio de Janeiro'),
+    ('RN', 'Rio Grande do Norte'),
+    ('RO', 'Rondônia'),
+    ('RR', 'Roraima'),
+    ('RS', 'Rio Grande do Sul'),
+    ('SC', 'Santa Catarina'),
+    ('SE', 'Sergipe'),
+    ('SP', 'São Paulo'),
+    ('TO', 'Tocantins')
+)
+
+
+class Instituicao(models.Model):
+    CAT_INSTITUICOES = (
+        ('ICT', 'ICT – Instituição de Ciência e Tecnologia'),
+        ('EMP', 'Empresa')
+    )
+    nome = models.CharField(u'Nome', max_length=255, unique=True)
+    sigla = models.CharField(u'Sigla', max_length=12, unique=True)
+    endereco = models.CharField(u'Endereço', max_length=255)
+    estado = models.CharField(u'Estado', max_length=2, choices=UF_CHOICES)
+    categoria = models.CharField(u'Estado', max_length=3, choices=CAT_INSTITUICOES)
+
+
 class Permissao(models.Model):
     VER_TECNOLOGIA = u'Ver Tecnologia'
     VER_PESSOA = u'Ver Pessoa'
@@ -178,7 +220,7 @@ class Tecnologia(models.Model):
     reuniao_com_comissao = models.DateTimeField(u'Data da reunião com Comissão')
     pedido = models.DateTimeField(u'Data do protocolo do pedido')
     numero_processo = models.CharField(u'Número de processo', max_length=8, default=utils.gen_protocol, unique=True)
-    orgao_registro = models.CharField(u'Órgão de registro', max_length=4, choices=ORGAOS_REGISTRO, default=INPI)
+    orgao_registro = models.CharField(u'Órgão de registro', max_length=6, choices=ORGAOS_REGISTRO, default=INPI)
     area_conhecimento = models.ForeignKey(AreaConhecimento, verbose_name=u'Área do Conhecimento',
                                           related_name=u'area_conhecimento', null=True, blank=True)
     subarea_conhecimento = ChainedForeignKey(SubAreaConhecimento, chained_field='area_conhecimento',

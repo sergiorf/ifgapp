@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
 from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, \
-    Grupo, Permissao, Servidor, Pesquisador, Categoria, Subcategoria
+    Grupo, Permissao, Servidor, Pesquisador, Categoria, Subcategoria, Instituicao
 from ifgapp.utils import create_obj
 import string
 import os
@@ -23,9 +23,19 @@ class Command(BaseCommand):
             ))
             index += 1
             grupo.permissoes.add(p)
-        self.create_objs(10, grupo)
+        self.create_test_objs(10, grupo)
+        create_obj(dict(nome=u'Microsoft'), Instituicao, dict(
+            nome=u'Microsoft', sigla='MSFT', endereco='Rua 10', estado='TO', categoria='ICT'
+        ))
+        create_obj(dict(nome=u'Oracle'), Instituicao, dict(
+            nome=u'Oracle', sigla='ORC', endereco='Rua 20', estado='GO', categoria='ICT'
+        ))
+        create_obj(dict(nome=u'Tesla'), Instituicao, dict(
+            nome=u'Tesla', sigla='TES', endereco='Rua 22', estado='SP', categoria='EMP'
+        ))
 
-    def create_objs(self, nobjs, grupo):
+    @staticmethod
+    def create_test_objs(nobjs, grupo):
         for index in range(nobjs):
             create_obj(dict(username=u'servidor%s' % index), Servidor, dict(
                 username=u'servidor%s' % index,
@@ -52,7 +62,6 @@ class Command(BaseCommand):
                     lastline = line
                 elif lastline:
                     cats[lastline].append(line[1:].strip())
-            print cats
             for key, value in cats.iteritems():
                 c = create_obj(dict(nome=key), Categoria, dict(
                     nome=key,

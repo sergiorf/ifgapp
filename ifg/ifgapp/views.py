@@ -8,8 +8,8 @@ from django.shortcuts import render, get_object_or_404
 from decorators import has_permission
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from models import Permissao, Pesquisador, Servidor, Grupo, Tecnologia
-from forms import GrupoForm, ServidorForm, PesquisadorForm, TecnologiaForm
+from models import Permissao, Pesquisador, Servidor, Grupo, Tecnologia, Instituicao
+from forms import GrupoForm, ServidorForm, PesquisadorForm, TecnologiaForm, InstituicaoForm
 
 
 @login_required()
@@ -41,6 +41,11 @@ def listing_tecnologias(request):
 
 
 @login_required()
+def listing_instituicoes(request):
+    return __listing_objects(request, Instituicao.objects.all(), 'instituicoes_list.html', "Instituição")
+
+
+@login_required()
 def edit_servidor(request, pk):
     return __edit_object(request, pk, Servidor, 'servidor_edit.html', "lista_servidores")
 
@@ -61,6 +66,11 @@ def edit_tecnologia(request, pk):
 
 
 @login_required()
+def edit_instituicao(request, pk):
+    return __edit_object(request, pk, Instituicao, 'instituicao_edit.html', "lista_instituicoes")
+
+
+@login_required()
 def remover_servidor(request, pk):
     return __remover_object(request, pk, Servidor, 'lista_servidores')
 
@@ -77,7 +87,12 @@ def remover_grupo(request, pk):
 
 @login_required()
 def remover_tecnologia(request, pk):
-    return __remover_object(request, pk, Tecnologia, 'lista_tecnologia')
+    return __remover_object(request, pk, Tecnologia, 'lista_tecnologias')
+
+
+@login_required()
+def remover_instituicao(request, pk):
+    return __remover_object(request, pk, Instituicao, 'lista_instituicoes')
 
 
 @login_required()
@@ -98,6 +113,11 @@ def adicionar_grupo(request):
 @login_required()
 def adicionar_tecnologia(request):
     return __adicionar_obj(request, TecnologiaForm, listing_tecnologias, 'tecnologia_add.html')
+
+
+@login_required()
+def adicionar_instituicao(request):
+    return __adicionar_obj(request, InstituicaoForm, listing_instituicoes, 'instituicao_add.html')
 
 
 def login_user(request):

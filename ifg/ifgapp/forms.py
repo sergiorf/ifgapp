@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm
-from models import Pesquisador, Servidor, Grupo, Tecnologia
+from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao
 
 
 class ServidorForm(ModelForm):
@@ -24,3 +24,8 @@ class GrupoForm(ModelForm):
 class TecnologiaForm(ModelForm):
     class Meta:
         model = Tecnologia
+
+
+class InstituicaoForm(ModelForm):
+    class Meta:
+        model = Instituicao
