@@ -7,7 +7,7 @@
         {% autopaginate objects_tolist 8 %}
         {% for tecnologia in objects_tolist %}
             <tr>
-                <td>{{ tecnologia.solicitacao_protecao }}</td>
+                <td>{{ tecnologia.nome }}</td>
                 <td><a href='{% url "edit_tecnologia" tecnologia.id %}' class="see_detail">Editar</a></td>
                 <td><a href='{% url "remover_tecnologia" tecnologia.id %}' class="see_detail">Remover</a></td>
             </tr>

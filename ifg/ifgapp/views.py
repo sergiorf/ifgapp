@@ -125,7 +125,7 @@ def adicionar_instituicao(request):
 
 @login_required()
 def upload_anexo_tecnologia(request, pk):
-    return __upload_anexo(request, pk, Tecnologia, TecnologiaAnexo, '/ifgapp/tecnologia/%d/')
+    return __upload_anexo(request, pk, Tecnologia, TecnologiaAnexo, '/tecnologia/%d/')
 
 @login_required()
 def visualizar_arquivo(request, arquivo_id):
@@ -189,6 +189,8 @@ def __edit_object(request, pk, obj_klass, template_name, list_url):
     #    print form
     #    print form.errors
     aux = []
+    if isinstance(obj, Tecnologia):
+        aux = TecnologiaAnexo.objects.select_related().filter(tecnologia=obj)
     return render(request, template_name, {'form': form, 'object': obj, 'aux': aux})
 
 
@@ -207,9 +209,10 @@ def __adicionar_obj(request, form_klass, listing_fn, template_name):
         if form.is_valid():
             form.save(commit=True)
             return listing_fn(request)
-        else:
-            print form
-            print form.errors
+        #Not working with chained selects
+        #else:
+        #    print form
+        #    print form.errors
     else:
         form = form_klass()
     return render_to_response(template_name, {'form': form}, context)
