@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import Group, User
 from smart_selects.db_fields import ChainedForeignKey
 import utils
+import help_text
 
 
 UF_CHOICES = (
@@ -44,7 +45,7 @@ class Instituicao(models.Model):
     sigla = models.CharField(u'Sigla', max_length=12, unique=True)
     endereco = models.CharField(u'Endereço', max_length=255)
     estado = models.CharField(u'Estado', max_length=2, choices=UF_CHOICES)
-    categoria = models.CharField(u'Estado', max_length=3, choices=CAT_INSTITUICOES)
+    categoria = models.CharField(u'Categoria', max_length=3, choices=CAT_INSTITUICOES)
 
     def __unicode__(self):
         return u'%s' % self.nome
@@ -116,7 +117,7 @@ class PessoaFisica(Pessoa):
         return super(PessoaFisica, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return u'%s (%s)' % (self.username, self.cpf)
+        return u'%s (%s)' % (self.username, self.cpf) if self.cpf else u'%s' % self.username
 
 
 class Servidor(PessoaFisica):
@@ -127,7 +128,7 @@ class Servidor(PessoaFisica):
         verbose_name_plural = u'Servidores'
 
     def __unicode__(self):
-        return u'%s (%s)' % (self.username, self.matricula)
+        return u'%s (%s)' % (self.username, self.matricula) if self.matricula else u'%s' % self.username
 
 
 class Pesquisador(PessoaFisica):
@@ -215,6 +216,18 @@ class Tecnologia(models.Model):
         (FBN, 'Fundação Biblioteca Nacional - FBN'),
         (SNPC, 'Serviço Nacional de Proteção de Cultivares - SNPC')
     )
+    STATUS = (
+        (0, u'Em Exame'),
+        (1, u'Aguardando cumprimento de exigência'),
+        (2, u'Pedido depositado'),
+        (3, u'Pedido publicado'),
+        (4, u'Pedido indeferido'),
+        (5, u'Pedido deferido'),
+        (6, u'Prazo para recurso'),
+        (7, u'Prazo para manifestação'),
+        (8, u'Prazo para oposição/manifestação de terceiros'),
+        (9, u'Período de nulidade administrativa'),
+    )
     nome = models.CharField(u'Título', max_length=120)
     categoria = models.ForeignKey(Categoria)
     subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria', chained_model_field="categoria")
@@ -229,10 +242,16 @@ class Tecnologia(models.Model):
                                              chained_model_field="area", blank=True, null=True)
     especialidade = ChainedForeignKey(Especialidade, chained_field='subarea_conhecimento',
                                       chained_model_field='subarea', blank=True, null=True)
-    cotitulares = models.ManyToManyField('ifgapp.Instituicao', verbose_name=u'Instituições co-titulares')
+    cotitulares = models.ManyToManyField('ifgapp.PessoaFisica', verbose_name=u'Instituições co-titulares')
+    criador = models.ForeignKey(PessoaFisica, verbose_name=u'Criador Responsável',
+                                blank=True, null=True, related_name=u'Tecnologia_criador')
+    cocriadores = models.ManyToManyField('ifgapp.PessoaFisica', verbose_name=u'Co-criador(es)',
+                                         related_name=u'Tecnologia_cocriador')
+    observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
+    status = models.CharField(u'Status', max_length=255, null=True, blank=True, choices=STATUS)
 
-
-
+    def __unicode__(self):
+        return u'%s' % self.nome
 
 
 
