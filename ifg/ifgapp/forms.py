@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.forms import ModelForm, FileField, Form
-from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao
+from django.forms import ModelForm, FileField, Form, ModelChoiceField, DateInput
+from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica
+
+
+class DateInput(DateInput):
+    input_type = 'date'
 
 
 class FormPlus(Form):
@@ -33,8 +37,14 @@ class GrupoForm(ModelForm):
 
 
 class TecnologiaForm(ModelForm):
+    criador = ModelChoiceField(queryset=PessoaFisica.objects.order_by('username'))
     class Meta:
         model = Tecnologia
+        widgets = {
+            'solicitacao_protecao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'reuniao_com_comissao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'pedido': DateInput(attrs={'size': '90', 'id': 'datepicker'})
+        }
 
 
 class InstituicaoForm(ModelForm):

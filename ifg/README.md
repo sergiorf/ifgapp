@@ -21,17 +21,25 @@ ver 0.2
 
 ver 0.3 (PLANNED 08/11)
 -----------------------------
-- Finalizar CRUD Tecnologia (somente suporte para anexos em PDF)
+- Finalizar CRUD Tecnologia
+(somente suporte para anexos em PDF, e somente podemos anexar na edição, não no cadastro inicial)
 
 ver 0.4 (PLANNED 15/11)
 -----------------------------
-- Finalizar CRUD Inventor
+- Finalizar CRUD Inventor.
 
 ver 0.4 (PLANNED 22/11)
 -----------------------------
 - Utilidade de busca de institução por nome ou sigla.
 - Utilidade de busca de pessoa por nome.
-- Adicionar suporte para anexos em PDF e Texto.
+- Adicionar suporte para anexos em formate Imagem (GIF, JPG, PNG) e Texto.
+
+ver 0.5 (PLANNED 29/11)
+-----------------------------
+- Suporte para anexos durante o cadastro inicial.
+
+
+
 
 
 

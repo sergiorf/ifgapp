@@ -276,24 +276,24 @@ class Tecnologia(models.Model):
     nome = models.CharField(u'Título', max_length=120)
     categoria = models.ForeignKey(Categoria)
     subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria', chained_model_field="categoria")
-    solicitacao_protecao = models.DateTimeField(u'Data de solicitação da proteção')
-    reuniao_com_comissao = models.DateTimeField(u'Data da reunião com Comissão')
-    pedido = models.DateTimeField(u'Data do protocolo do pedido')
-    numero_processo = models.CharField(u'Número de processo', max_length=8, default=utils.gen_protocol, unique=True)
-    orgao_registro = models.CharField(u'Órgão de registro', max_length=6, choices=ORGAOS_REGISTRO, default=INPI)
-    area_conhecimento = models.ForeignKey(AreaConhecimento, verbose_name=u'Área do Conhecimento',
-                                          related_name=u'area_conhecimento', null=True, blank=True)
-    subarea_conhecimento = ChainedForeignKey(SubAreaConhecimento, chained_field='area_conhecimento',
-                                             chained_model_field="area", blank=True, null=True)
-    especialidade = ChainedForeignKey(Especialidade, chained_field='subarea_conhecimento',
-                                      chained_model_field='subarea', blank=True, null=True)
-    cotitulares = models.ManyToManyField('ifgapp.PessoaFisica', verbose_name=u'Instituições co-titulares')
-    criador = models.ForeignKey(PessoaFisica, verbose_name=u'Criador Responsável',
-                                blank=True, null=True, related_name=u'Tecnologia_criador')
-    cocriadores = models.ManyToManyField('ifgapp.PessoaFisica', verbose_name=u'Co-criador(es)',
-                                         related_name=u'Tecnologia_cocriador')
-    observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
-    status = models.CharField(u'Status', max_length=255, null=True, blank=True, choices=STATUS)
+    #solicitacao_protecao = models.DateField(u'Data de solicitação da proteção')
+    #reuniao_com_comissao = models.DateField(u'Data da reunião com Comissão')
+    #pedido = models.DateField(u'Data do protocolo do pedido')
+    #numero_processo = models.CharField(u'Número de processo', max_length=8, default=utils.gen_protocol, unique=True)
+    #orgao_registro = models.CharField(u'Órgão de registro', max_length=6, choices=ORGAOS_REGISTRO, default=INPI)
+    #area_conhecimento = models.ForeignKey(AreaConhecimento, verbose_name=u'Área do Conhecimento',
+    #                                      related_name=u'area_conhecimento', null=True, blank=True)
+    #subarea_conhecimento = ChainedForeignKey(SubAreaConhecimento, chained_field='area_conhecimento',
+    #                                         chained_model_field="area", blank=True, null=True)
+    #especialidade = ChainedForeignKey(Especialidade, chained_field='subarea_conhecimento',
+    #                                  chained_model_field='subarea', blank=True, null=True)
+    #cotitulares = models.ManyToManyField('ifgapp.Instituicao', verbose_name=u'Instituições co-titulares')
+    #criador = models.ForeignKey(PessoaFisica, verbose_name=u'Criador Responsável',
+    #                            blank=True, null=True, related_name=u'Tecnologia_criador')
+    #cocriadores = models.ManyToManyField('ifgapp.PessoaFisica', verbose_name=u'Co-criador(es)',
+    #                                     related_name=u'Tecnologia_cocriador')
+    #observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
+    #status = models.CharField(u'Status', max_length=255, null=True, blank=True, choices=STATUS)
 
     def __unicode__(self):
         return u'%s' % self.nome
