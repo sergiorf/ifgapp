@@ -4,6 +4,51 @@ from django.contrib.auth.models import Group, User
 from smart_selects.db_fields import ChainedForeignKey
 import utils
 import help_text
+import settings
+from datetime import datetime
+from utils import mkdir_p
+
+
+class Arquivo(models.Model):
+    FS_ROOT_PATH = settings.PROJECT_PATH+'/upload/'
+    nome = models.CharField(null=False, unique=False, max_length=255)
+    data_geracao = models.DateTimeField()
+
+    def __unicode__(self):
+        return self.nome
+
+    def save(self, nome, *args, **kwargs):
+        self.nome = nome
+        self.data_geracao = datetime.now()
+        super(Arquivo, self).save(*args, **kwargs)
+
+    def store(self, arquivo_upload):
+        pathname = self.get_path()[0:self.get_path().rfind('/')]
+        mkdir_p(pathname)
+        arquivo = open(self.get_path(), 'wb')
+        arquivo.write(arquivo_upload.read())
+        arquivo.close()
+
+    def load(self):
+        try:
+            pathname = self.get_path()
+            with open(pathname, 'rb') as arquivo:
+                pathname = 'c:\\temp'
+                mkdir_p(pathname)
+                with open(pathname + '\\temp.pdf', 'wb') as temp:
+                    temp.write(arquivo.read())
+                    return open(temp.name, 'rb')
+        except IOError:
+            return None
+
+    def delete(self, *args, **kwargs):
+        TecnologiaAnexo.objects.filter(arquivo__id=self.id).update(arquivo=None)
+        super(Arquivo, self).delete(*args, **kwargs)
+
+    def get_path(self):
+        if TecnologiaAnexo.objects.filter(arquivo__id=self.id).exists():
+            anexo = TecnologiaAnexo.objects.get(arquivo__id=self.id)
+            return Arquivo.FS_ROOT_PATH+'tecnologia/%d/%d.pdf' % (anexo.tecnologia_id, anexo.id)
 
 
 UF_CHOICES = (
@@ -253,5 +298,12 @@ class Tecnologia(models.Model):
     def __unicode__(self):
         return u'%s' % self.nome
 
+
+class TecnologiaAnexo(models.Model):
+    tecnologia = models.ForeignKey(Tecnologia)
+    arquivo = models.OneToOneField(Arquivo, null=True)
+
+    def __unicode__(self):
+        return self.arquivo.nome
 
 

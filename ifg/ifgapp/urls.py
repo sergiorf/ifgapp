@@ -32,6 +32,9 @@ urlpatterns = patterns('',
     url(r'^adicionar/tecnologia', 'ifgapp.views.adicionar_tecnologia', name='adicionar_tecnologia'),
     url(r'^adicionar/instituicao', 'ifgapp.views.adicionar_instituicao', name='adicionar_instituicao'),
 
+    url(r'^upload_anexo_tecnologia/(?P<pk>\d+)/$', 'ifgapp.views.upload_anexo_tecnologia', name='upload_anexo_tecnologia'),
+    url(r'^visualizar_arquivo/(?P<arquivo_id>\d+)/$', 'ifgapp.views.visualizar_arquivo', name='visualizar_arquivo'),
+
     url(r'^chaining/', include('smart_selects.urls')),
 
     url(r'^$', 'ifgapp.views.index', name='index'),

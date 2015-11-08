@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
-from django.forms import ModelForm
+from django.forms import ModelForm, FileField, Form
 from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao
+
+
+class FormPlus(Form):
+
+    """
+    Torna o ``request`` disponível no ``FormPlus`` através de ``self.request`` quando passado como parêmetro no inicialização.
+    """
+    def __init__(self, *args, **kwargs):
+        if 'request' in kwargs:
+            self.request = kwargs.pop('request')
+        super(FormPlus, self).__init__(*args, **kwargs)
 
 
 class ServidorForm(ModelForm):
@@ -29,3 +40,7 @@ class TecnologiaForm(ModelForm):
 class InstituicaoForm(ModelForm):
     class Meta:
         model = Instituicao
+
+
+class UploadArquivoForm(FormPlus):
+    arquivo = FileField()

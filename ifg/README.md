@@ -21,7 +21,7 @@ ver 0.2
 
 ver 0.3 (PLANNED 08/11)
 -----------------------------
-- Finalizar CRUD Tecnologia
+- Finalizar CRUD Tecnologia (somente suporte para anexos em PDF)
 
 ver 0.4 (PLANNED 15/11)
 -----------------------------
@@ -29,8 +29,9 @@ ver 0.4 (PLANNED 15/11)
 
 ver 0.4 (PLANNED 22/11)
 -----------------------------
-- Utilidade de busca de institução por nome ou sigla
-- Utilidade de busca de pessoa por nome
+- Utilidade de busca de institução por nome ou sigla.
+- Utilidade de busca de pessoa por nome.
+- Adicionar suporte para anexos em PDF e Texto.
 
 
 

@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-    <a href="{% url 'lista_tecnologias' %}">Tecnologia</a>
+    <a href="{% url 'lista_tecnologias' %}">Tecnologias</a>
     <h1>Editar uma Tecnologia</h1>
+     <a href="{% url "upload_anexo_tecnologia" object.pk %}">Carregar arquivo</a>
+     <table id="anexos">
+        {% for anexo in aux %}
+            <tr>
+                <td><a href="/ifgapp/visualizar_arquivo/{{ anexo.arquivo.id }}/" style="float:left">{{ anexo.arquivo.nome }}</a></td>
+                <td>{{ anexo.arquivo.data_geracao|date:"M d, Y" }}</td>
+            </tr>
+        {% endfor %}
+     </table>
     <form method="post">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit" />

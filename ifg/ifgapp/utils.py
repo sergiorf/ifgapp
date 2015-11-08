@@ -1,6 +1,7 @@
 import os
 import errno
 import uuid
+from unicodedata import normalize
 
 
 def create_obj2(klass_obj, params):
@@ -37,3 +38,11 @@ def gen_protocol():
     d = uuid.uuid4()
     res = d.hex
     return 'BR' + res[0:6]
+
+
+def to_ascii(txt, codif='utf-8'):
+    if not isinstance(txt, basestring):
+        txt = unicode(txt)
+    if isinstance(txt, unicode):
+        txt = txt.encode('utf-8')
+    return normalize('NFKD', txt.decode(codif)).encode('ASCII', 'ignore')

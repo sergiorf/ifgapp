@@ -8,8 +8,11 @@ from django.shortcuts import render, get_object_or_404
 from decorators import has_permission
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from models import Permissao, Pesquisador, Servidor, Grupo, Tecnologia, Instituicao
-from forms import GrupoForm, ServidorForm, PesquisadorForm, TecnologiaForm, InstituicaoForm
+from models import Permissao, Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, Arquivo, TecnologiaAnexo
+from forms import GrupoForm, ServidorForm, PesquisadorForm, TecnologiaForm, InstituicaoForm, UploadArquivoForm
+from django.http import HttpResponse
+from utils import to_ascii
+import os
 
 
 @login_required()
@@ -120,6 +123,25 @@ def adicionar_instituicao(request):
     return __adicionar_obj(request, InstituicaoForm, listing_instituicoes, 'instituicao_add.html')
 
 
+@login_required()
+def upload_anexo_tecnologia(request, pk):
+    return __upload_anexo(request, pk, Tecnologia, TecnologiaAnexo, '/ifgapp/tecnologia/%d/')
+
+@login_required()
+def visualizar_arquivo(request, arquivo_id):
+    arquivo = Arquivo.objects.all().get(id=arquivo_id)
+    arquivo_tmp = arquivo.load()
+    if arquivo_tmp is not None:
+        response = HttpResponse(arquivo_tmp.read(), content_type='application/pdf')
+        response['Content-Disposition'] = 'filename=%s' % \
+                to_ascii(arquivo.nome.replace(u'º', '.').replace('/', '-').replace(' ', ''))
+        arquivo_tmp.close()
+        os.remove(arquivo_tmp.name)
+        return response
+    else:
+        return HttpResponse("O arquivo solicitado foi adulterado ou não existe.")
+
+
 def login_user(request):
     state = "Por favor autentique-se..."
     username = password = ''
@@ -191,3 +213,25 @@ def __adicionar_obj(request, form_klass, listing_fn, template_name):
     else:
         form = form_klass()
     return render_to_response(template_name, {'form': form}, context)
+
+
+@login_required()
+def __upload_anexo(request, pk, obj_klass, anexo_klass, url):
+    obj = obj_klass.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = UploadArquivoForm(request.POST, request.FILES)
+        if form.is_valid():
+            arquivo_up = request.FILES['arquivo']
+            nome = arquivo_up.name
+            arquivo = Arquivo()
+            arquivo.save(nome)
+            anexo = anexo_klass()
+            if isinstance(obj, Tecnologia):
+                anexo.tecnologia = obj
+            anexo.arquivo = arquivo
+            anexo.save()
+            arquivo.store(arquivo_up)
+            return HttpResponseRedirect(url % obj.id)
+    else:
+        form = UploadArquivoForm()
+    return render(request, 'upload_arquivo.html', {'form': form})
