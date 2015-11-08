@@ -262,16 +262,16 @@ class Tecnologia(models.Model):
         (SNPC, 'Serviço Nacional de Proteção de Cultivares - SNPC')
     )
     STATUS = (
-        (0, u'Em Exame'),
-        (1, u'Aguardando cumprimento de exigência'),
-        (2, u'Pedido depositado'),
-        (3, u'Pedido publicado'),
-        (4, u'Pedido indeferido'),
-        (5, u'Pedido deferido'),
-        (6, u'Prazo para recurso'),
-        (7, u'Prazo para manifestação'),
-        (8, u'Prazo para oposição/manifestação de terceiros'),
-        (9, u'Período de nulidade administrativa'),
+        (u'00', u'Em Exame'),
+        (u'01', u'Aguardando cumprimento de exigência'),
+        (u'02', u'Pedido depositado'),
+        (u'03', u'Pedido publicado'),
+        (u'04', u'Pedido indeferido'),
+        (u'05', u'Pedido deferido'),
+        (u'06', u'Prazo para recurso'),
+        (u'07', u'Prazo para manifestação'),
+        (u'08', u'Prazo para oposição/manifestação de terceiros'),
+        (u'09', u'Período de nulidade administrativa'),
     )
     nome = models.CharField(u'Título', max_length=120)
     categoria = models.ForeignKey(Categoria, null=True, blank=True)
@@ -294,7 +294,7 @@ class Tecnologia(models.Model):
     cocriadores = models.ManyToManyField('ifgapp.PessoaFisica', verbose_name=u'Co-criador(es)',
                                          related_name=u'Tecnologia_cocriador')
     observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
-    status = models.CharField(u'Status', max_length=255, null=True, blank=True, choices=STATUS)
+    status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
 
     def __unicode__(self):
         return u'%s' % self.nome
