@@ -19,7 +19,7 @@ ver 0.2
 - CRUD Tecnologia: Dados gerais, Nome, Categorias, Número de Protocolo
 - CRUD Instituição
 
-ver 0.3 (PLANNED 08/11)
+ver 0.3
 -----------------------------
 - CRUD Tecnologia
 (somente suporte para anexos em PDF, e somente podemos anexar na edição, não no cadastro inicial).

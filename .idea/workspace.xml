@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e304dea1-b943-45d6-8129-3436e914f113" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/decorators.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/decorators.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/README.md" afterPath="$PROJECT_DIR$/ifg/README.md" />
     </list>
     <ignored path="ifgapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifg/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.16" vertical-offset="306" max-vertical-offset="1326">
-              <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.2556391" vertical-offset="255" max-vertical-offset="1326">
+              <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -50,10 +50,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="decorators.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="decorators.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/decorators.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4009434" vertical-offset="136" max-vertical-offset="714">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
               <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
               <folding />
             </state>
@@ -192,10 +192,10 @@
         <option value="$PROJECT_DIR$/ifg/ifgapp/urls.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/usuario_list.html" />
-        <option value="$PROJECT_DIR$/ifg/README.md" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/models.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/forms.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/decorators.py" />
+        <option value="$PROJECT_DIR$/ifg/README.md" />
       </list>
     </option>
   </component>
@@ -985,14 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.16" vertical-offset="306" max-vertical-offset="1326">
-          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/inventor_edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="238">
@@ -1047,8 +1039,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/decorators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4009434" vertical-offset="136" max-vertical-offset="714">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2556391" vertical-offset="255" max-vertical-offset="1326">
+          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
           <folding />
         </state>
       </provider>
