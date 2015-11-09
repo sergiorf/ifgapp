@@ -8,8 +8,8 @@ from django.shortcuts import render, get_object_or_404
 from decorators import has_permission
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from models import Permissao, Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, Arquivo, TecnologiaAnexo
-from forms import GrupoForm, ServidorForm, PesquisadorForm, TecnologiaForm, InstituicaoForm, UploadArquivoForm
+from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Instituicao, Arquivo, TecnologiaAnexo
+from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, InstituicaoForm, UploadArquivoForm
 from django.http import HttpResponse
 from utils import to_ascii
 import os
@@ -30,6 +30,12 @@ def listing_pesquisadores(request):
 @has_permission([Permissao.VER_PESSOA])
 def listing_servidores(request):
     return __listing_objects(request, Servidor.objects.all(), 'usuario_list.html', "Servidor")
+
+
+@login_required()
+@has_permission([Permissao.VER_PESSOA])
+def listing_inventores(request):
+    return __listing_objects(request, Inventor.objects.all(), 'usuario_list.html', "Inventor")
 
 
 @login_required()
@@ -59,6 +65,11 @@ def edit_pesquisador(request, pk):
 
 
 @login_required()
+def edit_inventor(request, pk):
+    return __edit_object(request, pk, Inventor, 'inventor_edit.html', "lista_inventores")
+
+
+@login_required()
 def edit_grupo(request, pk):
     return __edit_object(request, pk, Grupo, 'grupo_edit.html', "lista_grupos")
 
@@ -84,6 +95,11 @@ def remover_pesquisador(request, pk):
 
 
 @login_required()
+def remover_inventor(request, pk):
+    return __remover_object(request, pk, Inventor, 'lista_inventores')
+
+
+@login_required()
 def remover_grupo(request, pk):
     return __remover_object(request, pk, Grupo, 'lista_grupos')
 
@@ -106,6 +122,11 @@ def adicionar_servidor(request):
 @login_required()
 def adicionar_pesquisador(request):
     return __adicionar_obj(request, PesquisadorForm, listing_servidores, 'pesquisador_add.html')
+
+
+@login_required()
+def adicionar_inventor(request):
+    return __adicionar_obj(request, InventorForm, listing_inventores, 'inventor_add.html')
 
 
 @login_required()

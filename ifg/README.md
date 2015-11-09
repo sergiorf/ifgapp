@@ -21,22 +21,42 @@ ver 0.2
 
 ver 0.3 (PLANNED 08/11)
 -----------------------------
-- Finalizar CRUD Tecnologia
-(somente suporte para anexos em PDF, e somente podemos anexar na edição, não no cadastro inicial)
+- CRUD Tecnologia
+(somente suporte para anexos em PDF, e somente podemos anexar na edição, não no cadastro inicial).
+- CRUD Inventor (exceto cadastro de anexos).
 
 ver 0.4 (PLANNED 15/11)
 -----------------------------
-- Finalizar CRUD Inventor.
+- Suporte para anexos obrigatários no formulário de cadastro (como FK).
+- CRUD Tarefa.
+- Adicionar anexos no cadastro de Inventor
 
 ver 0.4 (PLANNED 22/11)
 -----------------------------
-- Utilidade de busca de institução por nome ou sigla.
-- Utilidade de busca de pessoa por nome.
-- Adicionar suporte para anexos em formate Imagem (GIF, JPG, PNG) e Texto.
+- Suporte para campos excludentes (p.ex: Inventor/Vínculo IFG/Instituição).
+- CRUD Contrato de Transferência de Tecnologia.
+- Adicionar suporte para anexos em formato Imagem (GIF, JPG, PNG) e Texto.
 
 ver 0.5 (PLANNED 29/11)
 -----------------------------
-- Suporte para anexos durante o cadastro inicial.
+- Formatar telefone.
+- Utilidade de busca de Institução por nome ou sigla.
+- Utilidade de busca de Inventor por nome.
+
+ver 0.6 (PLANNED 06/12)
+-----------------------------
+- Ferramenta de busca de Tecnologia.
+
+ver 0.7 (PLANNED 13/12)
+-----------------------------
+- Ferramenta de busca de Inventor.
+- Ferramenta de busca de Instituição.
+- Ferramenta de busca de Tarefa.
+- Ferramenta de busca de Contrato de Transferência de Tecnologia.
+
+ver 0.8 (PLANNED 20/12)
+-----------------------------
+- automatização de Tarefas.
 
 
 

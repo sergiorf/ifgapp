@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
 from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, \
-    Grupo, Permissao, Servidor, Pesquisador, Categoria, Subcategoria, Instituicao
+    Grupo, Permissao, Servidor, Pesquisador, Inventor, Categoria, Subcategoria, Instituicao
 from ifgapp.utils import create_obj
 import string
 import os
@@ -48,6 +48,14 @@ class Command(BaseCommand):
                 email=u'pesquisador%s@ifg.com.br' % index,
                 grupo=grupo,
             ))
+            create_obj(dict(username=u'inventor%s' % index), Inventor, dict(
+                username=u'inventor%s' % index,
+                email=u'inventor%s@ifg.com.br' % index,
+                telefone='233-3345',
+                vinculoifg=u'02',
+                grupo=grupo,
+            ))
+
 
     @staticmethod
     def insert_categorias():

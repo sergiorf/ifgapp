@@ -139,9 +139,6 @@ class Pessoa(models.Model):
 class PessoaFisica(Pessoa):
     user = models.OneToOneField(User, null=True, blank=True)
     cpf = models.CharField(max_length=20, null=False, verbose_name=u'CPF', blank=True)
-    sexo = models.CharField(max_length=1, null=True, choices=[['M', 'Masculino'], ['F', 'Feminino']])
-    nome_mae = models.CharField(u'Nome da mãe', max_length=100, null=True)
-    nome_pai = models.CharField(u'Nome do pai', max_length=100, null=True, blank=True)
     username = models.CharField(max_length=50, null=True, unique=True)
     grupo = models.ForeignKey(Grupo)
 
@@ -173,7 +170,29 @@ class Servidor(PessoaFisica):
         verbose_name_plural = u'Servidores'
 
     def __unicode__(self):
-        return u'%s (%s)' % (self.username, self.matricula) if self.matricula else u'%s' % self.username
+        return u'%s (%s)' % (self.username, self.cpf) if self.cpf else u'%s' % self.username
+
+
+class Inventor(PessoaFisica):
+    VINCULO_IFG = (
+        (u'00', u'Aluno'),
+        (u'01', u'Professor Efetivo'),
+        (u'02', u'Professor Substituto'),
+        (u'03', u'Técnico Administrativo'),
+        (u'04', u'Estagiário'),
+        (u'05', u'Bolsista'),
+        (u'06', u'Outro'),
+    )
+    telefone = models.CharField(max_length=40)
+    vinculoifg = models.CharField(u'Vínculo IFG', max_length=2, null=True, blank=True, choices=VINCULO_IFG)
+    cotitulares = models.ForeignKey('ifgapp.Instituicao', verbose_name=u'Instituição de origem', null=True, blank=True)
+
+    class Meta:
+        verbose_name = u'Inventor'
+        verbose_name_plural = u'Inventores'
+
+    def __unicode__(self):
+        return u'%s (%s)' % (self.username, self.cpf) if self.cpf else u'%s' % self.username
 
 
 class Pesquisador(PessoaFisica):
@@ -289,9 +308,9 @@ class Tecnologia(models.Model):
     especialidade = ChainedForeignKey(Especialidade, chained_field='subarea_conhecimento',
                                       chained_model_field='subarea', blank=True, null=True)
     cotitulares = models.ManyToManyField('ifgapp.Instituicao', verbose_name=u'Instituições co-titulares')
-    criador = models.ForeignKey(PessoaFisica, verbose_name=u'Criador Responsável',
+    criador = models.ForeignKey(Inventor, verbose_name=u'Criador Responsável',
                                 blank=True, null=True, related_name=u'Tecnologia_criador')
-    cocriadores = models.ManyToManyField('ifgapp.PessoaFisica', verbose_name=u'Co-criador(es)',
+    cocriadores = models.ManyToManyField('ifgapp.Inventor', verbose_name=u'Co-criador(es)',
                                          related_name=u'Tecnologia_cocriador')
     observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
     status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)

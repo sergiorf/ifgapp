@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm, FileField, Form, ModelChoiceField, DateInput
-from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica
+from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor
 
 
 class DateInput(DateInput):
@@ -30,6 +30,12 @@ class PesquisadorForm(ModelForm):
         exclude = ('user',)
 
 
+class InventorForm(ModelForm):
+    class Meta:
+        model = Inventor
+        exclude = ('user',)
+
+
 class GrupoForm(ModelForm):
     class Meta:
         model = Grupo
@@ -37,7 +43,7 @@ class GrupoForm(ModelForm):
 
 
 class TecnologiaForm(ModelForm):
-    criador = ModelChoiceField(queryset=PessoaFisica.objects.order_by('username'))
+    criador = ModelChoiceField(queryset=Inventor.objects.order_by('username'))
     class Meta:
         model = Tecnologia
         widgets = {

@@ -1,4 +1,4 @@
-from models import Servidor, Pesquisador
+from models import Servidor, Pesquisador, Inventor
 try:
     from functools import wraps
 except:
@@ -11,6 +11,8 @@ def has_permission(permissions=[], home_url=None):
     def decorator(func):
         def inner_decorator(request, *args, **kwargs):
             u = request.user
+            #pessoa = Inventor.objects.get(username=u.username)
+            #if pessoa is None:
             pessoa = Servidor.objects.get(username=u.username)
             if pessoa is None:
                 pessoa = Pesquisador.objects.get(username=u.username)
