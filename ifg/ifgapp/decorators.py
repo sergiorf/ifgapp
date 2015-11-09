@@ -11,13 +11,16 @@ def has_permission(permissions=[], home_url=None):
     def decorator(func):
         def inner_decorator(request, *args, **kwargs):
             u = request.user
-            #pessoa = Inventor.objects.get(username=u.username)
-            #if pessoa is None:
-            pessoa = Servidor.objects.get(username=u.username)
-            if pessoa is None:
-                pessoa = Pesquisador.objects.get(username=u.username)
-                if pessoa is None:
-                    return HttpResponseRedirect(reverse(home_url))
+            try:
+                pessoa = Inventor.objects.get(username=u.username)
+            except Inventor.DoesNotExist:
+                try:
+                    pessoa = Servidor.objects.get(username=u.username)
+                except Servidor.DoesNotExist:
+                    try:
+                        pessoa = Pesquisador.objects.get(username=u.username)
+                    except Servidor.DoesNotExist:
+                        return HttpResponseRedirect(reverse(home_url))
             for desc in permissions:
                 print desc
                 perm = pessoa.grupo.permissoes.filter(descricao=desc)
