@@ -296,9 +296,9 @@ class Tecnologia(models.Model):
     categoria = models.ForeignKey(Categoria, null=True, blank=True)
     subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria',
                                      chained_model_field="categoria", null=True, blank=True)
-    solicitacao_protecao = models.DateField(u'Data de solicitação da proteção')
-    reuniao_com_comissao = models.DateField(u'Data da reunião com Comissão')
-    pedido = models.DateField(u'Data do protocolo do pedido')
+    solicitacao_protecao = models.DateField(u'Data de solicitação da proteção', blank=True, null=True)
+    reuniao_com_comissao = models.DateField(u'Data da reunião com Comissão', blank=True, null=True)
+    pedido = models.DateField(u'Data do protocolo do pedido', default=datetime.now)
     numero_processo = models.CharField(u'Número de processo', max_length=8, default=utils.gen_protocol, unique=True)
     orgao_registro = models.CharField(u'Órgão de registro', max_length=6, choices=ORGAOS_REGISTRO, default=INPI)
     area_conhecimento = models.ForeignKey(AreaConhecimento, verbose_name=u'Área do Conhecimento',
@@ -307,13 +307,14 @@ class Tecnologia(models.Model):
                                              chained_model_field="area", blank=True, null=True)
     especialidade = ChainedForeignKey(Especialidade, chained_field='subarea_conhecimento',
                                       chained_model_field='subarea', blank=True, null=True)
-    cotitulares = models.ManyToManyField('ifgapp.Instituicao', verbose_name=u'Instituições co-titulares')
-    criador = models.ForeignKey(Inventor, verbose_name=u'Criador Responsável',
-                                blank=True, null=True, related_name=u'Tecnologia_criador')
+    cotitulares = models.ManyToManyField('ifgapp.Instituicao', verbose_name=u'Instituições co-titulares',
+                                         blank=True, null=True)
+    criador = models.ForeignKey(Inventor, verbose_name=u'Criador Responsável', related_name=u'Tecnologia_criador')
     cocriadores = models.ManyToManyField('ifgapp.Inventor', verbose_name=u'Co-criador(es)',
-                                         related_name=u'Tecnologia_cocriador')
+                                         blank=True, null=True, related_name=u'Tecnologia_cocriador')
     observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
     status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
+    formulario_pedido = models.FileField(upload_to=Arquivo.FS_ROOT_PATH+'/documents/%Y/%m/%d')
 
     def __unicode__(self):
         return u'%s' % self.nome

@@ -1,4 +1,4 @@
-Um aplicativo de gerência de patentes, escrita em Django, para o Instituto Federal de Goiás.
+Um aplicativo de gerência de patentes, escrita em Django 1.6.10 e Python 2.7, para o Instituto Federal de Goiás.
 Passos para instalar:
 * Criar banco 'ifgapp' em PostgreSQL.
 * cd c:\dev\ifgapp\ifg

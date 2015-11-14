@@ -226,7 +226,7 @@ def __remover_object(request, pk, obj_klass, list_url):
 def __adicionar_obj(request, form_klass, listing_fn, template_name):
     context = RequestContext(request)
     if request.method == 'POST':
-        form = form_klass(request.POST)
+        form = form_klass(request.POST, request.FILES)
         if form.is_valid():
             form.save(commit=True)
             return listing_fn(request)

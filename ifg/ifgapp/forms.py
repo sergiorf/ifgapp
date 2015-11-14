@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm, FileField, Form, ModelChoiceField, DateInput
 from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor
+from django.contrib.admin.widgets import AdminFileWidget
 
 
 class DateInput(DateInput):
@@ -44,6 +45,7 @@ class GrupoForm(ModelForm):
 
 class TecnologiaForm(ModelForm):
     criador = ModelChoiceField(queryset=Inventor.objects.order_by('username'))
+    formulario_pedido = FileField(label='Formulário do pedido', widget=AdminFileWidget)
     class Meta:
         model = Tecnologia
         widgets = {

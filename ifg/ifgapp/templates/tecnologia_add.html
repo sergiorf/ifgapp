@@ -2,7 +2,7 @@
 {% block content %}
     <a href="{% url 'lista_tecnologias' %}">Tecnologia</a>
     <h1>Adicionar uma Tecnologia</h1>
-    <form id="tecnologia_form" method="post" action="/adicionar/tecnologia/">
+    <form id="tecnologia_form" method="post" action="/adicionar/tecnologia/" enctype="multipart/form-data">
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}
             {{ hidden }}
