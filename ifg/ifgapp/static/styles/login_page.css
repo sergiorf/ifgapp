@@ -1,0 +1,153 @@
+/* ---------------- Geral ----------------- */
+
+body{
+	background: #666;
+	font-family: helvetica, sans-serif;
+}
+
+/* BORDAS */
+body.login #container, #content, #content-main, #servicos {
+	
+	background: #eee;
+
+	/* border-radius: 7px;
+	border-style: groove;
+	border-width: 1px;
+	border-color: #8B8989;
+
+	box-shadow: 3px 3px 7px #8B8989;
+	overflow: hidden; */
+}
+
+/* LINKS */
+body.login a {
+	text-decoration: none;
+	color: green;
+}
+
+/* LISTAS */
+body.login ul li {
+	list-style: none;
+}
+
+/*---------------------- Divs -------------------- */
+
+/* CONTAINER */
+
+body.login #container {
+	margin: 90px auto;
+	width: 75%;
+}
+
+/* CONTENT */
+
+body.login #content {
+	margin: 50px auto;
+	width: 90%;
+	position: relative;
+}
+
+body.login #content h2{
+	display: none;
+}
+
+/* CONTENT MAIN */
+
+body.login #content-main {
+	width: 60%;
+	margin: 20px;
+	margin-top: 30px;
+	padding: 15px 15px;
+}
+
+/* FORM ROW */
+body.login .form-row {
+    margin: 0px 0px 10px;
+}
+
+body.login .form-row a {
+    display: inline-block;
+    padding: 10px 0 0;
+    width: 100%;
+}
+
+body.login .form-row label {
+    clear: left;
+    color: #666666 !important;
+    font-weight: normal !important;
+    line-height: 1em;
+    padding: 0 5px 0 0;
+    text-align: left !important;
+    margin-bottom: 5px;
+}
+
+body.login .form-row input[type="password"],
+body.login .form-row input[type="text"] {
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    font-size: 80%;
+    padding: 0 5px;
+    margin-bottom: 15px;
+    height: 45px;
+    width: 90%;
+}
+
+body.login .form-row input[type="password"]:active,
+body.login .form-row input[type="password"]:focus,
+body.login .form-row input[type="text"]:active,
+body.login .form-row input[type="text"]:focus {
+    border: 1px solid #999;
+}
+
+body.login .submit-row input[type="submit"] {
+    background: #7CCD7C;
+    color: white;
+    border-radius: 7px;
+    box-shadow: 0.5px 0.5px 0.5px gray;
+    margin: 15px;
+    margin-left: 0px;
+    font-size: 100%;
+    height: 40px;
+    width: 92%;
+}
+
+/* SERVIÇOS */
+
+body.login #servicos {
+	float: right;
+	margin: 10px;
+	margin-top: -320px;
+	width: 25%;
+}
+body.login #servicos p{
+	font: bold 18px;
+	color: white;
+	background: #666;
+	padding: 3px;
+}
+
+body.login #servicos ul {
+	display: : inline-block;
+}
+
+body.login #servicos ul li{
+	margin: 5px;
+}
+
+/* FOOTER */
+
+body.login #login-footer {
+    margin: 5px auto 20px;
+    overflow: hidden;
+    width: 70%;
+}
+body.login #login-footer p {
+    color: gray;
+    font-weight: 300;
+    padding: 0 25%;
+    text-align: center;
+}
+body.login #login-footer p a {
+    color: #5bb75b;
+}

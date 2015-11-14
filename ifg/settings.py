@@ -34,13 +34,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 INSTALLED_APPS = (
     'pagination',
-    'smart_selects',
-    #'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
    # 'django.contrib.messages',
-   # 'django.contrib.staticfiles',
+    'django.contrib.staticfiles',
+    'smart_selects',
     'ifgapp'
 )
 
@@ -92,3 +92,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#arquivos estaticos do projeto
+STATICFILES_DIRS = ('',
+    os.path.join(os.path.dirname(BASE_DIR), "static", "static_dirs")
+)
+
+# Onde os arquivos serao coletados
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static_root")
