@@ -356,9 +356,26 @@ class Atividade(models.Model):
 
 
 class Tarefa(models.Model):
+    STATUS = (
+        (u'00', u'Aguardando início'),
+        (u'01', u'Em andamento'),
+        (u'02', u'Finalizada'),
+        (u'03', u'Não realizada'),
+    )
     nome = models.CharField(u'Título', max_length=120, unique=True)
     tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Tarefa_tecnologia')
     tipo_atividade = models.ForeignKey(TipoAtividade, null=True, blank=True)
     atividade = ChainedForeignKey(Atividade, chained_field='tipo_atividade',
                                      chained_model_field="tipo_atividade", null=True, blank=True)
+    codigo = models.PositiveIntegerField(u'Código', null=True, blank=True)
+    descricao = models.TextField(u'Descrição', null=True, blank=True)
+    prazo_realizacao_inicio = models.DateField(u'Data de início da realização da tarefa', blank=True, null=True)
+    prazo_realizacao_final = models.DateField(u'Data limite para realização da tarefa', blank=True, null=True)
+    conclusao = models.DateField(u'Data de conclusão', blank=True, null=True)
+    cadastro = models.DateField(u'Data de cadastro', auto_now=True)
+    status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
+    anexo = models.FileField(upload_to=utils.doc_location, help_text=help_text.anexo_tarefa, blank=True, null=True)
+
+
+
 
