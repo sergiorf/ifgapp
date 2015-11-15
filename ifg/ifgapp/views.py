@@ -201,7 +201,7 @@ def __edit_object(request, pk, obj_klass, template_name, list_url):
     obj = get_object_or_404(obj_klass, pk=pk)
     form_klass = obj_klass.__name__ + "Form"
     constructor = globals()[form_klass]
-    form = constructor(request.POST or None, instance=obj)
+    form = constructor(request.POST or None, request.FILES or None, instance=obj)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect(reverse(list_url))

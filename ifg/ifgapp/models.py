@@ -8,7 +8,7 @@ import settings
 import os
 from datetime import datetime
 from utils import mkdir_p
-from validators import validate_fileispdf
+from validators import validate_file_ispdf
 
 
 class Arquivo(models.Model):
@@ -316,7 +316,9 @@ class Tecnologia(models.Model):
                                          blank=True, null=True, related_name=u'Tecnologia_cocriador')
     observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
     status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
-    formulario_pedido = models.FileField(upload_to=utils.doc_location, validators=[validate_fileispdf])
+    formulario_pedido = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf])
+    comprovante_pagamento = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf])
+    ata_reuniao_comissao_avaliadora = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf])
 
     def __unicode__(self):
         return u'%s' % self.nome

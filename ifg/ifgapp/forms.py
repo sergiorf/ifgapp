@@ -46,6 +46,8 @@ class GrupoForm(ModelForm):
 class TecnologiaForm(ModelForm):
     criador = ModelChoiceField(queryset=Inventor.objects.order_by('username'))
     formulario_pedido = FileField(label='Formulário do pedido', widget=AdminFileWidget)
+    comprovante_pagamento = FileField(label='Comprovante de pagamento da retribuição (GRU)', widget=AdminFileWidget)
+    ata_reuniao_comissao_avaliadora = FileField(label='Ata da reunião com Comissão Avaliadora', widget=AdminFileWidget)
     class Meta:
         model = Tecnologia
         widgets = {

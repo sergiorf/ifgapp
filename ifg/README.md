@@ -27,8 +27,7 @@ ver 0.3
 
 ver 0.4 (PLANNED 15/11)
 -----------------------------
-- Suporte para anexos obrigatários no formulário de cadastro (como FK).
-possibilidade de editar
+- OK Suporte para anexar/atualizar/baixar arquivos no formulário de cadastro.
 - CRUD Tarefa.
 - Adicionar anexos no cadastro de Inventor
 
@@ -37,12 +36,14 @@ ver 0.4 (PLANNED 22/11)
 - Suporte para campos excludentes (p.ex: Inventor/Vínculo IFG/Instituição).
 - CRUD Contrato de Transferência de Tecnologia.
 - Adicionar suporte para anexos em formato Imagem (GIF, JPG, PNG) e Texto.
+- BUG: Clicando 'next' na lista de tecnologias, abre a edição de tecnologia.
 
 ver 0.5 (PLANNED 29/11)
 -----------------------------
 - Formatar telefone.
 - Utilidade de busca de Institução por nome ou sigla.
 - Utilidade de busca de Inventor por nome.
+- BUG: nome de arquivo anexado superior a 100 caracteres
 
 ver 0.6 (PLANNED 06/12)
 -----------------------------

@@ -2,7 +2,7 @@
 from django.core.exceptions import ValidationError
 
 
-def validate_fileispdf(value):
+def validate_file_ispdf(value):
     return validate_file_extension(value, ['.pdf'], u'O arquivo não é formato PDF')
 
 
