@@ -100,3 +100,7 @@ STATICFILES_DIRS = ('',
 
 # Onde os arquivos serao coletados
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static_root")
+
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media/')
+MODEL_DOC_ROOT = os.path.join('model', 'documents')
+MEDIA_URL = '/media/'

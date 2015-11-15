@@ -1,6 +1,7 @@
 import os
 import errno
 import uuid
+import settings
 from unicodedata import normalize
 
 
@@ -46,3 +47,14 @@ def to_ascii(txt, codif='utf-8'):
     if isinstance(txt, unicode):
         txt = txt.encode('utf-8')
     return normalize('NFKD', txt.decode(codif)).encode('ASCII', 'ignore')
+
+
+def doc_location(instance, filename):
+    root_path = os.path.join(settings.MODEL_DOC_ROOT, type(instance).__name__, instance.nome)
+    full_path = settings.MEDIA_ROOT + os.path.join('/', root_path)
+
+    if not os.path.exists(full_path):
+        os.mkdir(full_path)
+
+    return os.path.join(root_path, filename).replace('\\', '/')
+

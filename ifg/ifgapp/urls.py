@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+import settings
 
 from django.contrib import admin
 admin.autodiscover()
@@ -40,6 +41,9 @@ urlpatterns = patterns('',
     url(r'^visualizar_arquivo/(?P<arquivo_id>\d+)/$', 'ifgapp.views.visualizar_arquivo', name='visualizar_arquivo'),
 
     url(r'^chaining/', include('smart_selects.urls')),
+
+    url(r'^media/model/documents/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': '%s/%s' % (settings.MEDIA_ROOT, settings.MODEL_DOC_ROOT)}),
 
     url(r'^$', 'ifgapp.views.index', name='index'),
 )

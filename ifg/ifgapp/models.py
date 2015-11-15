@@ -5,6 +5,7 @@ from smart_selects.db_fields import ChainedForeignKey
 import utils
 import help_text
 import settings
+import os
 from datetime import datetime
 from utils import mkdir_p
 
@@ -292,7 +293,7 @@ class Tecnologia(models.Model):
         (u'08', u'Prazo para oposição/manifestação de terceiros'),
         (u'09', u'Período de nulidade administrativa'),
     )
-    nome = models.CharField(u'Título', max_length=120)
+    nome = models.CharField(u'Título', max_length=120, unique=True)
     categoria = models.ForeignKey(Categoria, null=True, blank=True)
     subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria',
                                      chained_model_field="categoria", null=True, blank=True)
@@ -314,7 +315,7 @@ class Tecnologia(models.Model):
                                          blank=True, null=True, related_name=u'Tecnologia_cocriador')
     observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
     status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
-    formulario_pedido = models.FileField(upload_to=Arquivo.FS_ROOT_PATH+'/documents/%Y/%m/%d')
+    formulario_pedido = models.FileField(upload_to=utils.doc_location)
 
     def __unicode__(self):
         return u'%s' % self.nome
