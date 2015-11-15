@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
 from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, \
-    Grupo, Permissao, Servidor, Pesquisador, Inventor, Categoria, Subcategoria, Instituicao
+    Grupo, Permissao, Servidor, Pesquisador, Inventor, Categoria, Subcategoria, Instituicao, \
+    TipoAtividade, Atividade
 from ifgapp.utils import create_obj
 import string
 import os
@@ -12,6 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         Command.insert_areacon()
         Command.insert_categorias()
+        Command.insert_atividades()
         index = 1
         grupo = create_obj(dict(nome=u'Admin'), Grupo, dict(
             nome=u'Admin',
@@ -56,29 +58,46 @@ class Command(BaseCommand):
                 grupo=grupo,
             ))
 
-
     @staticmethod
-    def insert_categorias():
-        fname = os.path.join(os.getcwd(), os.path.dirname(__file__)) + '\\categorias.txt'
+    def parse_treedata(datafile):
+        tree = {}
+        fname = os.path.join(os.getcwd(), os.path.dirname(__file__)) + '\\' + datafile
         with open(fname, 'r') as f:
-            cats = {}
             lastline = ''
             for line in f.readlines():
                 line = unicode(line, 'utf-8').strip()
                 if not line.startswith('#'):
-                    cats[line] = []
+                    tree[line] = []
                     lastline = line
                 elif lastline:
-                    cats[lastline].append(line[1:].strip())
-            for key, value in cats.iteritems():
-                c = create_obj(dict(nome=key), Categoria, dict(
+                    tree[lastline].append(line[1:].strip())
+        return tree
+
+    @staticmethod
+    def insert_atividades():
+        tree = Command.parse_treedata('atividades.txt')
+        for key, value in tree.iteritems():
+                c = create_obj(dict(nome=key), TipoAtividade, dict(
                     nome=key,
                 ))
-                for sub in value:
-                    create_obj(dict(nome=sub), Subcategoria, dict(
-                        nome=sub,
-                        categoria=c
+                for ativ in value:
+                    create_obj(dict(nome=ativ), Atividade, dict(
+                        nome=ativ,
+                        tipo_atividade=c
                     ))
+
+    @staticmethod
+    def insert_categorias():
+        tree = Command.parse_treedata('categorias.txt')
+        for key, value in tree.iteritems():
+            c = create_obj(dict(nome=key), Categoria, dict(
+                nome=key,
+            ))
+            for sub in value:
+                create_obj(dict(nome=sub), Subcategoria, dict(
+                    nome=sub,
+                    categoria=c
+                ))
 
     @staticmethod
     def insert_areacon():

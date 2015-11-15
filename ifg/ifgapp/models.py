@@ -344,7 +344,7 @@ class TipoAtividade(models.Model):
 
 
 class Atividade(models.Model):
-    tipo = models.ForeignKey('ifgapp.TipoAtividade', null=True)
+    tipo_atividade = models.ForeignKey('ifgapp.TipoAtividade', null=True)
     nome = models.CharField(u'Nome', max_length=255, unique=True)
 
     class Meta:
@@ -355,11 +355,10 @@ class Atividade(models.Model):
         return u'%s' % self.nome
 
 
-class Tarefa
+class Tarefa(models.Model):
     nome = models.CharField(u'Título', max_length=120, unique=True)
     tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Tarefa_tecnologia')
-    tipo_atividade = models.CharField(u'Tipo de atividade', max_length=2, null=True, blank=True, choices=TIPO_ATIVIDADE)
-    tipo_atividade = models.ForeignKey(Categoria, null=True, blank=True)
-    subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria',
-                                     chained_model_field="categoria", null=True, blank=True)
+    tipo_atividade = models.ForeignKey(TipoAtividade, null=True, blank=True)
+    atividade = ChainedForeignKey(Atividade, chained_field='tipo_atividade',
+                                     chained_model_field="tipo_atividade", null=True, blank=True)
 
