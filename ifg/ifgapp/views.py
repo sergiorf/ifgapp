@@ -8,8 +8,10 @@ from django.shortcuts import render, get_object_or_404
 from decorators import has_permission
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Instituicao, Arquivo, TecnologiaAnexo
-from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, InstituicaoForm, UploadArquivoForm
+from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
+    Instituicao, Arquivo, TecnologiaAnexo
+from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, TarefaForm, \
+    InstituicaoForm, UploadArquivoForm
 from django.http import HttpResponse
 from utils import to_ascii
 import os
@@ -50,6 +52,11 @@ def listing_tecnologias(request):
 
 
 @login_required()
+def listing_tarefas(request):
+    return __listing_objects(request, Tarefa.objects.all(), 'tarefas_list.html', "Tarefa")
+
+
+@login_required()
 def listing_instituicoes(request):
     return __listing_objects(request, Instituicao.objects.all(), 'instituicoes_list.html', "Instituição")
 
@@ -77,6 +84,11 @@ def edit_grupo(request, pk):
 @login_required()
 def edit_tecnologia(request, pk):
     return __edit_object(request, pk, Tecnologia, 'tecnologia_edit.html', "lista_tecnologias")
+
+
+@login_required()
+def edit_tarefa(request, pk):
+    return __edit_object(request, pk, Tarefa, 'tarefa_edit.html', "lista_tarefas")
 
 
 @login_required()
@@ -110,6 +122,11 @@ def remover_tecnologia(request, pk):
 
 
 @login_required()
+def remover_tarefa(request, pk):
+    return __remover_object(request, pk, Tarefa, 'lista_tarefas')
+
+
+@login_required()
 def remover_instituicao(request, pk):
     return __remover_object(request, pk, Instituicao, 'lista_instituicoes')
 
@@ -140,6 +157,11 @@ def adicionar_tecnologia(request):
 
 
 @login_required()
+def adicionar_tarefa(request):
+    return __adicionar_obj(request, TarefaForm, listing_tarefas, 'tarefa_add.html')
+
+
+@login_required()
 def adicionar_instituicao(request):
     return __adicionar_obj(request, InstituicaoForm, listing_instituicoes, 'instituicao_add.html')
 
@@ -147,6 +169,7 @@ def adicionar_instituicao(request):
 @login_required()
 def upload_anexo_tecnologia(request, pk):
     return __upload_anexo(request, pk, Tecnologia, TecnologiaAnexo, '/tecnologia/%d/')
+
 
 @login_required()
 def visualizar_arquivo(request, arquivo_id):

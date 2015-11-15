@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm, FileField, Form, ModelChoiceField, DateInput
-from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor
+from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa
 from django.contrib.admin.widgets import AdminFileWidget
 
 
@@ -55,6 +55,11 @@ class TecnologiaForm(ModelForm):
             'reuniao_com_comissao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'pedido': DateInput(attrs={'size': '90', 'id': 'datepicker'})
         }
+
+
+class TarefaForm(ModelForm):
+    class Meta:
+        model = Tarefa
 
 
 class InstituicaoForm(ModelForm):
