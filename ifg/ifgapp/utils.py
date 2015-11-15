@@ -54,7 +54,7 @@ def doc_location(instance, filename):
     full_path = settings.MEDIA_ROOT + os.path.join('/', root_path)
 
     if not os.path.exists(full_path):
-        os.mkdir(full_path)
+        os.makedirs(full_path)
 
     return os.path.join(root_path, filename).replace('\\', '/')
 

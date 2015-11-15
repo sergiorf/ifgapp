@@ -62,3 +62,4 @@ class InstituicaoForm(ModelForm):
 
 class UploadArquivoForm(FormPlus):
     arquivo = FileField()
+

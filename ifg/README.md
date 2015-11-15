@@ -29,7 +29,6 @@ ver 0.4 (PLANNED 15/11)
 -----------------------------
 - Suporte para anexos obrigatários no formulário de cadastro (como FK).
 possibilidade de editar
-somente pdfs...
 - CRUD Tarefa.
 - Adicionar anexos no cadastro de Inventor
 
