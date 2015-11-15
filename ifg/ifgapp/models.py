@@ -188,6 +188,10 @@ class Inventor(PessoaFisica):
     telefone = models.CharField(max_length=40)
     vinculoifg = models.CharField(u'Vínculo IFG', max_length=2, null=True, blank=True, choices=VINCULO_IFG)
     cotitulares = models.ForeignKey('ifgapp.Instituicao', verbose_name=u'Instituição de origem', null=True, blank=True)
+    doc_comprobatorio = models.FileField(upload_to=utils.doc_location, help_text=help_text.doc_comprobatorio,
+                             validators=[validate_file_ispdf], blank=True, null=True)
+    docs_pessoais = models.FileField(upload_to=utils.doc_location, help_text=help_text.docs_pessoais,
+                             validators=[validate_file_ispdf], blank=True, null=True)
 
     class Meta:
         verbose_name = u'Inventor'

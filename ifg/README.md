@@ -28,7 +28,7 @@ ver 0.3
 ver 0.4 (PLANNED 15/11)
 -----------------------------
 - OK Suporte para anexar/atualizar/baixar arquivos no formulário de cadastro.
-- CRUD Tarefa.
+- OK CRUD Tarefa.
 - Adicionar anexos no cadastro de Inventor
 
 ver 0.4 (PLANNED 22/11)
