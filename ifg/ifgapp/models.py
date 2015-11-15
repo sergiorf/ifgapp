@@ -332,36 +332,34 @@ class TecnologiaAnexo(models.Model):
         return self.arquivo.nome
 
 
-class Categoria(models.Model):
+class TipoAtividade(models.Model):
     nome = models.CharField(u'Nome', max_length=255, unique=True)
 
     class Meta:
-        verbose_name = u'Categoria de Tecnologia'
-        verbose_name_plural = u'Categorias de Tecnologia'
+        verbose_name = u'Tipo de atividade'
+        verbose_name_plural = u'Tipos de atividade'
 
     def __unicode__(self):
         return u'%s' % self.nome
 
 
-class Subcategoria(models.Model):
-    categoria = models.ForeignKey('ifgapp.Categoria', null=True, verbose_name=u'Sub-Categoria')
+class Atividade(models.Model):
+    tipo = models.ForeignKey('ifgapp.TipoAtividade', null=True)
     nome = models.CharField(u'Nome', max_length=255, unique=True)
 
     class Meta:
-        verbose_name = u'Sub-Categoria de Tecnologia'
-        verbose_name_plural = u'Sub-Categorias de Tecnologia'
+        verbose_name = u'Atividade'
+        verbose_name_plural = u'Atividades'
 
     def __unicode__(self):
         return u'%s' % self.nome
 
 
 class Tarefa
-    TIPO_ATIVIDADE = (
-        (u'00', u'Trâmite no órgão de registro'),
-        (u'01', u'Trâmite interno'),
-    )
     nome = models.CharField(u'Título', max_length=120, unique=True)
     tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Tarefa_tecnologia')
     tipo_atividade = models.CharField(u'Tipo de atividade', max_length=2, null=True, blank=True, choices=TIPO_ATIVIDADE)
-
+    tipo_atividade = models.ForeignKey(Categoria, null=True, blank=True)
+    subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria',
+                                     chained_model_field="categoria", null=True, blank=True)
 
