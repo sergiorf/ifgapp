@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm, FileField, Form, ModelChoiceField, DateInput
-from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa
+from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
+    Contrato
 from django.contrib.admin.widgets import AdminFileWidget
 
 
@@ -60,6 +61,11 @@ class TecnologiaForm(ModelForm):
 class TarefaForm(ModelForm):
     class Meta:
         model = Tarefa
+
+
+class ContratoForm(ModelForm):
+    class Meta:
+        model = Contrato
 
 
 class InstituicaoForm(ModelForm):

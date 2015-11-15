@@ -9,9 +9,9 @@ from decorators import has_permission
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
-    Instituicao, Arquivo, TecnologiaAnexo
+    Instituicao, Arquivo, TecnologiaAnexo, Contrato
 from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, TarefaForm, \
-    InstituicaoForm, UploadArquivoForm
+    InstituicaoForm, UploadArquivoForm, ContratoForm
 from django.http import HttpResponse
 from utils import to_ascii
 import os
@@ -57,6 +57,11 @@ def listing_tarefas(request):
 
 
 @login_required()
+def listing_contratos(request):
+    return __listing_objects(request, Contrato.objects.all(), 'contratos_list.html', "Contrato")
+
+
+@login_required()
 def listing_instituicoes(request):
     return __listing_objects(request, Instituicao.objects.all(), 'instituicoes_list.html', "Instituição")
 
@@ -89,6 +94,11 @@ def edit_tecnologia(request, pk):
 @login_required()
 def edit_tarefa(request, pk):
     return __edit_object(request, pk, Tarefa, 'tarefa_edit.html', "lista_tarefas")
+
+
+@login_required()
+def edit_contrato(request, pk):
+    return __edit_object(request, pk, Contrato, 'contrato_edit.html', "lista_contratos")
 
 
 @login_required()
@@ -127,6 +137,11 @@ def remover_tarefa(request, pk):
 
 
 @login_required()
+def remover_contrato(request, pk):
+    return __remover_object(request, pk, Contrato, 'lista_contratos')
+
+
+@login_required()
 def remover_instituicao(request, pk):
     return __remover_object(request, pk, Instituicao, 'lista_instituicoes')
 
@@ -159,6 +174,11 @@ def adicionar_tecnologia(request):
 @login_required()
 def adicionar_tarefa(request):
     return __adicionar_obj(request, TarefaForm, listing_tarefas, 'tarefa_add.html')
+
+
+@login_required()
+def adicionar_contrato(request):
+    return __adicionar_obj(request, ContratoForm, listing_contratos, 'contrato_add.html')
 
 
 @login_required()

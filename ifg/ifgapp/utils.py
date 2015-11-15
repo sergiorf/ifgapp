@@ -41,6 +41,12 @@ def gen_protocol():
     return 'BR' + res[0:6]
 
 
+def gen_random():
+    d = uuid.uuid4()
+    str = d.hex
+    return str[0:16]
+
+
 def to_ascii(txt, codif='utf-8'):
     if not isinstance(txt, basestring):
         txt = unicode(txt)
@@ -50,7 +56,8 @@ def to_ascii(txt, codif='utf-8'):
 
 
 def doc_location(instance, filename):
-    root_path = os.path.join(settings.MODEL_DOC_ROOT, type(instance).__name__, instance.nome)
+    id = instance.nome if hasattr(instance, 'nome') else instance.codigo
+    root_path = os.path.join(settings.MODEL_DOC_ROOT, type(instance).__name__, id)
     full_path = settings.MEDIA_ROOT + os.path.join('/', root_path)
 
     if not os.path.exists(full_path):

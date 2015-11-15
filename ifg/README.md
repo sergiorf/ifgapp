@@ -29,12 +29,12 @@ ver 0.4
 -----------------------------
 - Suporte para anexar/atualizar/baixar arquivos no formulário de cadastro.
 - CRUD Tarefa.
+- CRUD Contrato de Transferência de Tecnologia.
 - Adicionar anexos no cadastro de Inventor
 
 ver 0.5 (PLANNED 22/11)
 -----------------------------
 - Suporte para campos excludentes (p.ex: Inventor/Vínculo IFG/Instituição).
-- CRUD Contrato de Transferência de Tecnologia.
 - Adicionar suporte para anexos em formato Imagem (GIF, JPG, PNG) e Texto.
 - BUG: Clicando 'next' na lista de tecnologias, abre a edição de tecnologia.
 

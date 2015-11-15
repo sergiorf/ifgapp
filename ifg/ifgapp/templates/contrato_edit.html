@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <a href="{% url 'lista_contratos' %}">Contratos</a>
+    <h1>Editar um Contrato</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

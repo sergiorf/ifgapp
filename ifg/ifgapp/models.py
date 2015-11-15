@@ -381,5 +381,18 @@ class Tarefa(models.Model):
     anexo = models.FileField(upload_to=utils.doc_location, help_text=help_text.anexo_tarefa, blank=True, null=True)
 
 
+class Contrato(models.Model):
+    codigo = models.CharField(max_length=18, default=utils.gen_random(), unique=True)
+    tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Contrato_tecnologia')
+    formulario = models.FileField(upload_to=utils.doc_location, help_text=help_text.contrato_formulario, blank=True, null=True)
+
+
+
+
+
+
+
+
+
 
 
