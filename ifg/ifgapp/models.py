@@ -382,9 +382,31 @@ class Tarefa(models.Model):
 
 
 class Contrato(models.Model):
+    MODALIDADES = (
+        (u'00', u'Assistência técnica e científica'),
+        (u'01', u'Licença e cessão para exploração de patente'),
+        (u'02', u'Licença e cessão para exploração de desenho industrial'),
+        (u'03', u'Licença e cessão para uso de marca'),
+        (u'04', u'Franquia'),
+        (u'05', u'Fornecimento de tecnologia (Know-How)'),
+
+    )
     codigo = models.CharField(max_length=18, default=utils.gen_random(), unique=True)
     tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Contrato_tecnologia')
-    formulario = models.FileField(upload_to=utils.doc_location, help_text=help_text.contrato_formulario, blank=True, null=True)
+    modalidade = models.CharField(u'Modalidade contratual', max_length=2, null=True, blank=True, choices=MODALIDADES)
+    licenciadores = models.TextField(u'Possíveis licenciadores', help_text=help_text.possiveis_licenciadores,
+                                     null=True, blank=True)
+    formulario = models.FileField(u'Formulário', upload_to=utils.doc_location,
+                                  help_text=help_text.contrato_formulario, blank=True, null=True)
+    carta_explicativa = models.FileField(u'Carta Explicativa', upload_to=utils.doc_location,
+                                         help_text=help_text.contrato_carta_explicativa, blank=True, null=True)
+    gru = models.FileField(u'GRU', upload_to=utils.doc_location, help_text=help_text.contrato_gru,
+                            blank=True, null=True)
+    fatura = models.FileField(u'Contrato/Aditivo/Fatura', upload_to=utils.doc_location,
+                              help_text=help_text.contrato_fatura, blank=True, null=True)
+    ficha_cadastro = models.FileField(u'Ficha cadastro', upload_to=utils.doc_location,
+                                       help_text=help_text.contrato_ficha_cadastro, blank=True, null=True)
+
 
 
 

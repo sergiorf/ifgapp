@@ -8,4 +8,4 @@ contrato_carta_explicativa = u'Pode ser usada tanto para formalizar o pedido qua
 contrato_gru = u'Guia de Recolhimento da União'
 contrato_fatura = u'Para compor o processo, o requerente deverá apresentar uma cópia autenticada em cartório do documento (contrato e aditivo ou fatura).'
 contrato_ficha_cadastro =u'Ficha cadastro	Arquivo	Ficha cadastral da empresa cessionária'
-
+possiveis_licenciadores = u'Empresas que poderiam se interessar pela tecnologia em questão'
