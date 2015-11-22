@@ -63,11 +63,11 @@ class Arquivo(models.Model):
 
     def clean(self):
         errors = defaultdict(list)
-        if self.ext in Arquivo.CTYPES.keys():
+        if self.ext not in Arquivo.CTYPES.keys():
             errors['ext'].append(error_text.arquivo_formato_naosuportado)
         if len(errors):
             raise ValidationError(errors)
-        super(Inventor, self).clean()
+        super(Arquivo, self).clean()
 
 
 UF_CHOICES = (

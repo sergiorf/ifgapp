@@ -1,7 +1,16 @@
 {% block content %}
     <h1>Carregar arquivo</h1>
-    <form method="post" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
+     <form id="upload_arquivo_form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}
+            {{ field.label }}
+            {{ field }}
+        {% endfor %}
+        <input type="submit" name="submit"/>
     </form>
 {% endblock %}

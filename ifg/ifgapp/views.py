@@ -7,6 +7,7 @@ from django.contrib import auth
 from django.shortcuts import render, get_object_or_404
 from decorators import has_permission
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ValidationError
 from django.template import RequestContext
 from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
     Instituicao, Arquivo, TecnologiaAnexo, Contrato
@@ -196,7 +197,7 @@ def visualizar_arquivo(request, arquivo_id):
     arquivo = Arquivo.objects.all().get(id=arquivo_id)
     arquivo_tmp = arquivo.load()
     if arquivo_tmp is not None:
-        response = HttpResponse(arquivo_tmp.read(), content_type='application/pdf')
+        response = HttpResponse(arquivo_tmp.read(), content_type=arquivo.content_type())
         response['Content-Disposition'] = 'filename=%s' % \
                 to_ascii(arquivo.nome.replace(u'º', '.').replace('/', '-').replace(' ', ''))
         arquivo_tmp.close()
@@ -291,14 +292,18 @@ def __upload_anexo(request, pk, obj_klass, anexo_klass, url):
             arquivo_up = request.FILES['arquivo']
             nome = arquivo_up.name
             arquivo = Arquivo()
-            arquivo.save(nome)
-            anexo = anexo_klass()
-            if isinstance(obj, Tecnologia):
-                anexo.tecnologia = obj
-            anexo.arquivo = arquivo
-            anexo.save()
-            arquivo.store(arquivo_up)
-            return HttpResponseRedirect(url % obj.id)
+            try:
+                arquivo.clean()
+                arquivo.save(nome)
+                anexo = anexo_klass()
+                if isinstance(obj, Tecnologia):
+                    anexo.tecnologia = obj
+                anexo.arquivo = arquivo
+                anexo.save()
+                arquivo.store(arquivo_up)
+                return HttpResponseRedirect(url % obj.id)
+            except ValidationError as e:
+                form.errors['arquivo'] = '; '.join(e.messages)
     else:
         form = UploadArquivoForm()
     return render(request, 'upload_arquivo.html', {'form': form})
