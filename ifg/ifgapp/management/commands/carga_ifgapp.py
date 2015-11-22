@@ -54,7 +54,7 @@ class Command(BaseCommand):
                 username=u'inventor%s' % index,
                 email=u'inventor%s@ifg.com.br' % index,
                 telefone='233-3345',
-                vinculoifg=u'02',
+                vinculo_ifg=u'02',
                 grupo=grupo,
             ))
 

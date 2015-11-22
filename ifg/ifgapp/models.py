@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import Group, User
+from django.core.exceptions import ValidationError
 from smart_selects.db_fields import ChainedForeignKey
 import utils
 import help_text
+import error_text
 import settings
 import os
 from datetime import datetime
 from utils import mkdir_p
 from validators import validate_file_ispdf
+from collections import defaultdict
 
 
 class Arquivo(models.Model):
@@ -186,8 +189,8 @@ class Inventor(PessoaFisica):
         (u'06', u'Outro'),
     )
     telefone = models.CharField(max_length=40)
-    vinculoifg = models.CharField(u'Vínculo IFG', max_length=2, null=True, blank=True, choices=VINCULO_IFG)
-    cotitulares = models.ForeignKey('ifgapp.Instituicao', verbose_name=u'Instituição de origem', null=True, blank=True)
+    vinculo_ifg = models.CharField(u'Vínculo IFG', max_length=2, null=True, blank=True, choices=VINCULO_IFG)
+    instituicao_origem = models.ForeignKey('ifgapp.Instituicao', verbose_name=u'Instituição de origem', null=True, blank=True)
     doc_comprobatorio = models.FileField(upload_to=utils.doc_location, help_text=help_text.doc_comprobatorio,
                              validators=[validate_file_ispdf], blank=True, null=True)
     docs_pessoais = models.FileField(upload_to=utils.doc_location, help_text=help_text.docs_pessoais,
@@ -196,6 +199,18 @@ class Inventor(PessoaFisica):
     class Meta:
         verbose_name = u'Inventor'
         verbose_name_plural = u'Inventores'
+
+    def clean(self):
+        errors = defaultdict(list)
+        if self.vinculo_ifg and self.instituicao_origem:
+            errors['vinculo_ifg'].append(error_text.inventor_error_vinculoeinstit)
+            errors['instituicao_origem'].append(error_text.inventor_error_vinculoeinstit)
+        elif not self.vinculo_ifg and not self.instituicao_origem:
+            errors['vinculo_ifg'].append(error_text.inventor_error_semvinculoneminstit)
+            errors['instituicao_origem'].append(error_text.inventor_error_semvinculoneminstit)
+        if len(errors):
+            raise ValidationError(errors)
+        super(Inventor, self).clean()
 
     def __unicode__(self):
         return u'%s (%s)' % (self.username, self.cpf) if self.cpf else u'%s' % self.username
