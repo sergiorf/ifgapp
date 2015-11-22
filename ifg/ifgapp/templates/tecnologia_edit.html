@@ -6,7 +6,7 @@
      <table id="anexos">
         {% for anexo in aux %}
             <tr>
-                <td><a href="/ifgapp/visualizar_arquivo/{{ anexo.arquivo.id }}/" style="float:left">{{ anexo.arquivo.nome }}</a></td>
+                <td><a href="{% url "visualizar_arquivo" anexo.arquivo.id %}" style="float:left">{{ anexo.arquivo.nome }}</a></td>
                 <td>{{ anexo.arquivo.data_geracao|date:"M d, Y" }}</td>
             </tr>
         {% endfor %}

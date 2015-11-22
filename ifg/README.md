@@ -60,6 +60,11 @@ ver 0.9 (PLANNED 20/12)
 -----------------------------
 - Automatização de Tarefas.
 
+ver 0.10 (PLANNED 27/12)
+-----------------------------
+- Unificar os caminhos onde a media é salvada. Atualmente tem dois.
+- Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
+
 
 
 

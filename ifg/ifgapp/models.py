@@ -16,23 +16,29 @@ from collections import defaultdict
 
 class Arquivo(models.Model):
     FS_ROOT_PATH = settings.PROJECT_PATH+'/upload/'
+    CTYPES = {'pdf': 'application/pdf'}
     nome = models.CharField(null=False, unique=False, max_length=255)
+    ext = models.CharField(null=False, unique=False, max_length=255)
     data_geracao = models.DateTimeField()
 
     def __unicode__(self):
         return self.nome
 
+    def content_type(self):
+        return Arquivo.CTYPES[self.ext]
+
     def save(self, nome, *args, **kwargs):
         self.nome = nome
+        self.ext = nome.split(".")[-1].lower()
         self.data_geracao = datetime.now()
         super(Arquivo, self).save(*args, **kwargs)
 
     def store(self, arquivo_upload):
         pathname = self.get_path()[0:self.get_path().rfind('/')]
         mkdir_p(pathname)
-        arquivo = open(self.get_path(), 'wb')
-        arquivo.write(arquivo_upload.read())
-        arquivo.close()
+        with open(self.get_path(), 'wb+') as arquivo:
+            for chunk in arquivo_upload.chunks():
+                arquivo.write(chunk)
 
     def load(self):
         try:
@@ -40,7 +46,7 @@ class Arquivo(models.Model):
             with open(pathname, 'rb') as arquivo:
                 pathname = 'c:\\temp'
                 mkdir_p(pathname)
-                with open(pathname + '\\temp.pdf', 'wb') as temp:
+                with open(pathname + '\\temp.%s' % self.ext, 'wb') as temp:
                     temp.write(arquivo.read())
                     return open(temp.name, 'rb')
         except IOError:
@@ -53,7 +59,15 @@ class Arquivo(models.Model):
     def get_path(self):
         if TecnologiaAnexo.objects.filter(arquivo__id=self.id).exists():
             anexo = TecnologiaAnexo.objects.get(arquivo__id=self.id)
-            return Arquivo.FS_ROOT_PATH+'tecnologia/%d/%d.pdf' % (anexo.tecnologia_id, anexo.id)
+            return Arquivo.FS_ROOT_PATH+'tecnologia/%d/%d.%s' % (anexo.tecnologia_id, anexo.id, self.ext)
+
+    def clean(self):
+        errors = defaultdict(list)
+        if self.ext in Arquivo.CTYPES.keys():
+            errors['ext'].append(error_text.arquivo_formato_naosuportado)
+        if len(errors):
+            raise ValidationError(errors)
+        super(Inventor, self).clean()
 
 
 UF_CHOICES = (
