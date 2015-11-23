@@ -69,7 +69,7 @@ class Command(BaseCommand):
             tec.criador = inventor
             path = os.path.abspath(os.path.dirname(__file__))
             filename = "pdf-sample.pdf"
-            with open(os.path.join(path, filename), 'wb+') as attachment:
+            with open(os.path.join(path, filename), 'rb') as attachment:
                 tec.formulario_pedido.save(filename, File(attachment), save=True)
                 tec.comprovante_pagamento.save(filename, File(attachment), save=True)
                 tec.ata_reuniao_comissao_avaliadora.save(filename, File(attachment), save=True)
