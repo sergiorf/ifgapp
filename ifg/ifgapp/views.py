@@ -49,7 +49,7 @@ def listing_grupos(request):
 
 @login_required()
 def listing_tecnologias(request):
-    return __listing_objects(request, Tecnologia.objects.all(), 'tecnologias_list.html', "Tecnologia")
+    return __listing_objects(request, Tecnologia.objects.order_by('nome').all(), 'tecnologias_list.html', "Tecnologia")
 
 
 @login_required()
