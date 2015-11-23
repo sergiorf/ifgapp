@@ -293,7 +293,6 @@ def __upload_anexo(request, pk, obj_klass, anexo_klass, url):
             nome = arquivo_up.name
             arquivo = Arquivo()
             try:
-                arquivo.clean()
                 arquivo.save(nome)
                 anexo = anexo_klass()
                 if isinstance(obj, Tecnologia):

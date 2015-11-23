@@ -16,7 +16,13 @@ from collections import defaultdict
 
 class Arquivo(models.Model):
     FS_ROOT_PATH = settings.PROJECT_PATH+'/upload/'
-    CTYPES = {'pdf': 'application/pdf'}
+    CTYPES = {'pdf': 'application/pdf',
+              'txt': 'text/plain',
+              'gif': 'image/gif',
+              'jpg': 'image/jpeg', 'jpeg': 'image/jpeg',
+              'tiff': 'image/tiff',
+              'png': 'image/png',
+              'bmp': 'image/bmp'}
     nome = models.CharField(null=False, unique=False, max_length=255)
     ext = models.CharField(null=False, unique=False, max_length=255)
     data_geracao = models.DateTimeField()
@@ -31,6 +37,11 @@ class Arquivo(models.Model):
         self.nome = nome
         self.ext = nome.split(".")[-1].lower()
         self.data_geracao = datetime.now()
+        errors = defaultdict(list)
+        if self.ext not in Arquivo.CTYPES.keys():
+            errors['ext'].append(error_text.arquivo_formato_naosuportado)
+        if len(errors):
+            raise ValidationError(errors)
         super(Arquivo, self).save(*args, **kwargs)
 
     def store(self, arquivo_upload):
@@ -60,15 +71,6 @@ class Arquivo(models.Model):
         if TecnologiaAnexo.objects.filter(arquivo__id=self.id).exists():
             anexo = TecnologiaAnexo.objects.get(arquivo__id=self.id)
             return Arquivo.FS_ROOT_PATH+'tecnologia/%d/%d.%s' % (anexo.tecnologia_id, anexo.id, self.ext)
-
-    def clean(self):
-        errors = defaultdict(list)
-        if self.ext not in Arquivo.CTYPES.keys():
-            errors['ext'].append(error_text.arquivo_formato_naosuportado)
-        if len(errors):
-            raise ValidationError(errors)
-        super(Arquivo, self).clean()
-
 
 UF_CHOICES = (
     ('AC', 'Acre'),
