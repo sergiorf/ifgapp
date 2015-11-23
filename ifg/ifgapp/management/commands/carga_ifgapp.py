@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
+from django.core.files import File
 from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, \
     Grupo, Permissao, Servidor, Pesquisador, Inventor, Categoria, Subcategoria, Instituicao, \
-    TipoAtividade, Atividade
+    TipoAtividade, Atividade, Tecnologia
 from ifgapp.utils import create_obj
 import string
 import os
@@ -50,13 +51,32 @@ class Command(BaseCommand):
                 email=u'pesquisador%s@ifg.com.br' % index,
                 grupo=grupo,
             ))
-            create_obj(dict(username=u'inventor%s' % index), Inventor, dict(
+            inv = create_obj(dict(username=u'inventor%s' % index), Inventor, dict(
                 username=u'inventor%s' % index,
                 email=u'inventor%s@ifg.com.br' % index,
                 telefone='233-3345',
                 vinculo_ifg=u'02',
                 grupo=grupo,
             ))
+            Command.create_tecnologia(index, inv)
+
+    @staticmethod
+    def create_tecnologia(index, inventor):
+        nome = u'tec_%s' % index
+        if not Tecnologia.objects.filter(nome=nome).exists():
+            tec = Tecnologia()
+            tec.nome = nome
+            tec.criador = inventor
+            path = os.path.abspath(os.path.dirname(__file__))
+            filename = "pdf-sample.pdf"
+            with open(os.path.join(path, filename), 'wb+') as attachment:
+                tec.formulario_pedido.save(filename, File(attachment), save=True)
+                tec.comprovante_pagamento.save(filename, File(attachment), save=True)
+                tec.ata_reuniao_comissao_avaliadora.save(filename, File(attachment), save=True)
+            tec.save()
+            print "%s (%s) criado com sucesso..." % (Tecnologia.__name__, nome)
+        else:
+            print "%s (%s) ja existe" % (Tecnologia.__name__, nome)
 
     @staticmethod
     def parse_treedata(datafile):

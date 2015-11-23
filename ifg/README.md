@@ -35,7 +35,7 @@ ver 0.4
 ver 0.5 (PLANNED 22/11)
 -----------------------------
 done - Suporte para campos excludentes (p.ex: Inventor/Vínculo IFG/Instituição).
-- Adicionar suporte para anexos em formato Imagem (GIF, JPG, PNG) e Texto.
+done - Adicionar suporte para anexos em formato Imagem (GIF, JPG, PNG) e Texto.
 - BUG: Clicando 'next' na lista de tecnologias, abre a edição de tecnologia.
 
 ver 0.6 (PLANNED 29/11)
