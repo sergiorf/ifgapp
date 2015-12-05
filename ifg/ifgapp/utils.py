@@ -65,15 +65,3 @@ def doc_location(instance, filename):
 
     return os.path.join(root_path, filename).replace('\\', '/')
 
-
-def formatar_telefone(numero):
-    n = str(int(numero.strip()))
-    if len(n) not in (8, 10):
-        return u''
-    elif len(n) == 10:
-        d = n[:2]
-        n = n[2:]
-    else:
-        d = u'62'
-    return u'(%s) %s-%s' % (d, n[:4], n[4:])
-

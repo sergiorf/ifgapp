@@ -40,7 +40,7 @@ ver 0.5
 
 ver 0.6 (PLANNED 29/11)
 -----------------------------
-- Formatar telefone.
+- Valiar telefone. -> ok
 - Utilidade de busca de Institução por nome ou sigla.
 - Utilidade de busca de Inventor por nome.
 - BUG: nome de arquivo anexado superior a 100 caracteres
