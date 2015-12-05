@@ -10,7 +10,7 @@ import settings
 import os
 from datetime import datetime
 from utils import mkdir_p
-from validators import validate_file_ispdf
+from validators import validate_file_ispdf, validate_telefone
 from collections import defaultdict
 
 
@@ -224,6 +224,8 @@ class Inventor(PessoaFisica):
         elif not self.vinculo_ifg and not self.instituicao_origem:
             errors['vinculo_ifg'].append(error_text.inventor_error_semvinculoneminstit)
             errors['instituicao_origem'].append(error_text.inventor_error_semvinculoneminstit)
+        if not validate_telefone(self.telefone):
+            errors['telefone'].append(error_text.telefone_error)
         if len(errors):
             raise ValidationError(errors)
         super(Inventor, self).clean()

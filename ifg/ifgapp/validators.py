@@ -11,3 +11,10 @@ def validate_file_extension(value, valid_extensions, message=u'Unsupported file 
     ext = os.path.splitext(value.name)[1]  # [0] returns path+filename
     if not ext in valid_extensions:
         raise ValidationError(message)
+
+
+def validate_telefone(numero):
+    n = str(int(numero.strip()))
+    return len(n) in (8, 10)
+
+
