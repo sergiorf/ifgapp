@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
    # 'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Custom:
+    'autocomplete_light',
     'smart_selects',
     'ifgapp'
 )

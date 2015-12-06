@@ -1,0 +1,12 @@
+# Install with: `pip install -r requirements.txt`
+
+# Infrastructure
+Django == 1.6.10
+
+# Support libs
+django-autocomplete-light == 2.2.10
+django-smart-selects == 1.0.9
+django-pagination == 1.0.7
+
+
+

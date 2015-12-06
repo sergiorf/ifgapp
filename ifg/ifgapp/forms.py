@@ -3,6 +3,7 @@ from django.forms import ModelForm, FileField, Form, ModelChoiceField, DateInput
 from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
     Contrato
 from django.contrib.admin.widgets import AdminFileWidget
+import autocomplete_light
 
 
 class DateInput(DateInput):
@@ -44,8 +45,7 @@ class GrupoForm(ModelForm):
         exclude = ('group',)
 
 
-class TecnologiaForm(ModelForm):
-    criador = ModelChoiceField(queryset=Inventor.objects.order_by('username'))
+class TecnologiaForm(autocomplete_light.ModelForm):
     formulario_pedido = FileField(label='Formulário do pedido', widget=AdminFileWidget)
     comprovante_pagamento = FileField(label='Comprovante de pagamento da retribuição (GRU)', widget=AdminFileWidget)
     ata_reuniao_comissao_avaliadora = FileField(label='Ata da reunião com Comissão Avaliadora', widget=AdminFileWidget)
@@ -54,7 +54,7 @@ class TecnologiaForm(ModelForm):
         widgets = {
             'solicitacao_protecao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'reuniao_com_comissao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
-            'pedido': DateInput(attrs={'size': '90', 'id': 'datepicker'})
+            'pedido': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
         }
 
 

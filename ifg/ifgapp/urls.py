@@ -1,9 +1,12 @@
 from django.conf.urls import patterns, include, url
 import settings
+import autocomplete_light
+from autocomplete_light_registry import InventorAutocomplete
 
 from django.contrib import admin
 admin.autodiscover()
-
+autocomplete_light.registry.autocomplete_model_base = InventorAutocomplete
+autocomplete_light.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^accounts/login/$', 'ifgapp.views.login_user', name='login'),
@@ -52,6 +55,8 @@ urlpatterns = patterns('',
 
     url(r'^media/model/documents/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': '%s/%s' % (settings.MEDIA_ROOT, settings.MODEL_DOC_ROOT)}),
+
+    url(r"^autocomplete/", include("autocomplete_light.urls")),
 
     url(r'^$', 'ifgapp.views.index', name='index'),
 )

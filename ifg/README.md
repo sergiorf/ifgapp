@@ -64,6 +64,10 @@ ver 0.10 (PLANNED 27/12)
 -----------------------------
 - Unificar os caminhos onde os anexos são salvados. Atualmente tem dois.
 - Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
+- autocomplete-light: como limitar o número de resultados?(data-widget-maximum-values não funciona)
+
+
+
 
 
 
