@@ -14,6 +14,8 @@ def validate_file_extension(value, valid_extensions, message=u'Unsupported file 
 
 
 def validate_telefone(numero):
+    if not numero.isdigit():
+        return False
     n = str(int(numero.strip()))
     return len(n) in (8, 10)
 

@@ -148,7 +148,7 @@ class Grupo(models.Model):
 
 
 class Pessoa(models.Model):
-    nome = models.CharField(max_length=200)
+    nome = models.CharField(max_length=255, unique=True)
     email = models.EmailField(blank=True, verbose_name=u'Email principal')
 
     class Meta:
@@ -161,7 +161,6 @@ class Pessoa(models.Model):
 class PessoaFisica(Pessoa):
     user = models.OneToOneField(User, null=True, blank=True)
     cpf = models.CharField(max_length=20, null=False, verbose_name=u'CPF', blank=True)
-    username = models.CharField(max_length=50, null=True, unique=True)
     grupo = models.ForeignKey(Grupo)
 
     class Meta:
@@ -172,16 +171,16 @@ class PessoaFisica(Pessoa):
         """
         Caso `self` tenha username, um usuário será criado para `self`.
         """
-        if self.username:
+        if self.nome:
             try:
-                user = User.objects.get(username=self.username)
+                user = User.objects.get(username=self.nome)
             except User.DoesNotExist:
-                user = User.objects.create_user(self.username, email=u'', password='1234')
+                user = User.objects.create_user(self.nome, email=u'', password='1234')
             self.user = user
         return super(PessoaFisica, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return u'%s (%s)' % (self.username, self.cpf) if self.cpf else u'%s' % self.username
+        return u'%s (%s)' % (self.nome, self.cpf) if self.cpf else u'%s' % self.nome
 
 
 class Servidor(PessoaFisica):
@@ -192,7 +191,7 @@ class Servidor(PessoaFisica):
         verbose_name_plural = u'Servidores'
 
     def __unicode__(self):
-        return u'%s (%s)' % (self.username, self.cpf) if self.cpf else u'%s' % self.username
+        return u'%s (%s)' % (self.nome, self.cpf) if self.cpf else u'%s' % self.nome
 
 
 class Inventor(PessoaFisica):
@@ -232,7 +231,7 @@ class Inventor(PessoaFisica):
         super(Inventor, self).clean()
 
     def __unicode__(self):
-        return u'%s (%s)' % (self.username, self.cpf) if self.cpf else u'%s' % self.username
+        return u'%s (%s)' % (self.nome, self.cpf) if self.cpf else u'%s' % self.nome
 
 
 class Pesquisador(PessoaFisica):

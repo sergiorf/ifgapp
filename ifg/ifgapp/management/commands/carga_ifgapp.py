@@ -40,21 +40,21 @@ class Command(BaseCommand):
     @staticmethod
     def create_test_objs(nobjs, grupo):
         for index in range(nobjs):
-            create_obj(dict(username=u'servidor%s' % index), Servidor, dict(
-                username=u'servidor%s' % index,
+            create_obj(dict(nome=u'servidor%s' % index), Servidor, dict(
+                nome=u'servidor%s' % index,
                 email=u'servidor%s@ifg.com.br' % index,
                 matricula=u'ABCD1234%s' % index,
                 grupo=grupo,
             ))
-            create_obj(dict(username=u'pesquisador%s' % index), Pesquisador, dict(
-                username=u'pesquisador%s' % index,
+            create_obj(dict(nome=u'pesquisador%s' % index), Pesquisador, dict(
+                nome=u'pesquisador%s' % index,
                 email=u'pesquisador%s@ifg.com.br' % index,
                 grupo=grupo,
             ))
-            inv = create_obj(dict(username=u'inventor%s' % index), Inventor, dict(
-                username=u'inventor%s' % index,
+            inv = create_obj(dict(nome=u'inventor%s' % index), Inventor, dict(
+                nome=u'inventor%s' % index,
                 email=u'inventor%s@ifg.com.br' % index,
-                telefone='233-3345',
+                telefone='23343345',
                 vinculo_ifg=u'02',
                 grupo=grupo,
             ))

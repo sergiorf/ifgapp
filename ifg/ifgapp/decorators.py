@@ -12,13 +12,13 @@ def has_permission(permissions=[], home_url=None):
         def inner_decorator(request, *args, **kwargs):
             u = request.user
             try:
-                pessoa = Inventor.objects.get(username=u.username)
+                pessoa = Inventor.objects.get(nome=u.username)
             except Inventor.DoesNotExist:
                 try:
-                    pessoa = Servidor.objects.get(username=u.username)
+                    pessoa = Servidor.objects.get(nome=u.username)
                 except Servidor.DoesNotExist:
                     try:
-                        pessoa = Pesquisador.objects.get(username=u.username)
+                        pessoa = Pesquisador.objects.get(nome=u.username)
                     except Servidor.DoesNotExist:
                         return HttpResponseRedirect(reverse(home_url))
             for desc in permissions:

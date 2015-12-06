@@ -4,7 +4,7 @@ import autocomplete_light
 
 
 class InventorAutocomplete(autocomplete_light.AutocompleteModelBase):
-    search_fields = ['username']
+    search_fields = ['nome']
     attrs = {
         'placeholder': 'Nome do usuário',
         'data-autocomplete-minimum-characters': 0,
