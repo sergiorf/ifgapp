@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from models import Inventor, Instituicao
+from models import Inventor, Instituicao, Tecnologia
 import autocomplete_light
 
 
@@ -22,6 +22,17 @@ class InstituicaoAutocomplete(autocomplete_light.AutocompleteModelBase):
     limit_choices = 10
     model = Instituicao
 
+
+class TecnologiaAutocomplete(autocomplete_light.AutocompleteModelBase):
+    search_fields = ['nome']
+    attrs = {
+        'placeholder': 'Título da tecnologia',
+        'data-autocomplete-minimum-characters': 0,
+    }
+    limit_choices = 10
+    model = Tecnologia
+
 autocomplete_light.register(Inventor, InventorAutocomplete)
 autocomplete_light.register(Instituicao, InstituicaoAutocomplete)
+autocomplete_light.register(Tecnologia, TecnologiaAutocomplete)
 

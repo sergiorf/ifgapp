@@ -33,7 +33,7 @@ class PesquisadorForm(ModelForm):
         exclude = ('user',)
 
 
-class InventorForm(ModelForm):
+class InventorForm(autocomplete_light.ModelForm):
     class Meta:
         model = Inventor
         exclude = ('user',)
@@ -58,7 +58,7 @@ class TecnologiaForm(autocomplete_light.ModelForm):
         }
 
 
-class TarefaForm(ModelForm):
+class TarefaForm(autocomplete_light.ModelForm):
     class Meta:
         model = Tarefa
 
