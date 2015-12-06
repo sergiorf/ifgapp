@@ -1,11 +1,9 @@
 from django.conf.urls import patterns, include, url
 import settings
 import autocomplete_light
-from autocomplete_light_registry import InventorAutocomplete
 
 from django.contrib import admin
 admin.autodiscover()
-autocomplete_light.registry.autocomplete_model_base = InventorAutocomplete
 autocomplete_light.autodiscover()
 
 urlpatterns = patterns('',

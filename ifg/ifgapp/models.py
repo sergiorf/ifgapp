@@ -114,7 +114,8 @@ class Instituicao(models.Model):
     categoria = models.CharField(u'Categoria', max_length=3, choices=CAT_INSTITUICOES)
 
     def __unicode__(self):
-        return u'%s' % self.nome
+        return u'%s (%s)' % (self.nome, self.sigla) if self.sigla else u'%s' % self.nome
+
 
 class Permissao(models.Model):
     VER_TECNOLOGIA = u'Ver Tecnologia'
