@@ -40,7 +40,7 @@ ver 0.5
 
 ver 0.6
 -----------------------------
-- Valiar telefone.
+- Validar telefone.
 - Utilidade de busca de Institução por nome ou sigla.
 - Utilidade de busca de Inventor por nome.
 - Utilidade de busca de Tecnologia por nome.
