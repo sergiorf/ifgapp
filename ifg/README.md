@@ -38,30 +38,27 @@ ver 0.5
 - Adicionar suporte para anexos em formato Imagem (GIF, JPG, PNG) e Texto.
 - Ordenar a lista de Tecnologias por nome.
 
-ver 0.6 (PLANNED 29/11)
+ver 0.6
 -----------------------------
-- Valiar telefone. -> ok
-- Utilidade de busca de Institução por nome ou sigla. -> ok
-- Utilidade de busca de Inventor por nome. -> ok
-- Utilidade de busca de Tecnologia por nome. -> ok
+- Valiar telefone.
+- Utilidade de busca de Institução por nome ou sigla.
+- Utilidade de busca de Inventor por nome.
+- Utilidade de busca de Tecnologia por nome.
 - BUG: nome de arquivo anexado superior a 100 caracteres
 
-ver 0.7 (PLANNED 06/12)
+ver 0.7 (PLANNED 13/12)
 -----------------------------
 - Ferramenta de busca de Tecnologia.
-
-ver 0.8 (PLANNED 13/12)
------------------------------
 - Ferramenta de busca de Inventor.
 - Ferramenta de busca de Instituição.
 - Ferramenta de busca de Tarefa.
 - Ferramenta de busca de Contrato de Transferência de Tecnologia.
 
-ver 0.9 (PLANNED 20/12)
+ver 0.8 (PLANNED 20/12)
 -----------------------------
 - Automatização de Tarefas.
 
-ver 0.10 (PLANNED 27/12)
+ver 0.9 (PLANNED 27/12)
 -----------------------------
 - Unificar os caminhos onde os anexos são salvados. Atualmente tem dois.
 - Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
