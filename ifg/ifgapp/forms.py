@@ -34,6 +34,10 @@ class PesquisadorForm(ModelForm):
 
 
 class InventorForm(autocomplete_light.ModelForm):
+    doc_comprobatorio = FileField(label='Documento Comprobatório', widget=AdminFileWidget, max_length=200,
+                                  required=False)
+    docs_pessoais = FileField(label='Documentos Pessoais', widget=AdminFileWidget, max_length=200, required=False)
+
     class Meta:
         model = Inventor
         exclude = ('user',)
@@ -46,9 +50,12 @@ class GrupoForm(ModelForm):
 
 
 class TecnologiaForm(autocomplete_light.ModelForm):
-    formulario_pedido = FileField(label='Formulário do pedido', widget=AdminFileWidget)
-    comprovante_pagamento = FileField(label='Comprovante de pagamento da retribuição (GRU)', widget=AdminFileWidget)
-    ata_reuniao_comissao_avaliadora = FileField(label='Ata da reunião com Comissão Avaliadora', widget=AdminFileWidget)
+    formulario_pedido = FileField(label='Formulário do pedido', widget=AdminFileWidget, max_length=200, required=True)
+    comprovante_pagamento = FileField(label='Comprovante de pagamento da retribuição (GRU)', widget=AdminFileWidget,
+                                      max_length=200, required=True)
+    ata_reuniao_comissao_avaliadora = FileField(label='Ata da reunião com Comissão Avaliadora', widget=AdminFileWidget,
+                                                max_length=200, required=True)
+
     class Meta:
         model = Tecnologia
         widgets = {
@@ -59,6 +66,8 @@ class TecnologiaForm(autocomplete_light.ModelForm):
 
 
 class TarefaForm(autocomplete_light.ModelForm):
+    anexo = FileField(label='Anexo', widget=AdminFileWidget, max_length=200, required=False)
+
     class Meta:
         model = Tarefa
         widgets = {
@@ -69,6 +78,12 @@ class TarefaForm(autocomplete_light.ModelForm):
 
 
 class ContratoForm(autocomplete_light.ModelForm):
+    formulario = FileField(label='Formulário', widget=AdminFileWidget, max_length=200, required=False)
+    carta_explicativa = FileField(label='Carta Explicativa', widget=AdminFileWidget, max_length=200, required=False)
+    gru = FileField(label='GRU', widget=AdminFileWidget, max_length=200, required=False)
+    fatura = FileField(label='Fatura', widget=AdminFileWidget, max_length=200, required=False)
+    ficha_cadastro = FileField(label='Ficha Cadastro', widget=AdminFileWidget, max_length=200, required=False)
+
     class Meta:
         model = Contrato
 

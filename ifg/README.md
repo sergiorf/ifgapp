@@ -43,6 +43,7 @@ ver 0.6 (PLANNED 29/11)
 - Valiar telefone. -> ok
 - Utilidade de busca de Institução por nome ou sigla. -> ok
 - Utilidade de busca de Inventor por nome. -> ok
+- Utilidade de busca de Tecnologia por nome. -> ok
 - BUG: nome de arquivo anexado superior a 100 caracteres
 
 ver 0.7 (PLANNED 06/12)

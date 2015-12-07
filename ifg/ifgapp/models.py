@@ -208,9 +208,9 @@ class Inventor(PessoaFisica):
     vinculo_ifg = models.CharField(u'Vínculo IFG', max_length=2, null=True, blank=True, choices=VINCULO_IFG)
     instituicao_origem = models.ForeignKey('ifgapp.Instituicao', verbose_name=u'Instituição de origem', null=True, blank=True)
     doc_comprobatorio = models.FileField(upload_to=utils.doc_location, help_text=help_text.doc_comprobatorio,
-                             validators=[validate_file_ispdf], blank=True, null=True)
+                             validators=[validate_file_ispdf], blank=True, null=True, max_length=255)
     docs_pessoais = models.FileField(upload_to=utils.doc_location, help_text=help_text.docs_pessoais,
-                             validators=[validate_file_ispdf], blank=True, null=True)
+                             validators=[validate_file_ispdf], blank=True, null=True, max_length=255)
 
     class Meta:
         verbose_name = u'Inventor'
@@ -353,9 +353,12 @@ class Tecnologia(models.Model):
                                          blank=True, null=True, related_name=u'Tecnologia_cocriador')
     observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
     status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
-    formulario_pedido = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf])
-    comprovante_pagamento = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf])
-    ata_reuniao_comissao_avaliadora = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf])
+    formulario_pedido = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf],
+                                         max_length=255)
+    comprovante_pagamento = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf],
+                                             max_length=255)
+    ata_reuniao_comissao_avaliadora = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf],
+                                                       max_length=255)
 
     def __unicode__(self):
         return u'%s' % self.nome
@@ -411,7 +414,8 @@ class Tarefa(models.Model):
     conclusao = models.DateField(u'Data de conclusão', blank=True, null=True)
     cadastro = models.DateField(u'Data de cadastro', auto_now=True)
     status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
-    anexo = models.FileField(upload_to=utils.doc_location, help_text=help_text.anexo_tarefa, blank=True, null=True)
+    anexo = models.FileField(upload_to=utils.doc_location, help_text=help_text.anexo_tarefa, blank=True, null=True,
+                             max_length=255)
 
 
 class Contrato(models.Model):
@@ -430,15 +434,17 @@ class Contrato(models.Model):
     licenciadores = models.TextField(u'Possíveis licenciadores', help_text=help_text.possiveis_licenciadores,
                                      null=True, blank=True)
     formulario = models.FileField(u'Formulário', upload_to=utils.doc_location,
-                                  help_text=help_text.contrato_formulario, blank=True, null=True)
+                                  help_text=help_text.contrato_formulario, blank=True, null=True, max_length=255)
     carta_explicativa = models.FileField(u'Carta Explicativa', upload_to=utils.doc_location,
-                                         help_text=help_text.contrato_carta_explicativa, blank=True, null=True)
+                                         help_text=help_text.contrato_carta_explicativa, blank=True, null=True,
+                                         max_length=255)
     gru = models.FileField(u'GRU', upload_to=utils.doc_location, help_text=help_text.contrato_gru,
-                            blank=True, null=True)
+                            blank=True, null=True, max_length=255)
     fatura = models.FileField(u'Contrato/Aditivo/Fatura', upload_to=utils.doc_location,
-                              help_text=help_text.contrato_fatura, blank=True, null=True)
+                              help_text=help_text.contrato_fatura, blank=True, null=True, max_length=255)
     ficha_cadastro = models.FileField(u'Ficha cadastro', upload_to=utils.doc_location,
-                                       help_text=help_text.contrato_ficha_cadastro, blank=True, null=True)
+                                       help_text=help_text.contrato_ficha_cadastro, blank=True, null=True,
+                                       max_length=255)
 
 
 
