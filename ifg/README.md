@@ -41,7 +41,7 @@ ver 0.5
 ver 0.6
 -----------------------------
 - Validar telefone.
-- Utilidade de busca de Institução por nome ou sigla.
+- Utilidade de busca de Instituição por nome ou sigla.
 - Utilidade de busca de Inventor por nome.
 - Utilidade de busca de Tecnologia por nome.
 - BUG: nome de arquivo anexado superior a 100 caracteres
@@ -64,6 +64,9 @@ ver 0.9 (PLANNED 27/12)
 - Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
 - Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo.
 
+ver 0.10 (PLANNED 03/01)
+-----------------------------
+- Bug: Form Tecnologia: Não pode ter a mesma pessoa em Criador e Co-criador.
 
 
 
