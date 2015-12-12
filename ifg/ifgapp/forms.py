@@ -43,6 +43,13 @@ class InventorForm(autocomplete_light.ModelForm):
         exclude = ('user',)
 
 
+class InventorSearchForm(Form):
+    nome = CharField(label=u'Nome', required=False)
+    cpf = CharField(label=u'CPF', required=False)
+    instituicao_origem = ModelChoiceField(queryset=Instituicao.objects.all(), required=False)
+    vinculo_ifg = ChoiceField(choices=(('', '---------'),) + Inventor.VINCULO_IFG)
+
+
 class GrupoForm(ModelForm):
     class Meta:
         model = Grupo

@@ -48,8 +48,8 @@ ver 0.6
 
 ver 0.7 (PLANNED 13/12)
 -----------------------------
-- Tela de busca de Tecnologia.
-- Tela de busca de Inventor.
+- Tela de busca de Tecnologia.-> ok
+- Tela de busca de Inventor. --> ok
 - Tela de busca de Instituição.
 - Tela de busca de Tarefa.
 - Tela de busca de Contrato de Transferência de Tecnologia.

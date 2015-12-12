@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+    <a href="{% url 'lista_tecnologias' %}">Tecnologias</a>
     <h1>Buscar Tecnologia</h1>
     <form id="tecnologia_search_form" method="post" action="/search/tecnologia/" enctype="multipart/form-data">
         {% csrf_token %}

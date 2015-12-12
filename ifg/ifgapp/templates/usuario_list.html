@@ -3,7 +3,10 @@
 {% load ifgapp_filters %}
 {% block content %}
 {% if klass_name == "Inventor" %}
-   <a href= '{% url "adicionar_inventor" %}'>Adicionar inventor</a>
+   <table>
+        <tr><td><a href='{% url "adicionar_inventor" %}'>Adicionar Inventor</a></td></tr>
+        <tr><td><a href="{% url 'search_inventor' %}">Buscar Inventor</a></td></tr>
+    </table>
 {% elif klass_name == "Servidor" %}
    <a href= '{% url "adicionar_servidor" %}'>Adicionar servidor</a>
 {% elif klass_name == "Aluno" %}
