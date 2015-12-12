@@ -1,8 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Buscar Tecnologia</h1>
-    <form action="/search/" method="get">
-        <input type="text" name="q">
+    <form id="tecnologia_search_form" method="post" action="/search/tecnologia/" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+            {{ field.help_text }}
+            {{ field.label }}
+            {{ field }}
+        {% endfor %}
         <input type="submit" value="Search">
     </form>
+    {% if objects_tolist %}
+    <table id="tecnologias">
+        {% for tecnologia in objects_tolist %}
+            <tr>
+                <td>{{ tecnologia.nome }}</td>
+                <td>{{ tecnologia.categoria }}</td>
+                <td>{{ tecnologia.numero_processo }}</td>
+                <td><a href='{% url "edit_tecnologia" tecnologia.id %}' class="see_detail">Editar</a></td>
+                <td><a href='{% url "remover_tecnologia" tecnologia.id %}' class="see_detail">Remover</a></td>
+            </tr>
+        {% endfor %}
+     </table>
+    {% else %}
+        <p>Nenhuma tecnologia!!! :(</p>
+    {% endif %}
 {% endblock %}

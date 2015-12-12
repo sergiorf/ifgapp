@@ -12,9 +12,9 @@ from django.template import RequestContext
 from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
     Instituicao, Arquivo, TecnologiaAnexo, Contrato
 from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, TarefaForm, \
-    InstituicaoForm, UploadArquivoForm, ContratoForm
+    InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm
 from django.http import HttpResponse
-from utils import to_ascii
+from utils import to_ascii, get_query
 import os
 
 
@@ -189,7 +189,25 @@ def adicionar_instituicao(request):
 
 @login_required()
 def search_tecnologia(request):
-    return render(request, 'search_tecnologia.html')
+    if request.method == 'POST':
+        form = TecnologiaSearchForm(request.POST)
+        if form.is_valid():
+            numero_processo = form.cleaned_data['numero_processo']
+            nome = form.cleaned_data['nome']
+            results = Tecnologia.objects.all()
+            if nome:
+                query = get_query(nome, ['nome', ])
+                results = results.filter(query)
+            if numero_processo:
+                query = get_query(numero_processo, ['numero_processo', ])
+                results = results.filter(query)
+            return render(request, 'search_tecnologia.html', {'form': form, 'objects_tolist': results})
+        else:
+            message = 'You searched for: %r' % request.POST
+            return HttpResponse(message)
+    else:
+        form = TecnologiaSearchForm()
+        return render(request, 'search_tecnologia.html', {'form': form})
 
 
 @login_required()

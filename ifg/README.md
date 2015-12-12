@@ -48,11 +48,11 @@ ver 0.6
 
 ver 0.7 (PLANNED 13/12)
 -----------------------------
-- Ferramenta de busca de Tecnologia.
-- Ferramenta de busca de Inventor.
-- Ferramenta de busca de Instituição.
-- Ferramenta de busca de Tarefa.
-- Ferramenta de busca de Contrato de Transferência de Tecnologia.
+- Tela de busca de Tecnologia.
+- Tela de busca de Inventor.
+- Tela de busca de Instituição.
+- Tela de busca de Tarefa.
+- Tela de busca de Contrato de Transferência de Tecnologia.
 
 ver 0.8 (PLANNED 20/12)
 -----------------------------
@@ -66,9 +66,12 @@ ver 0.9 (PLANNED 27/12)
 ver 0.10 (PLANNED 03/01)
 -----------------------------
 - Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
+- Colocar intervalos de datas nas telas de busca.
+
+ver 0.11 (PLANNED 10/01)
+-----------------------------
 - Bug: Form Tecnologia: Não pode ter a mesma pessoa em Criador e Co-criador.
 - Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo.
-
 
 
 
