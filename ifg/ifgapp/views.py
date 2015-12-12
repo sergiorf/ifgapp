@@ -189,25 +189,32 @@ def adicionar_instituicao(request):
 
 @login_required()
 def search_tecnologia(request):
+    return __search(request, Tecnologia, 'search_tecnologia.html',
+                    [('nome', False), ('numero_processo', False), ('orgao_registro', True), ('orgao_registro', True),
+                     ('categoria', True), ('area_conhecimento', True), ('subarea_conhecimento', True),
+                     ('especialidade', True), ])
+
+
+def __search(request, obj_klass, template_name, field_set):
+    form_klass = obj_klass.__name__ + "SearchForm"
+    constructor_frm = globals()[form_klass]
     if request.method == 'POST':
-        results = Tecnologia.objects.all()
-        nome = request.POST.get('nome', None)
-        if nome:
-            query = get_query(nome, ['nome', ])
-            results = results.filter(query)
-        numero_processo = request.POST.get('numero_processo', None)
-        if numero_processo:
-            query = get_query(numero_processo, ['numero_processo', ])
-            results = results.filter(query)
-        orgao_registro = request.POST.get('orgao_registro', None)
-        if orgao_registro:
-            results = results.filter(orgao_registro=orgao_registro)
-        categoria = request.POST.get('categoria', None)
-        if categoria:
-            results = results.filter(categoria=categoria)
-        return render_to_response('search_tecnologia.html', {'form': TecnologiaSearchForm(request.POST), 'objects_tolist': results})
+        results = obj_klass.objects.all()
+        if results:
+            for field_name, is_model in field_set:
+                v = request.POST.get(field_name, None)
+                if v:
+                    if is_model:
+                        results = results.filter(**{field_name: v})
+                    else:
+                        query = get_query(v, [field_name, ])
+                        results = results.filter(query)
+                    if not results:
+                        break
+        return render_to_response(template_name, {'form': constructor_frm(request.POST), 'objects_tolist': results})
     else:
-        return render_to_response('search_tecnologia.html', {'form': TecnologiaSearchForm()})
+        return render_to_response(template_name, {'form': constructor_frm()})
+
 
 
 @login_required()
