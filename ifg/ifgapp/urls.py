@@ -46,6 +46,8 @@ urlpatterns = patterns('',
     url(r'^adicionar/tarefa', 'ifgapp.views.adicionar_tarefa', name='adicionar_tarefa'),
     url(r'^adicionar/contrato', 'ifgapp.views.adicionar_contrato', name='adicionar_contrato'),
 
+    url(r'^search/tecnologia', 'ifgapp.views.search_tecnologia', name='search_tecnologia'),
+
     url(r'^upload_anexo_tecnologia/(?P<pk>\d+)/$', 'ifgapp.views.upload_anexo_tecnologia', name='upload_anexo_tecnologia'),
     url(r'^visualizar_arquivo/(?P<arquivo_id>\d+)/$', 'ifgapp.views.visualizar_arquivo', name='visualizar_arquivo'),
 

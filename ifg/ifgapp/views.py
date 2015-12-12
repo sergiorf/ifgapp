@@ -188,6 +188,11 @@ def adicionar_instituicao(request):
 
 
 @login_required()
+def search_tecnologia(request):
+    return render(request, 'search_tecnologia.html')
+
+
+@login_required()
 def upload_anexo_tecnologia(request, pk):
     return __upload_anexo(request, pk, Tecnologia, TecnologiaAnexo, '/tecnologia/%d/')
 
