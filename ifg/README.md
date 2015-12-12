@@ -60,13 +60,14 @@ ver 0.8 (PLANNED 20/12)
 
 ver 0.9 (PLANNED 27/12)
 -----------------------------
+- Atualizar código com a v10 do documento de especificações.
 - Unificar os caminhos onde os anexos são salvados. Atualmente tem dois.
-- Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
-- Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo.
 
 ver 0.10 (PLANNED 03/01)
 -----------------------------
+- Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
 - Bug: Form Tecnologia: Não pode ter a mesma pessoa em Criador e Co-criador.
+- Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo.
 
 
 
