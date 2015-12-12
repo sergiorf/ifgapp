@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from django.forms import ModelForm, FileField, CharField, Form, ChoiceField, DateInput
+from django.forms import ModelForm, FileField, CharField, Form, ChoiceField, ModelChoiceField, DateInput
 from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
-    Contrato
+    Contrato, Categoria
 from django.contrib.admin.widgets import AdminFileWidget
 import autocomplete_light
 
@@ -67,8 +67,9 @@ class TecnologiaForm(autocomplete_light.ModelForm):
 
 class TecnologiaSearchForm(Form):
     nome = CharField(label=u'Título', required=False)
+    categoria = ModelChoiceField(queryset=Categoria.objects.all(), required=False)
     numero_processo = CharField(label=u'Número de processo', required=False)
-    orgao_registro = ChoiceField(choices=Tecnologia.ORGAOS_REGISTRO, required=False)
+    orgao_registro = ChoiceField(choices=(('', '---------'),) + Tecnologia.ORGAOS_REGISTRO)
 
 
 class TarefaForm(autocomplete_light.ModelForm):

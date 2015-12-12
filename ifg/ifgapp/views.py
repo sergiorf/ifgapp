@@ -202,6 +202,9 @@ def search_tecnologia(request):
         orgao_registro = request.POST.get('orgao_registro', None)
         if orgao_registro:
             results = results.filter(orgao_registro=orgao_registro)
+        categoria = request.POST.get('categoria', None)
+        if categoria:
+            results = results.filter(categoria=categoria)
         return render_to_response('search_tecnologia.html', {'form': TecnologiaSearchForm(request.POST), 'objects_tolist': results})
     else:
         return render_to_response('search_tecnologia.html', {'form': TecnologiaSearchForm()})
