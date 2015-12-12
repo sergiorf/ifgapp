@@ -190,24 +190,21 @@ def adicionar_instituicao(request):
 @login_required()
 def search_tecnologia(request):
     if request.method == 'POST':
-        form = TecnologiaSearchForm(request.POST)
-        if form.is_valid():
-            numero_processo = form.cleaned_data['numero_processo']
-            nome = form.cleaned_data['nome']
-            results = Tecnologia.objects.all()
-            if nome:
-                query = get_query(nome, ['nome', ])
-                results = results.filter(query)
-            if numero_processo:
-                query = get_query(numero_processo, ['numero_processo', ])
-                results = results.filter(query)
-            return render(request, 'search_tecnologia.html', {'form': form, 'objects_tolist': results})
-        else:
-            message = 'You searched for: %r' % request.POST
-            return HttpResponse(message)
+        results = Tecnologia.objects.all()
+        nome = request.POST.get('nome', None)
+        if nome:
+            query = get_query(nome, ['nome', ])
+            results = results.filter(query)
+        numero_processo = request.POST.get('numero_processo', None)
+        if numero_processo:
+            query = get_query(numero_processo, ['numero_processo', ])
+            results = results.filter(query)
+        orgao_registro = request.POST.get('orgao_registro', None)
+        if orgao_registro:
+            results = results.filter(orgao_registro=orgao_registro)
+        return render_to_response('search_tecnologia.html', {'form': TecnologiaSearchForm(request.POST), 'objects_tolist': results})
     else:
-        form = TecnologiaSearchForm()
-        return render(request, 'search_tecnologia.html', {'form': form})
+        return render_to_response('search_tecnologia.html', {'form': TecnologiaSearchForm()})
 
 
 @login_required()
