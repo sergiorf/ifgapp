@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.forms import ModelForm, FileField, CharField, Form, ChoiceField, ModelChoiceField, DateInput
+from django.forms import ModelForm, FileField, CharField, Form, ChoiceField, ModelChoiceField, DateInput,\
+    IntegerField
 from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
-    Contrato, Categoria, AreaConhecimento, SubAreaConhecimento, Especialidade, UF_CHOICES
+    Contrato, Categoria, AreaConhecimento, SubAreaConhecimento, Especialidade, UF_CHOICES, TipoAtividade,\
+    Atividade
 from django.contrib.admin.widgets import AdminFileWidget
 import autocomplete_light
 
@@ -94,6 +96,14 @@ class TarefaForm(autocomplete_light.ModelForm):
             'prazo_realizacao_final': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'conclusao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
         }
+
+
+class TarefaSearchForm(Form):
+    nome = CharField(label=u'Título')
+    tipo_atividade = ModelChoiceField(queryset=TipoAtividade.objects.all())
+    atividade = ModelChoiceField(queryset=Atividade.objects.all())
+    codigo = IntegerField(label=u'Código')
+    status = ChoiceField(label=u'Status', choices=(('', '---------'),) + Tarefa.STATUS)
 
 
 class ContratoForm(autocomplete_light.ModelForm):

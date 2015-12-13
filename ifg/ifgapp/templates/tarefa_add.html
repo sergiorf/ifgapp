@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <a href="{% url 'lista_tarefas' %}">Tarefa</a>
+    <a href="{% url 'lista_tarefas' %}">Tarefas</a>
     <h1>Adicionar uma Tarefa</h1>
     <form id="tarefa_form" method="post" action="/adicionar/tarefa/" enctype="multipart/form-data">
         {% csrf_token %}

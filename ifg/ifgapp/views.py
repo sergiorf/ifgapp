@@ -12,7 +12,8 @@ from django.template import RequestContext
 from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
     Instituicao, Arquivo, TecnologiaAnexo, Contrato
 from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, TarefaForm, \
-    InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, InventorSearchForm, InstituicaoSearchForm
+    InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, InventorSearchForm, InstituicaoSearchForm, \
+    TarefaSearchForm
 from django.http import HttpResponse
 from utils import to_ascii, get_query
 import os
@@ -207,26 +208,11 @@ def search_instituicao(request):
                     [('nome', False), ('sigla', False), ('estado', True), ('categoria', True)])
 
 
-def __search(request, obj_klass, template_name, field_set):
-    form_klass = obj_klass.__name__ + "SearchForm"
-    constructor_frm = globals()[form_klass]
-    if request.method == 'POST':
-        results = obj_klass.objects.all()
-        if results:
-            for field_name, is_model in field_set:
-                v = request.POST.get(field_name, None)
-                if v:
-                    if is_model:
-                        results = results.filter(**{field_name: v})
-                    else:
-                        query = get_query(v, [field_name, ])
-                        results = results.filter(query)
-                    if not results:
-                        break
-        return render_to_response(template_name, {'form': constructor_frm(request.POST), 'objects_tolist': results})
-    else:
-        return render_to_response(template_name, {'form': constructor_frm()})
-
+@login_required()
+def search_tarefa(request):
+    return __search(request, Tarefa, 'search_tarefa.html',
+                    [('nome', False), ('tipo_atividade', True), ('atividade', True), ('codigo', False),
+                     ('status', True)])
 
 
 @login_required()
@@ -348,3 +334,24 @@ def __upload_anexo(request, pk, obj_klass, anexo_klass, url):
     else:
         form = UploadArquivoForm()
     return render(request, 'upload_arquivo.html', {'form': form})
+
+
+def __search(request, obj_klass, template_name, field_set):
+    form_klass = obj_klass.__name__ + "SearchForm"
+    constructor_frm = globals()[form_klass]
+    if request.method == 'POST':
+        results = obj_klass.objects.all()
+        if results:
+            for field_name, is_model in field_set:
+                v = request.POST.get(field_name, None)
+                if v:
+                    if is_model:
+                        results = results.filter(**{field_name: v})
+                    else:
+                        query = get_query(v, [field_name, ])
+                        results = results.filter(query)
+                    if not results:
+                        break
+        return render_to_response(template_name, {'form': constructor_frm(request.POST), 'objects_tolist': results})
+    else:
+        return render_to_response(template_name, {'form': constructor_frm()})

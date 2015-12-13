@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <a href="{% url 'lista_tarefas' %}">Tarefas</a>
+    <h1>Buscar Tarefa</h1>
+    <form id="tarefa_search_form" method="post" action="/search/tarefa/" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+            {{ field.help_text }}
+            {{ field.label }}
+            {{ field }}
+        {% endfor %}
+        <input type="submit" value="Search">
+    </form>
+    {% if objects_tolist %}
+    <table id="tarefas">
+        {% for tarefa in objects_tolist %}
+            <tr>
+                <td>{{ tarefa.nome }}</td>
+                <td>{{ tarefa.tecnologia.nome }}</td>
+                <td><a href='{% url "edit_tarefa" tarefa.id %}' class="see_detail">Editar</a></td>
+                <td><a href='{% url "remover_tarefa" tarefa.id %}' class="see_detail">Remover</a></td>
+            </tr>
+        {% endfor %}
+     </table>
+    {% else %}
+        <p>Nenhuma Tarefa!!! :(</p>
+    {% endif %}
+{% endblock %}
