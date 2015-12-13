@@ -418,6 +418,19 @@ class Tarefa(models.Model):
                              max_length=255)
 
 
+class TipoTarefa(models.Model):
+    CATEGORIAS = (
+        (u'00', u'Patentes'),
+        (u'01', u'Software'),
+        (u'02', u'Marcas'),
+        (u'03', u'Geral'),
+    )
+    nome = models.CharField(u'Título', max_length=120, unique=True)
+    prazoemdias = models.PositiveIntegerField(u'Prazo em dias', null=True, blank=True)
+    categoria = models.CharField(u'Categoria', max_length=2, null=True, blank=True, choices=CATEGORIAS)
+    apartirde = models.TextField(u'A partir de', blank=True)
+
+
 class Contrato(models.Model):
     MODALIDADES = (
         (u'00', u'Assistência técnica e científica'),
