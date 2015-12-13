@@ -46,12 +46,12 @@ ver 0.6
 - Utilidade de busca de Tecnologia por nome.
 - BUG: nome de arquivo anexado superior a 100 caracteres
 
-ver 0.7 (PLANNED 13/12)
+ver 0.7 ->ok
 -----------------------------
-- Tela de busca de Tecnologia.-> ok
-- Tela de busca de Inventor. --> ok
-- Tela de busca de Instituição.-> ok
-- Tela de busca de Tarefa. -> ok
+- Tela de busca de Tecnologia.
+- Tela de busca de Inventor.
+- Tela de busca de Instituição.
+- Tela de busca de Tarefa.
 - Tela de busca de Contrato de Transferência de Tecnologia.
 
 ver 0.8 (PLANNED 20/12)
