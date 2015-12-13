@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <a href="{% url 'lista_instituicoes' %}">Instituição</a>
+    <a href="{% url 'lista_instituicoes' %}">Instituições</a>
     <h1>Adicionar uma Instituição</h1>
     <form id="instituicao_form" method="post" action="/adicionar/instituicao/">
         {% csrf_token %}

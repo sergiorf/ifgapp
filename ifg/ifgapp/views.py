@@ -12,7 +12,7 @@ from django.template import RequestContext
 from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
     Instituicao, Arquivo, TecnologiaAnexo, Contrato
 from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, TarefaForm, \
-    InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, InventorSearchForm
+    InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, InventorSearchForm, InstituicaoSearchForm
 from django.http import HttpResponse
 from utils import to_ascii, get_query
 import os
@@ -190,7 +190,7 @@ def adicionar_instituicao(request):
 @login_required()
 def search_tecnologia(request):
     return __search(request, Tecnologia, 'search_tecnologia.html',
-                    [('nome', False), ('numero_processo', False), ('orgao_registro', True), ('orgao_registro', True),
+                    [('nome', False), ('numero_processo', False), ('orgao_registro', True),
                      ('categoria', True), ('area_conhecimento', True), ('subarea_conhecimento', True),
                      ('especialidade', True), ('criador', True)])
 
@@ -199,6 +199,12 @@ def search_tecnologia(request):
 def search_inventor(request):
     return __search(request, Inventor, 'search_inventor.html',
                     [('nome', False), ('cpf', False), ('instituicao_origem', True), ('vinculo_ifg', True)])
+
+
+@login_required()
+def search_instituicao(request):
+    return __search(request, Instituicao, 'search_instituicao.html',
+                    [('nome', False), ('sigla', False), ('estado', True), ('categoria', True)])
 
 
 def __search(request, obj_klass, template_name, field_set):

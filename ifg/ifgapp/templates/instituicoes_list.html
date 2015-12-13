@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load pagination_tags %}
 {% block content %}
-<a href='{% url "adicionar_instituicao" %}'>Adicionar Instituição</a>
+<table>
+    <tr><td><a href='{% url "adicionar_instituicao" %}'>Adicionar Instituição</a></td></tr>
+    <tr><td><a href="{% url 'search_instituicao' %}">Buscar Instituição</a></td></tr>
+</table>
 {% if objects_tolist %}
     <table id="instituicao">
         {% autopaginate objects_tolist 8 %}

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm, FileField, CharField, Form, ChoiceField, ModelChoiceField, DateInput
 from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
-    Contrato, Categoria, AreaConhecimento, SubAreaConhecimento, Especialidade
+    Contrato, Categoria, AreaConhecimento, SubAreaConhecimento, Especialidade, UF_CHOICES
 from django.contrib.admin.widgets import AdminFileWidget
 import autocomplete_light
 
@@ -110,6 +110,13 @@ class ContratoForm(autocomplete_light.ModelForm):
 class InstituicaoForm(ModelForm):
     class Meta:
         model = Instituicao
+
+
+class InstituicaoSearchForm(Form):
+    nome = CharField(label=u'Nome')
+    sigla = CharField(label=u'Sigla')
+    estado = ChoiceField(label=u'Estado', choices=(('', '---------'),) + UF_CHOICES)
+    categoria = ChoiceField(label=u'Categoria', choices=(('', '---------'),) + Instituicao.CAT_INSTITUICOES)
 
 
 class UploadArquivoForm(FormPlus):
