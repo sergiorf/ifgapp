@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 {% load pagination_tags %}
 {% block content %}
-<a href='{% url "adicionar_contrato" %}'>Adicionar Contrato</a>
+<table>
+    <tr><td><a href='{% url "adicionar_contrato" %}'>Adicionar Contrato</a></td></tr>
+    <tr><td><a href="{% url 'search_contrato' %}">Buscar Contrato</a></td></tr>
+</table>
 {% if objects_tolist %}
     <table id="contratos">
         {% autopaginate objects_tolist 8 %}
         {% for contrato in objects_tolist %}
             <tr>
-                <td>{{ contrato.id }}</td>
                 <td>{{ contrato.codigo }}</td>
+                <td>{{ contrato.tecnologia }}</td>
+                <td>{{ contrato.modalidade }}</td>
                 <td><a href='{% url "edit_contrato" contrato.id %}' class="see_detail">Editar</a></td>
                 <td><a href='{% url "remover_contrato" contrato.id %}' class="see_detail">Remover</a></td>
             </tr>

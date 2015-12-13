@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <a href="{% url 'lista_contratos' %}">Contrato</a>
+    <a href="{% url 'lista_contratos' %}">Contratos</a>
     <h1>Adicionar um Contrato</h1>
     <form id="tarefa_form" method="post" action="/adicionar/contrato/" enctype="multipart/form-data">
         {% csrf_token %}

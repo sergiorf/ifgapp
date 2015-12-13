@@ -13,7 +13,7 @@ from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia
     Instituicao, Arquivo, TecnologiaAnexo, Contrato
 from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, TarefaForm, \
     InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, InventorSearchForm, InstituicaoSearchForm, \
-    TarefaSearchForm
+    TarefaSearchForm, ContratoSearchForm
 from django.http import HttpResponse
 from utils import to_ascii, get_query
 import os
@@ -213,6 +213,12 @@ def search_tarefa(request):
     return __search(request, Tarefa, 'search_tarefa.html',
                     [('nome', False), ('tipo_atividade', True), ('atividade', True), ('codigo', False),
                      ('status', True)])
+
+
+@login_required()
+def search_contrato(request):
+    return __search(request, Contrato, 'search_contrato.html',
+                    [('codigo', False), ('tecnologia', True), ('modalidade', True), ])
 
 
 @login_required()

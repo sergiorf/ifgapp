@@ -50,6 +50,7 @@ urlpatterns = patterns('',
     url(r'^search/inventor', 'ifgapp.views.search_inventor', name='search_inventor'),
     url(r'^search/instituicao', 'ifgapp.views.search_instituicao', name='search_instituicao'),
     url(r'^search/tarefa', 'ifgapp.views.search_tarefa', name='search_tarefa'),
+    url(r'^search/contrato', 'ifgapp.views.search_contrato', name='search_contrato'),
 
     url(r'^upload_anexo_tecnologia/(?P<pk>\d+)/$', 'ifgapp.views.upload_anexo_tecnologia', name='upload_anexo_tecnologia'),
     url(r'^visualizar_arquivo/(?P<arquivo_id>\d+)/$', 'ifgapp.views.visualizar_arquivo', name='visualizar_arquivo'),

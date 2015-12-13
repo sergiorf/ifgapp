@@ -117,6 +117,12 @@ class ContratoForm(autocomplete_light.ModelForm):
         model = Contrato
 
 
+class ContratoSearchForm(Form):
+    codigo = CharField(label=u'Código')
+    tecnologia = ModelChoiceField(queryset=Tecnologia.objects.all())
+    modalidade = ChoiceField(label=u'Modalidade contratual', choices=(('', '---------'),) + Contrato.MODALIDADES)
+
+
 class InstituicaoForm(ModelForm):
     class Meta:
         model = Instituicao
