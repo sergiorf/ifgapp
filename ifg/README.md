@@ -56,17 +56,17 @@ ver 0.7 ->ok
 
 ver 0.8 (PLANNED 20/12)
 -----------------------------
-- Automatização de Tarefas.
+- Automatização de Tarefas. Criação de nova tabela: DescricaoTarefa.
+- Atualizar código com a v10 do documento de especificações.
 
 ver 0.9 (PLANNED 27/12)
 -----------------------------
-- Atualizar código com a v10 do documento de especificações.
 - Unificar os caminhos onde os anexos são salvados. Atualmente tem dois.
+- Colocar intervalos de datas nas telas de busca.
 
 ver 0.10 (PLANNED 03/01)
 -----------------------------
 - Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
-- Colocar intervalos de datas nas telas de busca.
 
 ver 0.11 (PLANNED 10/01)
 -----------------------------
