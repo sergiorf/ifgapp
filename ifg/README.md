@@ -46,7 +46,7 @@ ver 0.6
 - Utilidade de busca de Tecnologia por nome.
 - BUG: nome de arquivo anexado superior a 100 caracteres
 
-ver 0.7 ->ok
+ver 0.7
 -----------------------------
 - Tela de busca de Tecnologia.
 - Tela de busca de Inventor.
