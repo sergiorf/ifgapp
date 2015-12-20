@@ -412,6 +412,16 @@ class Tarefa(models.Model):
     anexo = models.FileField(upload_to=utils.doc_location, help_text=help_text.anexo_tarefa, blank=True, null=True,
                              max_length=255)
 
+    def clean(self):
+        errors = defaultdict(list)
+        if self.status == '02' and not self.conclusao:
+            errors['conclusao'].append(error_text.data_de_conclusao_error2)
+        elif self.conclusao and self.status != '02':
+            errors['conclusao'].append(error_text.data_de_conclusao_error)
+        if len(errors):
+            raise ValidationError(errors)
+        super(Inventor, self).clean()
+
 
 class TipoTarefa(models.Model):
     CATEGORIAS = (

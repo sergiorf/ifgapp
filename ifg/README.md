@@ -58,6 +58,7 @@ ver 0.8 (PLANNED 20/12)
 -----------------------------
 - Atualizar código com a v10 do documento de especificações.
 - Automatização de Tarefas. Criação de nova tabela: DescricaoTarefa.
+- Initializar o status da tarefa automaticamente segundo as datas.
 
 ver 0.9 (PLANNED 27/12)
 -----------------------------
