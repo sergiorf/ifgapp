@@ -87,6 +87,11 @@ class TecnologiaSearchForm(Form):
                                         widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
     solicitacao_protecao_end = DateField(label='Solicitação da Proteção (até)', required=False,
                                       widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    reuniao_com_comissao_start = DateField(label='Reunião com Comissão (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    reuniao_com_comissao_end = DateField(label='Reunião com Comissão (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+
 
 class TarefaForm(autocomplete_light.ModelForm):
     anexo = FileField(label='Anexo', widget=AdminFileWidget, max_length=200, required=False)
