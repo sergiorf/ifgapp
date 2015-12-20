@@ -91,8 +91,8 @@ class TarefaForm(autocomplete_light.ModelForm):
     class Meta:
         model = Tarefa
         widgets = {
-            'prazo_realizacao_inicio': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
-            'prazo_realizacao_final': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'realizacao_inicio': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'realizacao_final': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'conclusao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
         }
 

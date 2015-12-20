@@ -400,11 +400,15 @@ class Atividade(models.Model):
 
 
 class Tarefa(models.Model):
+    AGUARDANDO_INICIO = '00'
+    EM_ANDAMENTO = '01'
+    FINALIZADA = '02'
+    NAO_REALIZADA = '03'
     STATUS = (
-        (u'00', u'Aguardando início'),
-        (u'01', u'Em andamento'),
-        (u'02', u'Finalizada'),
-        (u'03', u'Não realizada'),
+        (AGUARDANDO_INICIO, u'Aguardando início'),
+        (EM_ANDAMENTO, u'Em andamento'),
+        (FINALIZADA, u'Finalizada'),
+        (NAO_REALIZADA, u'Não realizada'),
     )
     nome = models.CharField(u'Título', max_length=120, unique=True)
     tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Tarefa_tecnologia')
@@ -413,26 +417,44 @@ class Tarefa(models.Model):
                                      chained_model_field="tipo_atividade", null=True, blank=True)
     codigo = models.PositiveIntegerField(u'Código', null=True, blank=True)
     descricao = models.TextField(u'Descrição', null=True, blank=True)
-    prazo_realizacao_inicio = models.DateField(u'Data de início da realização da tarefa', blank=True, null=True)
-    prazo_realizacao_final = models.DateField(u'Data limite para realização da tarefa', blank=True, null=True)
+    realizacao_inicio = models.DateField(u'Data de início da realização da tarefa', blank=True, null=True)
+    realizacao_final = models.DateField(u'Data limite para realização da tarefa', blank=True, null=True)
     conclusao = models.DateField(u'Data de conclusão', blank=True, null=True)
-    cadastro = models.DateField(u'Data de cadastro', auto_now=True)
+    cadastro = models.DateField(u'Data de cadastro', default=datetime.now)
     status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
     anexo = models.FileField(upload_to=utils.doc_location, help_text=help_text.anexo_tarefa, blank=True, null=True,
                              max_length=255)
 
-    def clean(self):
-        errors = defaultdict(list)
-        if self.status == '02':
+    def update_status(self):
+        if self.realizacao_inicio:
+            if self.cadastro < self.realizacao_inicio:
+                self.status = Tarefa.AGUARDANDO_INICIO
+            elif self.realizacao_final and self.realizacao_inicio <= self.cadastro < self.realizacao_final:
+                self.status = Tarefa.EM_ANDAMENTO
+
+    def validate_errors(self, errors):
+        if self.status == Tarefa.FINALIZADA:
             if not self.conclusao:
                 errors['conclusao'].append(error_text.data_de_conclusao_error2)
             if not self.anexo:
                 errors['anexo'].append(error_text.tarefa_anexo_error)
-        elif self.conclusao and self.status != '02':
+        elif self.conclusao and self.status != Tarefa.FINALIZADA:
             errors['conclusao'].append(error_text.data_de_conclusao_error)
+        if self.realizacao_inicio and not self.realizacao_final:
+            errors['realizacao_final'].append(error_text.tarefa_realizacao_final_erro)
+        if self.realizacao_final:
+            if not self.realizacao_inicio:
+                errors['realizacao_inicio'].append(error_text.tarefa_realizacao_inicio_erro)
+            if self.cadastro >= self.realizacao_final:
+                errors['cadastro'].append(error_text.tarefa_cadastro_erro)
+
+    def clean(self):
+        self.update_status()
+        errors = defaultdict(list)
+        self.validate_errors(errors)
         if len(errors):
             raise ValidationError(errors)
-        super(Inventor, self).clean()
+        super(Tarefa, self).clean()
 
 
 class TipoTarefa(models.Model):

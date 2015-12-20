@@ -57,14 +57,15 @@ ver 0.7
 ver 0.8 (PLANNED 20/12)
 -----------------------------
 - Atualizar código com a v10 do documento de especificações. -> ok
-- Na classe Contrato, vincular categoria_tecnologia à Tecnologia escolhida.
-- Automatização de Tarefas. Criação de nova tabela: DescricaoTarefa.
-- Initializar o status da tarefa automaticamente segundo as datas.
+- Na classe Contrato, vincular categoria_tecnologia à Tecnologia escolhida. -> ok
+- Initializar o status da tarefa automaticamente segundo as datas. -> ok
+- Criar um background task para setar o status da Tarefa = 'não realizada'
+- Colocar intervalos de datas nas telas de busca.
 
 ver 0.9 (PLANNED 27/12)
 -----------------------------
 - Unificar os caminhos onde os anexos são salvados. Atualmente tem dois.
-- Colocar intervalos de datas nas telas de busca.
+- Automatização de Tarefas. Criação de nova tabela: DescricaoTarefa.
 
 ver 0.10 (PLANNED 03/01)
 -----------------------------
