@@ -107,7 +107,14 @@ class TarefaSearchForm(Form):
                                         widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
     realizacao_inicio_end = DateField(label='Início (até)', required=False,
                                       widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
-
+    realizacao_final_start = DateField(label='Fim (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    realizacao_final_end = DateField(label='Fim (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    conclusao_start = DateField(label='Conclusão (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    conclusao_end = DateField(label='Conclusão (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
 
 class ContratoForm(autocomplete_light.ModelForm):
     copia_contrato = FileField(label='Cópia do contrato', widget=AdminFileWidget, max_length=200, required=False)

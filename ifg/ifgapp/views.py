@@ -222,7 +222,8 @@ def search_tarefa(request):
     return __search(request, Tarefa, 'search_tarefa.html',
                     [('nome', SearchField.QUERY), ('tipo_atividade', SearchField.EXACT_MATCH),
                      ('atividade', SearchField.EXACT_MATCH), ('codigo', SearchField.QUERY),
-                     ('status', SearchField.EXACT_MATCH)], ['realizacao_inicio'])
+                     ('status', SearchField.EXACT_MATCH)],
+                    ['realizacao_inicio', 'realizacao_final', 'conclusao'])
 
 
 @login_required()
@@ -376,9 +377,9 @@ def __search(request, obj_klass, template_name, field_set, range_date_set=[]):
                     start = request.POST.get(field_name + '_start', None)
                     end = request.POST.get(field_name + '_end', None)
                     if start:
-                        results = results.filter(**{field_name+'__gt': start})
+                        results = results.filter(**{field_name+'__gte': start})
                     if end:
-                        results = results.filter(**{field_name+'__lt': start})
+                        results = results.filter(**{field_name+'__lte': end})
                     if not results:
                         break
         return render_to_response(template_name, {'form': constructor_frm(request.POST), 'objects_tolist': results})
