@@ -60,8 +60,6 @@ class GrupoForm(ModelForm):
 
 class TecnologiaForm(autocomplete_light.ModelForm):
     formulario_pedido = FileField(label='Formulário do pedido', widget=AdminFileWidget, max_length=200, required=True)
-    comprovante_pagamento = FileField(label='Comprovante de pagamento da retribuição (GRU)', widget=AdminFileWidget,
-                                      max_length=200, required=True)
     ata_reuniao_comissao_avaliadora = FileField(label='Ata da reunião com Comissão Avaliadora', widget=AdminFileWidget,
                                                 max_length=200, required=True)
 
@@ -71,6 +69,7 @@ class TecnologiaForm(autocomplete_light.ModelForm):
             'solicitacao_protecao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'reuniao_com_comissao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'pedido': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'concessao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
         }
 
 

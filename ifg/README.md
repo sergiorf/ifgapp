@@ -56,8 +56,8 @@ ver 0.7
 
 ver 0.8 (PLANNED 20/12)
 -----------------------------
-- Automatização de Tarefas. Criação de nova tabela: DescricaoTarefa.
 - Atualizar código com a v10 do documento de especificações.
+- Automatização de Tarefas. Criação de nova tabela: DescricaoTarefa.
 
 ver 0.9 (PLANNED 27/12)
 -----------------------------

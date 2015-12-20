@@ -71,7 +71,6 @@ class Command(BaseCommand):
             filename = "pdf-sample.pdf"
             with open(os.path.join(path, filename), 'rb') as attachment:
                 tec.formulario_pedido.save(filename, File(attachment), save=True)
-                tec.comprovante_pagamento.save(filename, File(attachment), save=True)
                 tec.ata_reuniao_comissao_avaliadora.save(filename, File(attachment), save=True)
             tec.save()
             print "%s (%s) criado com sucesso..." % (Tecnologia.__name__, nome)

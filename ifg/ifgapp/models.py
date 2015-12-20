@@ -321,15 +321,11 @@ class Tecnologia(models.Model):
     )
     STATUS = (
         (u'00', u'Em Exame'),
-        (u'01', u'Aguardando cumprimento de exigência'),
-        (u'02', u'Pedido depositado'),
+        (u'01', u'Pedido depositado'),
         (u'03', u'Pedido publicado'),
         (u'04', u'Pedido indeferido'),
         (u'05', u'Pedido deferido'),
         (u'06', u'Prazo para recurso'),
-        (u'07', u'Prazo para manifestação'),
-        (u'08', u'Prazo para oposição/manifestação de terceiros'),
-        (u'09', u'Período de nulidade administrativa'),
     )
     nome = models.CharField(u'Título', max_length=120, unique=True)
     categoria = models.ForeignKey(Categoria, null=True, blank=True)
@@ -353,10 +349,9 @@ class Tecnologia(models.Model):
                                          blank=True, null=True, related_name=u'Tecnologia_cocriador')
     observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
     status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
+    concessao = models.DateField(u'Data em que o pedido foi concedido', blank=True, null=True)
     formulario_pedido = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf],
                                          max_length=255)
-    comprovante_pagamento = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf],
-                                             max_length=255)
     ata_reuniao_comissao_avaliadora = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf],
                                                        max_length=255)
 
