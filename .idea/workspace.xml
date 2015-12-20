@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e304dea1-b943-45d6-8129-3436e914f113" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ifg/ifgapp/management/commands/maintain_tarefas.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/docs/~$stema_protecao_intelectual_v10.odt" afterPath="$PROJECT_DIR$/ifg/docs/~$stema_protecao_intelectual_v10.odt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/README.md" afterPath="$PROJECT_DIR$/ifg/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/management/commands/maintain_tarefas.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/management/commands/maintain_tarefas.py" />
     </list>
     <ignored path="ifgapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -18,7 +16,8 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/ifgapp$carga_ifgapp.coverage" NAME="carga_ifgapp Coverage Results" MODIFIED="1450618876870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/ifgapp$maintain_tarefas.coverage" NAME="maintain_tarefas Coverage Results" MODIFIED="1450620478295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ifg" />
+    <SUITE FILE_PATH="coverage/ifgapp$carga_ifgapp.coverage" NAME="carga_ifgapp Coverage Results" MODIFIED="1450619550614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/ifgapp$manage.coverage" NAME="manage Coverage Results" MODIFIED="1450580325694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ifg" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -36,8 +35,8 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5601" max-vertical-offset="8585">
-              <caret line="378" column="6" selection-start-line="378" selection-start-column="6" selection-end-line="378" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="7390" max-vertical-offset="8585">
+              <caret line="420" column="20" selection-start-line="420" selection-start-column="4" selection-end-line="420" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -46,18 +45,20 @@
       <file leaf-file-name="maintain_tarefas.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/maintain_tarefas.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+              <folding>
+                <element signature="e#24#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="carga_ifgapp.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="carga_ifgapp.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5983146" vertical-offset="1623" max-vertical-offset="3434">
-              <caret line="108" column="47" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
+            <state vertical-scroll-proportion="31.754717" vertical-offset="1683" max-vertical-offset="3434">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="15" />
               <folding>
                 <element signature="e#24#75#0" expanded="true" />
               </folding>
@@ -65,11 +66,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="base.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://C:/Python27/Lib/site-packages/django/core/management/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4540" max-vertical-offset="7089">
-              <caret line="284" column="0" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4771" max-vertical-offset="7089">
+              <caret line="296" column="16" selection-start-line="296" selection-start-column="16" selection-end-line="296" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -105,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifg/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.12" vertical-offset="884" max-vertical-offset="1666">
-              <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.124390244" vertical-offset="1037" max-vertical-offset="1700">
+              <caret line="64" column="75" selection-start-line="64" selection-start-column="75" selection-end-line="64" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -176,9 +187,9 @@
         <option value="$PROJECT_DIR$/ifg/ifgapp/error_text.py" />
         <option value="C:/Python27/Lib/site-packages/django/utils/importlib.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/models.py" />
+        <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/maintain_tarefas.py" />
         <option value="$PROJECT_DIR$/ifg/README.md" />
-        <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py" />
       </list>
     </option>
   </component>
@@ -346,7 +357,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ifg" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
@@ -361,8 +372,8 @@
       <recent name="C:\dev\ifgapp\ifg" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.carga_ifgapp">
-    <configuration default="false" name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.maintain_tarefas">
+    <configuration default="false" name="runserver" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -540,7 +551,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Python27\python.exe" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ifg" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -552,13 +563,33 @@
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <method />
     </configuration>
-    <list size="2">
+    <configuration default="false" name="maintain_tarefas" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python27\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ifg" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ifgapp" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ifg/manage.py" />
+      <option name="PARAMETERS" value="maintain_tarefas" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <method />
+    </configuration>
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.carga_ifgapp" />
-      <item index="1" class="java.lang.String" itemvalue="Python.manage" />
+      <item index="1" class="java.lang.String" itemvalue="Python.maintain_tarefas" />
+      <item index="2" class="java.lang.String" itemvalue="Python.runserver" />
     </list>
     <recent_temporary>
       <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.manage" />
+        <item index="0" class="java.lang.String" itemvalue="Python.runserver" />
       </list>
     </recent_temporary>
   </component>
@@ -605,17 +636,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922536" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3447099" sideWeight="0.76475036" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3447099" sideWeight="0.76475036" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25037822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4215017" sideWeight="0.79878974" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25037822" sideWeight="0.23045267" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25037822" sideWeight="0.76954734" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17064847" sideWeight="0.79878974" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3447099" sideWeight="0.23524962" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17064847" sideWeight="0.20121029" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5212947" sideWeight="0.8895613" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864675" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -661,17 +692,10 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="72" />
+      <option name="time" value="75" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Lib/site-packages/django/db/models/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.214286" vertical-offset="1605" max-vertical-offset="17816">
-          <caret line="103" column="43" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/copy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2864" max-vertical-offset="7429">
@@ -985,25 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/maintain_tarefas.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="455">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.12" vertical-offset="884" max-vertical-offset="1666">
-          <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/atividades.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="424">
@@ -1012,30 +1017,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/models.py">
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5601" max-vertical-offset="8585">
-          <caret line="378" column="6" selection-start-line="378" selection-start-column="6" selection-end-line="378" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="419">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/core/management/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4540" max-vertical-offset="7089">
-          <caret line="284" column="0" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4771" max-vertical-offset="7089">
+          <caret line="296" column="16" selection-start-line="296" selection-start-column="16" selection-end-line="296" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5983146" vertical-offset="1623" max-vertical-offset="3434">
-          <caret line="108" column="47" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
+        <state vertical-scroll-proportion="31.754717" vertical-offset="1683" max-vertical-offset="3434">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="15" />
           <folding>
             <element signature="e#24#75#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/maintain_tarefas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="e#24#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6881" max-vertical-offset="8585">
+          <caret line="420" column="20" selection-start-line="420" selection-start-column="4" selection-end-line="420" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.124390244" vertical-offset="1037" max-vertical-offset="1700">
+          <caret line="64" column="75" selection-start-line="64" selection-start-column="75" selection-end-line="64" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
   </component>

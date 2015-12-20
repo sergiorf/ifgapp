@@ -59,8 +59,10 @@ ver 0.8 (PLANNED 20/12)
 - Atualizar código com a v10 do documento de especificações. -> ok
 - Na classe Contrato, vincular categoria_tecnologia à Tecnologia escolhida. -> ok
 - Initializar o status da tarefa automaticamente segundo as datas. -> ok
-- Criar massa de dados para Tarefa. ->
-- Criar um background task para setar o status da Tarefa = 'não realizada'
+- Criei massa de dados para Tarefa. -> ok
+- Criei um background task para setar o status da Tarefa = 'não realizada'. Criei o comando
+  'maintain_tarefas'. Ele deve ser execudado a intervalos regulares. A forma de executar, dependerá
+  do SO em que será instalado a app (unix=cron, windows=at/services). -> ok
 - Colocar intervalos de datas nas telas de busca.
 
 ver 0.9 (PLANNED 27/12)
