@@ -6,6 +6,7 @@ Passos para instalar:
 * Executa 'python manage.py syncdb --noinput' (This will create the model and some initial data)
 * Executa 'python manage.py carga_ifgapp'
 * Executa 'python manage.py runserver' para executar o app usando o webserver embutido do Django
+* Criar um cron (unix) ou um serviço (windows) para executar 'python manage.py maintain_tarefas'
 
 ver 0.1
 -----------------------------
