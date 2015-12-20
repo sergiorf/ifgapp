@@ -106,14 +106,15 @@ class TarefaSearchForm(Form):
 
 
 class ContratoForm(autocomplete_light.ModelForm):
-    formulario = FileField(label='Formulário', widget=AdminFileWidget, max_length=200, required=False)
-    carta_explicativa = FileField(label='Carta Explicativa', widget=AdminFileWidget, max_length=200, required=False)
-    gru = FileField(label='GRU', widget=AdminFileWidget, max_length=200, required=False)
-    fatura = FileField(label='Fatura', widget=AdminFileWidget, max_length=200, required=False)
-    ficha_cadastro = FileField(label='Ficha Cadastro', widget=AdminFileWidget, max_length=200, required=False)
+    copia_contrato = FileField(label='Cópia do contrato', widget=AdminFileWidget, max_length=200, required=False)
 
     class Meta:
         model = Contrato
+        widgets = {
+            'assinatura_acordo': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'vigencia_inicio': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'vigencia_fim': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+        }
 
 
 class ContratoSearchForm(Form):

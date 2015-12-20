@@ -451,30 +451,26 @@ class TipoTarefa(models.Model):
 class Contrato(models.Model):
     MODALIDADES = (
         (u'00', u'Assistência técnica e científica'),
-        (u'01', u'Licença e cessão para exploração de patente'),
-        (u'02', u'Licença e cessão para exploração de desenho industrial'),
-        (u'03', u'Licença e cessão para uso de marca'),
+        (u'01', u'Convênio'),
+        (u'02', u'Contrato de cessão'),
+        (u'03', u'Contrato de licença'),
         (u'04', u'Franquia'),
         (u'05', u'Fornecimento de tecnologia (Know-How)'),
-
+        (u'06', u'Protocolo de intenções'),
+        (u'07', u'Outro'),
     )
     codigo = models.CharField(max_length=18, default=utils.gen_random(), unique=True)
-    tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Contrato_tecnologia')
     modalidade = models.CharField(u'Modalidade contratual', max_length=2, null=True, blank=True, choices=MODALIDADES)
-    licenciadores = models.TextField(u'Possíveis licenciadores', help_text=help_text.possiveis_licenciadores,
-                                     null=True, blank=True)
-    formulario = models.FileField(u'Formulário', upload_to=utils.doc_location,
-                                  help_text=help_text.contrato_formulario, blank=True, null=True, max_length=255)
-    carta_explicativa = models.FileField(u'Carta Explicativa', upload_to=utils.doc_location,
-                                         help_text=help_text.contrato_carta_explicativa, blank=True, null=True,
-                                         max_length=255)
-    gru = models.FileField(u'GRU', upload_to=utils.doc_location, help_text=help_text.contrato_gru,
-                            blank=True, null=True, max_length=255)
-    fatura = models.FileField(u'Contrato/Aditivo/Fatura', upload_to=utils.doc_location,
+    tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Contrato_tecnologia')
+    categoria = models.ForeignKey(Categoria, null=True, blank=True)
+    instituicoes_envolvidas = models.ManyToManyField('ifgapp.Instituicao', verbose_name=u'Instituições co-titulares',
+                                         blank=True, null=True)
+    assinatura_acordo = models.DateField(u'Data de assinatura do acordo', blank=True, null=True)
+    vigencia_inicio = models.DateField(u'Data inicio de vigência', blank=True, null=True)
+    vigencia_fim = models.DateField(u'Data fim de vigência', blank=True, null=True)
+    copia_contrato = models.FileField(u'Cópia do contrato', upload_to=utils.doc_location,
                               help_text=help_text.contrato_fatura, blank=True, null=True, max_length=255)
-    ficha_cadastro = models.FileField(u'Ficha cadastro', upload_to=utils.doc_location,
-                                       help_text=help_text.contrato_ficha_cadastro, blank=True, null=True,
-                                       max_length=255)
+
 
 
 
