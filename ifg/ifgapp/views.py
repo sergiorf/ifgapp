@@ -19,6 +19,12 @@ from utils import to_ascii, get_query
 import os
 
 
+class SearchField(object):
+    EXACT_MATCH = 0
+    QUERY = 1
+    DATE_RANGE = 2
+
+
 @login_required()
 def index(request):
     return render_to_response('index.html', locals())
@@ -191,34 +197,39 @@ def adicionar_instituicao(request):
 @login_required()
 def search_tecnologia(request):
     return __search(request, Tecnologia, 'search_tecnologia.html',
-                    [('nome', False), ('numero_processo', False), ('orgao_registro', True),
-                     ('categoria', True), ('area_conhecimento', True), ('subarea_conhecimento', True),
-                     ('especialidade', True), ('criador', True)])
+                    [('nome', SearchField.QUERY), ('numero_processo', SearchField.QUERY),
+                     ('orgao_registro', SearchField.EXACT_MATCH), ('categoria', SearchField.EXACT_MATCH),
+                     ('area_conhecimento', SearchField.EXACT_MATCH), ('subarea_conhecimento', SearchField.EXACT_MATCH),
+                     ('especialidade', SearchField.EXACT_MATCH), ('criador', SearchField.EXACT_MATCH)])
 
 
 @login_required()
 def search_inventor(request):
     return __search(request, Inventor, 'search_inventor.html',
-                    [('nome', False), ('cpf', False), ('instituicao_origem', True), ('vinculo_ifg', True)])
+                    [('nome', SearchField.QUERY), ('cpf', SearchField.QUERY),
+                     ('instituicao_origem', SearchField.EXACT_MATCH), ('vinculo_ifg', SearchField.EXACT_MATCH)])
 
 
 @login_required()
 def search_instituicao(request):
     return __search(request, Instituicao, 'search_instituicao.html',
-                    [('nome', False), ('sigla', False), ('estado', True), ('categoria', True)])
+                    [('nome', SearchField.QUERY), ('sigla', SearchField.QUERY),
+                     ('estado', SearchField.EXACT_MATCH), ('categoria', SearchField.EXACT_MATCH)])
 
 
 @login_required()
 def search_tarefa(request):
     return __search(request, Tarefa, 'search_tarefa.html',
-                    [('nome', False), ('tipo_atividade', True), ('atividade', True), ('codigo', False),
-                     ('status', True)])
+                    [('nome', SearchField.QUERY), ('tipo_atividade', SearchField.EXACT_MATCH),
+                     ('atividade', SearchField.EXACT_MATCH), ('codigo', SearchField.QUERY),
+                     ('status', SearchField.EXACT_MATCH)])
 
 
 @login_required()
 def search_contrato(request):
     return __search(request, Contrato, 'search_contrato.html',
-                    [('codigo', False), ('tecnologia', True), ('modalidade', True), ])
+                    [('codigo', SearchField.QUERY), ('tecnologia', SearchField.EXACT_MATCH),
+                     ('modalidade', SearchField.EXACT_MATCH), ])
 
 
 @login_required()
@@ -348,14 +359,16 @@ def __search(request, obj_klass, template_name, field_set):
     if request.method == 'POST':
         results = obj_klass.objects.all()
         if results:
-            for field_name, is_model in field_set:
+            for field_name, search_type in field_set:
                 v = request.POST.get(field_name, None)
                 if v:
-                    if is_model:
+                    if search_type == SearchField.EXACT_MATCH:
                         results = results.filter(**{field_name: v})
-                    else:
+                    elif search_type == SearchField.QUERY:
                         query = get_query(v, [field_name, ])
                         results = results.filter(query)
+                    elif search_type == SearchField.DATE_RANGE:
+                        pass
                     if not results:
                         break
         return render_to_response(template_name, {'form': constructor_frm(request.POST), 'objects_tolist': results})

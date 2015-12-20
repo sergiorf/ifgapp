@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm, FileField, CharField, Form, ChoiceField, ModelChoiceField, DateInput,\
-    IntegerField
+    IntegerField, DateField
 from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
     Contrato, Categoria, AreaConhecimento, SubAreaConhecimento, Especialidade, UF_CHOICES, TipoAtividade,\
     Atividade
@@ -103,6 +103,10 @@ class TarefaSearchForm(Form):
     atividade = ModelChoiceField(queryset=Atividade.objects.all())
     codigo = IntegerField(label=u'Código')
     status = ChoiceField(label=u'Status', choices=(('', '---------'),) + Tarefa.STATUS)
+    realizacao_inicio_start = DateField(label='Início (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    realizacao_inicio_end = DateField(label='Início (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
 
 
 class ContratoForm(autocomplete_light.ModelForm):

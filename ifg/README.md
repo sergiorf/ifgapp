@@ -64,7 +64,7 @@ ver 0.8 (PLANNED 20/12)
 - Criei um background task para setar o status da Tarefa = 'não realizada'. Criei o comando
   'maintain_tarefas'. Ele deve ser execudado a intervalos regulares. A forma de executar, dependerá
   do SO em que será instalado a app (unix=cron, windows=at/services). -> ok
-- Colocar intervalos de datas nas telas de busca.
+- Colocar intervalos de datas nas telas de busca (Tarefa)
 
 ver 0.9 (PLANNED 27/12)
 -----------------------------
