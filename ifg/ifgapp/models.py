@@ -110,8 +110,17 @@ class Instituicao(models.Model):
     nome = models.CharField(u'Nome', max_length=255, unique=True)
     sigla = models.CharField(u'Sigla', max_length=12, unique=True)
     endereco = models.CharField(u'Endereço', max_length=255)
+    telefone = models.CharField(max_length=40)
     estado = models.CharField(u'Estado', max_length=2, choices=UF_CHOICES)
     categoria = models.CharField(u'Categoria', max_length=3, choices=CAT_INSTITUICOES)
+
+    def clean(self):
+        errors = defaultdict(list)
+        if not validate_telefone(self.telefone):
+            errors['telefone'].append(error_text.telefone_error)
+        if len(errors):
+            raise ValidationError(errors)
+        super(Inventor, self).clean()
 
     def __unicode__(self):
         return u'%s (%s)' % (self.nome, self.sigla) if self.sigla else u'%s' % self.nome
