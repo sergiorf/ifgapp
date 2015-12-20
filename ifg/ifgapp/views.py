@@ -222,7 +222,7 @@ def search_tarefa(request):
     return __search(request, Tarefa, 'search_tarefa.html',
                     [('nome', SearchField.QUERY), ('tipo_atividade', SearchField.EXACT_MATCH),
                      ('atividade', SearchField.EXACT_MATCH), ('codigo', SearchField.QUERY),
-                     ('status', SearchField.EXACT_MATCH)])
+                     ('status', SearchField.EXACT_MATCH)], ['realizacao_inicio'])
 
 
 @login_required()
@@ -353,7 +353,7 @@ def __upload_anexo(request, pk, obj_klass, anexo_klass, url):
     return render(request, 'upload_arquivo.html', {'form': form})
 
 
-def __search(request, obj_klass, template_name, field_set):
+def __search(request, obj_klass, template_name, field_set, range_date_set=[]):
     form_klass = obj_klass.__name__ + "SearchForm"
     constructor_frm = globals()[form_klass]
     if request.method == 'POST':
@@ -369,6 +369,12 @@ def __search(request, obj_klass, template_name, field_set):
                         results = results.filter(query)
                     elif search_type == SearchField.DATE_RANGE:
                         pass
+                    if not results:
+                        break
+            if results:
+                for field_name in range_date_set:
+                    start = request.POST.get(field_name + '_start', None)
+                    end = request.POST.get(field_name + '_end', None)
                     if not results:
                         break
         return render_to_response(template_name, {'form': constructor_frm(request.POST), 'objects_tolist': results})
