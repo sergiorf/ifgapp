@@ -56,10 +56,10 @@ ver 0.7
 
 ver 0.8 (PLANNED 20/12)
 -----------------------------
-- Atualizar código com a v10 do documento de especificações.
+- Atualizar código com a v10 do documento de especificações. -> ok
+- Na classe Contrato, vincular categoria_tecnologia à Tecnologia escolhida.
 - Automatização de Tarefas. Criação de nova tabela: DescricaoTarefa.
 - Initializar o status da tarefa automaticamente segundo as datas.
-- Na classe Contrato, vincular categoria_tecnologia à Tecnologia escolhida.
 
 ver 0.9 (PLANNED 27/12)
 -----------------------------

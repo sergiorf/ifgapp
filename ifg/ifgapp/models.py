@@ -461,7 +461,8 @@ class Contrato(models.Model):
     )
     codigo = models.CharField(max_length=18, default=utils.gen_random(), unique=True)
     modalidade = models.CharField(u'Modalidade contratual', max_length=2, null=True, blank=True, choices=MODALIDADES)
-    tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Contrato_tecnologia')
+    tecnologia = models.ForeignKey(Tecnologia, verbose_name=u'Tecnologia', related_name=u'Contrato_tecnologia',
+                                    null=True, blank=True)
     categoria = models.ForeignKey(Categoria, null=True, blank=True)
     instituicoes_envolvidas = models.ManyToManyField('ifgapp.Instituicao', verbose_name=u'Instituições co-titulares',
                                          blank=True, null=True)
@@ -471,7 +472,10 @@ class Contrato(models.Model):
     copia_contrato = models.FileField(u'Cópia do contrato', upload_to=utils.doc_location,
                               help_text=help_text.contrato_fatura, blank=True, null=True, max_length=255)
 
-
+    def clean(self):
+        if self.tecnologia:
+            self.categoria = self.tecnologia.categoria
+        super(Contrato, self).clean()
 
 
 
