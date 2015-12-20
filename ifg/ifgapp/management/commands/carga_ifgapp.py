@@ -3,11 +3,12 @@ from django.core.management.base import BaseCommand
 from django.core.files import File
 from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, \
     Grupo, Permissao, Servidor, Pesquisador, Inventor, Categoria, Subcategoria, Instituicao, \
-    TipoAtividade, Atividade, Tecnologia
+    TipoAtividade, Atividade, Tecnologia, Tarefa
 from ifgapp.utils import create_obj
 import string
 import os
 import re
+import datetime
 
 
 class Command(BaseCommand):
@@ -58,12 +59,14 @@ class Command(BaseCommand):
                 vinculo_ifg=u'02',
                 grupo=grupo,
             ))
-            Command.create_tecnologia(index, inv)
+            tec = Command.create_tecnologia(index, inv)
+            Command.create_tarefas(index, tec)
 
     @staticmethod
     def create_tecnologia(index, inventor):
         nome = u'tec_%s' % index
-        if not Tecnologia.objects.filter(nome=nome).exists():
+        q = Tecnologia.objects.filter(nome=nome)
+        if not q.exists():
             tec = Tecnologia()
             tec.nome = nome
             tec.criador = inventor
@@ -74,8 +77,46 @@ class Command(BaseCommand):
                 tec.ata_reuniao_comissao_avaliadora.save(filename, File(attachment), save=True)
             tec.save()
             print "%s (%s) criado com sucesso..." % (Tecnologia.__name__, nome)
+            return tec
         else:
             print "%s (%s) ja existe" % (Tecnologia.__name__, nome)
+            return q[0]
+
+    @staticmethod
+    def create_tarefas(index, tecnologia):
+        today = datetime.datetime.today()
+        num_tarefas = 3
+        duration = 30
+        inicio_list = []
+        fim_list = []
+        for d in range((-num_tarefas+1)/2, (num_tarefas+2)/2):
+            i = today + datetime.timedelta(days=d)
+            inicio_list.append(i)
+            fim_list.append(i + datetime.timedelta(days=duration))
+        i = 0
+        tipo_atividade = TipoAtividade.objects.all()[0]
+        atividade = Atividade.objects.filter(tipo_atividade=tipo_atividade)[0]
+        for d in inicio_list:
+            nome = u'tarefa_%s_%s' % (index, i)
+            q = Tarefa.objects.filter(nome=nome)
+            if not q.exists():
+                tarefa = Tarefa()
+                tarefa.nome = nome
+                tarefa.tecnologia = tecnologia
+                tarefa.tipo_atividade = tipo_atividade
+                tarefa.atividade = atividade
+                tarefa.realizacao_inicio = d
+                tarefa.realizacao_final = fim_list[i]
+                path = os.path.abspath(os.path.dirname(__file__))
+                filename = "pdf-sample.pdf"
+                with open(os.path.join(path, filename), 'rb') as attachment:
+                    tarefa.anexo.save(filename, File(attachment), save=True)
+                tarefa.clean()
+                tarefa.save()
+                print "%s (%s) criado com sucesso..." % (Tarefa.__name__, nome)
+            else:
+                print "%s (%s) ja existe" % (Tarefa.__name__, nome)
+            i += 1
 
     @staticmethod
     def parse_treedata(datafile):
