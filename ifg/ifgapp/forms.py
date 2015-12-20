@@ -6,6 +6,8 @@ from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, Pessoa
     Atividade
 from django.contrib.admin.widgets import AdminFileWidget
 import autocomplete_light
+import error_text
+from django.core.exceptions import ValidationError
 
 
 class DateInput(DateInput):
@@ -71,6 +73,13 @@ class TecnologiaForm(autocomplete_light.ModelForm):
             'pedido': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'concessao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
         }
+
+    def clean(self):
+        cocriadores = self.cleaned_data.get('cocriadores')
+        for inv in cocriadores:
+            if inv == self.cleaned_data.get('criador'):
+                raise ValidationError(error_text.cocriador_already_criador_erro)
+        return self.cleaned_data
 
 
 class TecnologiaSearchForm(Form):

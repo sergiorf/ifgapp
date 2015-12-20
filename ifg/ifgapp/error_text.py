@@ -9,3 +9,4 @@ tarefa_anexo_error = u'Documento(s) comprobatório(s) da execução da tarefa qu
 tarefa_realizacao_inicio_erro = u'Deve preencher a data de início'
 tarefa_realizacao_final_erro = u'Deve preencher a data de finalização'
 tarefa_cadastro_erro = u'A data de cadastro não pode ser superior à data de finalização'
+cocriador_already_criador_erro = u'O Co-criador já está configurado como Criador'
