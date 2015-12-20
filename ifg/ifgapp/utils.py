@@ -22,6 +22,7 @@ def create_obj(id, klass_obj, params):
         print "%s (%s) ja existe" % (klass_obj.__name__, obj.id)
     else:
         obj = klass_obj(**params)
+        obj.clean()
         obj.save()
         print "%s (%s) criado com sucesso..." % (klass_obj.__name__, obj.id)
     return obj

@@ -28,14 +28,33 @@ class Command(BaseCommand):
             index += 1
             grupo.permissoes.add(p)
         self.create_test_objs(10, grupo)
+        Command.create_instituicoes()
+
+    @staticmethod
+    def create_instituicoes():
         create_obj(dict(nome=u'Microsoft'), Instituicao, dict(
-            nome=u'Microsoft', sigla='MSFT', endereco='Rua 10', estado='TO', categoria='ICT'
+            nome=u'Microsoft',
+            sigla='MSFT',
+            endereco='Rua 10',
+            estado='TO',
+            categoria='ICT',
+            telefone='23343345',
         ))
         create_obj(dict(nome=u'Oracle'), Instituicao, dict(
-            nome=u'Oracle', sigla='ORC', endereco='Rua 20', estado='GO', categoria='ICT'
+            nome=u'Oracle',
+            sigla='ORC',
+            endereco='Rua 20',
+            estado='GO',
+            categoria='ICT',
+            telefone='23343345',
         ))
         create_obj(dict(nome=u'Tesla'), Instituicao, dict(
-            nome=u'Tesla', sigla='TES', endereco='Rua 22', estado='SP', categoria='EMP'
+            nome=u'Tesla',
+            sigla='TES',
+            endereco='Rua 22',
+            estado='SP',
+            categoria='EMP',
+            telefone='23343345',
         ))
 
     @staticmethod
@@ -75,6 +94,7 @@ class Command(BaseCommand):
             with open(os.path.join(path, filename), 'rb') as attachment:
                 tec.formulario_pedido.save(filename, File(attachment), save=True)
                 tec.ata_reuniao_comissao_avaliadora.save(filename, File(attachment), save=True)
+            tec.clean()
             tec.save()
             print "%s (%s) criado com sucesso..." % (Tecnologia.__name__, nome)
             return tec

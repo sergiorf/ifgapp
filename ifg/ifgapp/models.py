@@ -120,7 +120,7 @@ class Instituicao(models.Model):
             errors['telefone'].append(error_text.telefone_error)
         if len(errors):
             raise ValidationError(errors)
-        super(Inventor, self).clean()
+        super(Instituicao, self).clean()
 
     def __unicode__(self):
         return u'%s (%s)' % (self.nome, self.sigla) if self.sigla else u'%s' % self.nome
