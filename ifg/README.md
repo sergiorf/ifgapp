@@ -64,7 +64,8 @@ ver 0.8 (PLANNED 20/12)
 - Criei um background task para setar o status da Tarefa = 'não realizada'. Criei o comando
   'maintain_tarefas'. Ele deve ser execudado a intervalos regulares. A forma de executar, dependerá
   do SO em que será instalado a app (unix=cron, windows=at/services). -> ok
-- Colocar intervalos de datas nas telas de busca (Tarefa, Tecnologia)
+- Colocar intervalos de datas nas telas de busca (Tarefa, Tecnologia, Contrato)-> ok
+- Bug: Form Tecnologia: Não pode ter a mesma pessoa em Criador e Co-criador.
 
 ver 0.9 (PLANNED 27/12)
 -----------------------------
@@ -77,7 +78,6 @@ ver 0.10 (PLANNED 03/01)
 
 ver 0.11 (PLANNED 10/01)
 -----------------------------
-- Bug: Form Tecnologia: Não pode ter a mesma pessoa em Criador e Co-criador.
 - Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo.
 
 

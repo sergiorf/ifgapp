@@ -153,6 +153,14 @@ class ContratoSearchForm(Form):
                                         widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
     assinatura_acordo_end = DateField(label='Assinatura do Acordo (até)', required=False,
                                       widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    vigencia_inicio_start = DateField(label='Início de Vigência (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    vigencia_inicio_end = DateField(label='Início de Vigência (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    vigencia_fim_start = DateField(label='Fim de Vigência (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    vigencia_fim_end = DateField(label='Fim de Vigência (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
 
 
 class InstituicaoForm(ModelForm):
