@@ -414,8 +414,11 @@ class Tarefa(models.Model):
 
     def clean(self):
         errors = defaultdict(list)
-        if self.status == '02' and not self.conclusao:
-            errors['conclusao'].append(error_text.data_de_conclusao_error2)
+        if self.status == '02':
+            if not self.conclusao:
+                errors['conclusao'].append(error_text.data_de_conclusao_error2)
+            if not self.anexo:
+                errors['anexo'].append(error_text.tarefa_anexo_error)
         elif self.conclusao and self.status != '02':
             errors['conclusao'].append(error_text.data_de_conclusao_error)
         if len(errors):
