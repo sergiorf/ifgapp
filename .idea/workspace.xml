@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e304dea1-b943-45d6-8129-3436e914f113" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/docs/~$stema_protecao_intelectual_v10.odt" afterPath="$PROJECT_DIR$/ifg/docs/~$stema_protecao_intelectual_v10.odt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/error_text.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/error_text.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/forms.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/README.md" afterPath="$PROJECT_DIR$/ifg/README.md" />
     </list>
     <ignored path="ifgapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,20 +76,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifg/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.52" vertical-offset="918" max-vertical-offset="1717">
-              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.265625" vertical-offset="867" max-vertical-offset="1717">
+              <caret line="57" column="7" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44619423" vertical-offset="0" max-vertical-offset="3315">
+            <state vertical-scroll-proportion="-6.071429" vertical-offset="0" max-vertical-offset="3315">
               <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="e#24#158#0" expanded="true" />
@@ -159,11 +157,11 @@
         <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/maintain_tarefas.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/utils.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/views.py" />
-        <option value="$PROJECT_DIR$/ifg/README.md" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/error_text.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/models.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/forms.py" />
+        <option value="$PROJECT_DIR$/ifg/README.md" />
       </list>
     </option>
   </component>
@@ -1003,17 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.52" vertical-offset="918" max-vertical-offset="1717">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1272" max-vertical-offset="3774">
@@ -1052,12 +1039,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44619423" vertical-offset="0" max-vertical-offset="3315">
+        <state vertical-scroll-proportion="-6.071429" vertical-offset="0" max-vertical-offset="3315">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="e#24#158#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.265625" vertical-offset="867" max-vertical-offset="1717">
+          <caret line="57" column="7" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
   </component>

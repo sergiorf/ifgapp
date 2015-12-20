@@ -55,16 +55,16 @@ ver 0.7
 - Tela de busca de Tarefa.
 - Tela de busca de Contrato de Transferência de Tecnologia.
 
-ver 0.8 (PLANNED 20/12)
+ver 0.8
 -----------------------------
-- Atualizar código com a v10 do documento de especificações. -> ok
-- Na classe Contrato, vincular categoria_tecnologia à Tecnologia escolhida. -> ok
-- Initializar o status da tarefa automaticamente segundo as datas. -> ok
-- Criei massa de dados para Tarefa. -> ok
-- Criei um background task para setar o status da Tarefa = 'não realizada'. Criei o comando
-  'maintain_tarefas'. Ele deve ser execudado a intervalos regulares. A forma de executar, dependerá
-  do SO em que será instalado a app (unix=cron, windows=at/services). -> ok
-- Colocar intervalos de datas nas telas de busca (Tarefa, Tecnologia, Contrato)-> ok
+- Atualizar código com a v10 do documento de especificações.
+- Na classe Contrato, vincular categoria_tecnologia à Tecnologia escolhida.
+- Initializar o status da tarefa automaticamente segundo as datas.
+- Criei massa de dados para Tarefa.
+- Criar um background task para setar o status da Tarefa = 'não realizada'. Criei o comando
+  'maintain_tarefas'. Ele deve ser executado a intervalos regulares. A forma de executar, dependerá
+  do SO em que será instalado a app (unix=cron, windows=at/services).
+- Colocar intervalos de datas nas telas de busca (Tarefa, Tecnologia, Contrato).
 - Bug: Form Tecnologia: Não pode ter a mesma pessoa em Criador e Co-criador.
 
 ver 0.9 (PLANNED 27/12)
