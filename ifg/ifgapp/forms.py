@@ -83,7 +83,10 @@ class TecnologiaSearchForm(Form):
     especialidade = ModelChoiceField(queryset=Especialidade.objects.all(), required=False)
     criador = ModelChoiceField(queryset=Inventor.objects.all(), required=False)
     status = ChoiceField(choices=(('', '---------'),) + Tecnologia.STATUS)
-
+    solicitacao_protecao_start = DateField(label='Solicitação da Proteção (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    solicitacao_protecao_end = DateField(label='Solicitação da Proteção (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
 
 class TarefaForm(autocomplete_light.ModelForm):
     anexo = FileField(label='Anexo', widget=AdminFileWidget, max_length=200, required=False)

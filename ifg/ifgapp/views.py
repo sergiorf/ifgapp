@@ -200,7 +200,8 @@ def search_tecnologia(request):
                     [('nome', SearchField.QUERY), ('numero_processo', SearchField.QUERY),
                      ('orgao_registro', SearchField.EXACT_MATCH), ('categoria', SearchField.EXACT_MATCH),
                      ('area_conhecimento', SearchField.EXACT_MATCH), ('subarea_conhecimento', SearchField.EXACT_MATCH),
-                     ('especialidade', SearchField.EXACT_MATCH), ('criador', SearchField.EXACT_MATCH)])
+                     ('especialidade', SearchField.EXACT_MATCH), ('criador', SearchField.EXACT_MATCH)],
+                    ['solicitacao_protecao'])
 
 
 @login_required()
