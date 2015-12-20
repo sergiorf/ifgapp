@@ -149,6 +149,10 @@ class ContratoSearchForm(Form):
     categoria = ModelChoiceField(queryset=Categoria.objects.all(), required=False)
     tecnologia = ModelChoiceField(queryset=Tecnologia.objects.all())
     modalidade = ChoiceField(label=u'Modalidade contratual', choices=(('', '---------'),) + Contrato.MODALIDADES)
+    assinatura_acordo_start = DateField(label='Assinatura do Acordo (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    assinatura_acordo_end = DateField(label='Assinatura do Acordo (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
 
 
 class InstituicaoForm(ModelForm):

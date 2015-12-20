@@ -231,7 +231,8 @@ def search_tarefa(request):
 def search_contrato(request):
     return __search(request, Contrato, 'search_contrato.html',
                     [('codigo', SearchField.QUERY), ('tecnologia', SearchField.EXACT_MATCH),
-                     ('modalidade', SearchField.EXACT_MATCH), ])
+                     ('modalidade', SearchField.EXACT_MATCH), ],
+                    ['assinatura_acordo'])
 
 
 @login_required()
