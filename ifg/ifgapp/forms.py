@@ -91,6 +91,14 @@ class TecnologiaSearchForm(Form):
                                         widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
     reuniao_com_comissao_end = DateField(label='Reunião com Comissão (até)', required=False,
                                       widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    pedido_start = DateField(label='Protocolo do Pedido (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    pedido_end = DateField(label='Protocolo do Pedido (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    concessao_start = DateField(label='Concessão do Pedido (de)', required=False,
+                                        widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+    concessao_end = DateField(label='Concessão do Pedido (até)', required=False,
+                                      widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
 
 
 class TarefaForm(autocomplete_light.ModelForm):
