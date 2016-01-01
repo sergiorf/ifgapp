@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e304dea1-b943-45d6-8129-3436e914f113" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/docs/~$stema_protecao_intelectual_v10.odt" afterPath="$PROJECT_DIR$/ifg/docs/~$stema_protecao_intelectual_v10.odt" />
+      <change type="DELETED" beforePath="C:\dev\ifgapp\ifg\docs\~$stema_protecao_intelectual_v10.odt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/README.md" afterPath="$PROJECT_DIR$/ifg/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/base.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/contratos_list.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/contratos_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/forms.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/grupo_list.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/grupo_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/index.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/instituicoes_list.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/instituicoes_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/settings.py" afterPath="$PROJECT_DIR$/ifg/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/tarefas_list.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/tarefas_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/tecnologias_list.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/tecnologias_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/views.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ifgapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,8 +26,8 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/ifgapp$maintain_tarefas.coverage" NAME="maintain_tarefas Coverage Results" MODIFIED="1450620478295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ifg" />
     <SUITE FILE_PATH="coverage/ifgapp$carga_ifgapp.coverage" NAME="carga_ifgapp Coverage Results" MODIFIED="1450619550614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/ifgapp$maintain_tarefas.coverage" NAME="maintain_tarefas Coverage Results" MODIFIED="1450620478295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ifg" />
     <SUITE FILE_PATH="coverage/ifgapp$manage.coverage" NAME="manage Coverage Results" MODIFIED="1450580325694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ifg" />
     <SUITE FILE_PATH="coverage/ifgapp$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1450631292320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ifg" />
   </component>
@@ -35,11 +46,9 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.285714" vertical-offset="3830" max-vertical-offset="8789">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3830" max-vertical-offset="8789">
               <caret line="234" column="37" selection-start-line="234" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
-              <folding>
-                <element signature="e#24#52#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,7 +56,7 @@
       <file leaf-file-name="base.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://C:/Python27/Lib/site-packages/django/db/models/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="15330" max-vertical-offset="17374">
+            <state vertical-scroll-proportion="0.0" vertical-offset="15895" max-vertical-offset="17816">
               <caret line="935" column="0" selection-start-line="935" selection-start-column="0" selection-end-line="935" selection-end-column="0" />
               <folding />
             </state>
@@ -57,7 +66,7 @@
       <file leaf-file-name="error_text.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/error_text.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+            <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="289">
               <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
               <folding />
             </state>
@@ -69,9 +78,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="1272" max-vertical-offset="3774">
               <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-              <folding>
-                <element signature="e#24#75#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,8 +86,8 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifg/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.265625" vertical-offset="867" max-vertical-offset="1717">
-              <caret line="57" column="7" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.5032467" vertical-offset="1069" max-vertical-offset="1666">
+              <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -89,11 +96,9 @@
       <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.071429" vertical-offset="0" max-vertical-offset="3315">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="e#24#158#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="3383">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -197,6 +202,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -319,7 +325,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,9 +455,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -474,6 +476,9 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -608,21 +613,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922536" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40784982" sideWeight="0.76475036" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3850085" sideWeight="0.7639939" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25037822" sideWeight="0.23112129" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25037822" sideWeight="0.7688787" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2542662" sideWeight="0.79878974" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26172465" sideWeight="0.2299169" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26172465" sideWeight="0.767313" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50511944" sideWeight="0.79878974" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2542662" sideWeight="0.20121029" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3850085" sideWeight="0.23600605" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5212947" sideWeight="0.8895613" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864675" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26450512" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922536" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -875,7 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3533654" vertical-offset="4579" max-vertical-offset="24123">
           <caret line="303" column="23" selection-start-line="303" selection-start-column="16" selection-end-line="303" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -897,7 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.5983773" vertical-offset="19607" max-vertical-offset="26095">
           <caret line="1152" column="8" selection-start-line="1152" selection-start-column="8" selection-end-line="1152" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,7 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6435331" vertical-offset="0" max-vertical-offset="476">
           <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,9 +929,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5205479" vertical-offset="48" max-vertical-offset="6885">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -937,7 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="424">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,7 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="419">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +950,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33188722" vertical-offset="6375" max-vertical-offset="19176">
           <caret line="408" column="6" selection-start-line="408" selection-start-column="6" selection-end-line="408" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,9 +957,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4622871" vertical-offset="3703" max-vertical-offset="6698">
           <caret line="229" column="17" selection-start-line="229" selection-start-column="17" selection-end-line="229" selection-end-column="17" />
-          <folding>
-            <element signature="e#24#71#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -971,7 +964,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16481069" vertical-offset="4771" max-vertical-offset="7089">
           <caret line="296" column="16" selection-start-line="296" selection-start-column="16" selection-end-line="296" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,7 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="333">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,7 +978,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.66233766" vertical-offset="0" max-vertical-offset="1700">
           <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -995,9 +985,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33116883" vertical-offset="0" max-vertical-offset="462">
           <caret line="9" column="46" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1005,9 +992,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1272" max-vertical-offset="3774">
           <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#75#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,28 +1014,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.285714" vertical-offset="3830" max-vertical-offset="8789">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3830" max-vertical-offset="8789">
           <caret line="234" column="37" selection-start-line="234" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#52#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.071429" vertical-offset="0" max-vertical-offset="3315">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#158#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="3383">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ifg/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.265625" vertical-offset="867" max-vertical-offset="1717">
-          <caret line="57" column="7" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.5032467" vertical-offset="1069" max-vertical-offset="1666">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
         </state>
       </provider>

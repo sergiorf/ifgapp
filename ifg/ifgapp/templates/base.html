@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load pagination_tags %}
+{% load staticfiles %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,19 +10,42 @@
 	<title>Sistema de Proteção Intelectual</title>
 	{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
     <link rel="shortcut icon" href="/static/comum/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/geral.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'styles/listas.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Dosis:400,300,500,200' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div id="sidebar"> {% block sidebar %} {% endblock %} </div>
     <div id="container">
         <div id="menu">
-            {% block nav-global %}
+            <div id="sgpi">
                 <h2 class="oculto">Sistema de Proteção Intelectual</h2>
-                    <a href="/accounts/logout">Log Out</a>
-                    <a href="/">Início</a>
-            {% endblock %}
+                <img src="{% static 'images/sgpi-final-logo.png' %}">
+           </div>
+           <div id="userProfile">
+                <p>Olá, {{ user.get_username }} !</p>
+           </div>
+           <div id="navglobal">
+                 <div class="icon"><img src="{% static 'images/logout-1.png' %}"><a href="/accounts/logout">Sair</a></div>
+                 <div class="icon"><img src="{% static 'images/home-1.png' %}"><a href="/">Início</a></div>
+           </div>
+           <div id="navigation">
+                <ul>
+                    <li><a href="{% url 'lista_grupos' %}">Grupos</a></li>
+                    <li><a href="{% url 'lista_inventores' %}">Inventores</a></li>
+                    <li><a href="{% url 'lista_tecnologias' %}">Tecnologias</a></li>
+                    <li><a href="{% url 'lista_instituicoes' %}">Instituições</a></li>
+                    <li><a href="{% url 'lista_tarefas' %}">Tarefas</a></li>
+                    <li><a href="{% url 'lista_contratos' %}">Contratos</a></li>
+                </ul>
+           </div>
+
         </div>
         <div id="content">
-            {% block content %}{% endblock %}
+          {% block content %}{% endblock %}
+          <div id="footer">
+            <p>Desenvolvimento: <a href="http://www.ifg.edu.br">Instituto Federal de Goiás</a></p>
+            <p>IFG &copy; 2015</p>
+          </div>
         </div>
     </div>
 </body>

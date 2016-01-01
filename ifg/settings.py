@@ -34,16 +34,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 INSTALLED_APPS = (
     'pagination',
+    'autocomplete_light',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
    # 'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Custom:
-    'autocomplete_light',
     'smart_selects',
-    'ifgapp'
+    'ifgapp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,7 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.doc.XViewMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -72,8 +71,12 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+       'PORT': '5432',
     }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+     #   'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #}
 }
 
 # Internationalization

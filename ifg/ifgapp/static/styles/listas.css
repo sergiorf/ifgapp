@@ -1,0 +1,39 @@
+.all p.empty {
+	/* outline: 1px solid red; */
+	padding-top: 20px;
+	font-size: 20px;
+	text-align: center;
+	width: 15em;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.options {
+	width: 20%;
+	height: 20%;
+	float: right;
+	margin: 6px;
+	background: #D9D9FF;
+}
+
+.options p {
+	/* outline: 1px solid red; */
+	font-size: 18px;
+	line-height: 35px;
+	display: block;
+	text-align: center;
+	margin-left: 5px;
+}
+
+.options p.titulo {
+	color: #6A5ACD;
+	border-bottom: 1px groove #6A5ACD;
+}
+
+.options p a {
+	color: #0000CD;
+}
+
+.options p a:hover {
+	color: #00BFFF;
+};

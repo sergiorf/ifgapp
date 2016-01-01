@@ -1,0 +1,202 @@
+/* ------------------ GERAL ------------------- */
+
+body {
+	background: #eee;
+	font-family: 'Dosis', sans-serif;
+	font-weight: 200;
+}
+
+a{
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+.oculto {
+	display: none;
+	visibility: hidden;
+}
+
+/* --------------- MENU LATERAL -------------- */
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+#menu {
+	position: fixed;
+	background: #333333;
+	width: 300px;
+	height: 100%;
+}
+
+/* */
+
+#sgpi {
+	/* outline: 1px solid red; */
+	width: 100%;
+	height: 12%;
+}
+
+#sgpi img {
+	margin-top: 5px;
+	margin-left: 5px;
+	/* outline: 1px solid red; */
+	width: 130px;
+	height: 70px;
+}
+
+/* --------------- USER PROFILE -------------- */
+
+#userProfile {
+	/* outline: 1px solid red; */
+	width: 100%;
+	height: 80px;
+}
+
+#userProfile p {
+	/* outline: 1px solid red; */
+	padding: 15px;
+	margin: 15px;
+	color: white;
+	background-color: #1c1c1c;
+}
+
+/* ----------------- NAV GLOBAL -------------- */
+
+#navglobal {
+	 /* outline: 1px solid red; */
+}
+
+#navglobal .icon {
+	/* outline: 1px solid red; */
+	margin: 15px;
+	margin-top: 3px;
+	width: 90%;
+	height: 30px;
+}
+
+.icon img {
+	/* outline: 1px solid red; */
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+	float: left;
+}
+
+#navglobal .icon a {
+	/* outline: 1px solid red; */
+	width: 70%;
+	height: 25px;
+	padding-top: 7px;
+	color: white;
+	float: left;
+	margin-left: 40px;
+	font-size: 17px;
+	border-bottom: thin solid #333333;
+	-- webkit-transition: all .4s;
+	-o-transition: all .4s;
+	transition: all .4s;
+}
+
+#navglobal .icon a:hover {
+	border-bottom: thin solid #9c9c9c;
+}
+
+/* ---------------- NAVIGATION -------------- */
+
+#navigation {
+	line-height: 55px;
+	margin-top: 30px;
+	/* outline: 1px solid red; */
+}
+
+#navigation ul {
+	width: 100%;
+	display: block;
+}
+
+#navigation ul li a {
+	color: white;
+	font-size: 16px;
+	display: block;
+	width: 100%;
+}
+
+#navigation ul li {
+	padding-left: 2em;
+	box-shadow: 3px 0 #333333 inset;
+	-- webkit-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}
+
+#navigation ul li:hover {
+	box-shadow: 350px 0 #696969 inset;
+}
+
+p.navigation {
+	position: relative;
+	padding: 15px;
+	padding-right: 35px;
+	float: right;
+	overflow: hidden;
+}
+
+/* --------------- DJANGO ICON --------------- */
+
+#djangoIcon {
+	width: 100px;
+	height: 25px;
+	margin: auto;
+}
+
+/* ----------------- CONTENT ----------------- */
+
+#content {
+	 outline: 1px solid red; 
+	float: right;
+	margin-left: 320px;
+	margin-top: 20px;
+	height: 95%;
+	width: 75%;
+	position: absolute;
+}
+
+/* ----------------- FOOTER ------------------ */
+
+#footer {
+	/* outline: 1px solid red; */
+	width: 97%;
+	height: 50px;
+	float: right;
+	margin-right: 15px;
+	border-top: 2px solid #696969;
+	margin-top: 8px;
+}
+
+#footer p {
+	text-align: center;
+	color: #9c9c9c;
+	margin-top: 5px;
+}
+
+#footer p a {
+	color: #9acd32;
+}
+
+#footer p a:hover {
+	color: #228b22;
+}
+
+/* ------------------ ALL ---------------- */
+
+.all {
+	width: 97%;
+	height: 90%;
+	margin: 0 auto;
+	background: #FFFFFF;
+}

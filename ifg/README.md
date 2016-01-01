@@ -67,18 +67,15 @@ ver 0.8
 - Colocar intervalos de datas nas telas de busca (Tarefa, Tecnologia, Contrato).
 - Bug: Form Tecnologia: Não pode ter a mesma pessoa em Criador e Co-criador.
 
-ver 0.9 (PLANNED 27/12)
+ver 0.09 (PLANNED 03/01)
 -----------------------------
-- Unificar os caminhos onde os anexos são salvados. Atualmente tem dois.
 - Automatização de Tarefas. Criação de nova tabela: DescricaoTarefa.
 
-ver 0.10 (PLANNED 03/01)
------------------------------
-- Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
-
-ver 0.11 (PLANNED 10/01)
+ver 0.10 (PLANNED 10/01)
 -----------------------------
 - Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo.
+- Unificar os caminhos onde os anexos são salvados. Atualmente tem dois.
+- Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
 
 
 

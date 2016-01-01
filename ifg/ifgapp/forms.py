@@ -67,6 +67,7 @@ class TecnologiaForm(autocomplete_light.ModelForm):
 
     class Meta:
         model = Tecnologia
+        fields = '__all__'
         widgets = {
             'solicitacao_protecao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'reuniao_com_comissao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
@@ -115,6 +116,7 @@ class TarefaForm(autocomplete_light.ModelForm):
 
     class Meta:
         model = Tarefa
+        fields = '__all__'
         widgets = {
             'realizacao_inicio': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'realizacao_final': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
@@ -146,6 +148,7 @@ class ContratoForm(autocomplete_light.ModelForm):
 
     class Meta:
         model = Contrato
+        fields = '__all__'
         widgets = {
             'assinatura_acordo': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'vigencia_inicio': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
@@ -175,6 +178,7 @@ class ContratoSearchForm(Form):
 class InstituicaoForm(ModelForm):
     class Meta:
         model = Instituicao
+        fields = '__all__'
 
 
 class InstituicaoSearchForm(Form):

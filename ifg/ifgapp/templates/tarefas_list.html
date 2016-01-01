@@ -1,25 +1,26 @@
 {% extends "base.html" %}
 {% load pagination_tags %}
 {% block content %}
-<table>
-    <tr><td><a href='{% url "adicionar_tarefa" %}'>Adicionar Tarefa</a></td></tr>
-    <tr><td><a href="{% url 'search_tarefa' %}">Buscar Tarefa</a></td></tr>
-</table>
-{% if objects_tolist %}
-    <table id="tarefas">
-        {% autopaginate objects_tolist 8 %}
-        {% for tarefa in objects_tolist %}
-            <tr>
-                <td>{{ tarefa.nome }}</td>
-                <td>{{ tarefa.tecnologia.nome }}</td>
-                <td><a href='{% url "edit_tarefa" tarefa.id %}' class="see_detail">Editar</a></td>
-                <td><a href='{% url "remover_tarefa" tarefa.id %}' class="see_detail">Remover</a></td>
-            </tr>
-        {% endfor %}
-     </table>
-     {% paginate %}
-{% else %}
-    <p>Nenhuma tarefa!!! :(</p>
-{% endif %}
+<div class="all">
+    <div class="options">
+        <p class="titulo"><b>Opções</b></p>
+        <p><a href="{% url 'search_tarefa' %}">Buscar Tarefa</a></p>
+    </div>
+    {% if objects_tolist %}
+        <table id="tarefas">
+            {% autopaginate objects_tolist 8 %}
+            {% for tarefa in objects_tolist %}
+                <tr>
+                    <td>{{ tarefa.nome }}</td>
+                    <td>{{ tarefa.tecnologia.nome }}</td>
+                    <td><a href='{% url "edit_tarefa" tarefa.id %}' class="see_detail">Editar</a></td>
+                    <td><a href='{% url "remover_tarefa" tarefa.id %}' class="see_detail">Remover</a></td>
+                </tr>
+            {% endfor %}
+         </table>
+         {% paginate %}
+    {% else %}
+        <p class="empty">Nenhuma tarefa cadastrada.<br>Para criar uma nova tarefa, vá ao menu <i>Tecnologias</i> e selecione uma tecnologia</p>
+    {% endif %}
+</div>
 {% endblock %}
-

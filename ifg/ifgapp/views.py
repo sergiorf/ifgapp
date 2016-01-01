@@ -11,9 +11,7 @@ from django.core.exceptions import ValidationError
 from django.template import RequestContext
 from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
     Instituicao, Arquivo, TecnologiaAnexo, Contrato
-from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, TarefaForm, \
-    InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, InventorSearchForm, InstituicaoSearchForm, \
-    TarefaSearchForm, ContratoSearchForm
+from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, TarefaForm, InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, InventorSearchForm, InstituicaoSearchForm, TarefaSearchForm, ContratoSearchForm
 from django.http import HttpResponse
 from utils import to_ascii, get_query
 import os
