@@ -71,7 +71,7 @@ ver 0.09 (PLANNED 03/01)
 -----------------------------
 - Automatização de Tarefas. Criação de nova tabela: DescricaoTarefa.
 
-ver 0.10 (PLANNED 10/01)
+ver 0.10 (PLANNED)
 -----------------------------
 - Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo.
 - Unificar os caminhos onde os anexos são salvados. Atualmente tem dois.

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm, FileField, CharField, Form, ChoiceField, ModelChoiceField, DateInput,\
     IntegerField, DateField
-from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
+from models import Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
     Contrato, Categoria, AreaConhecimento, SubAreaConhecimento, Especialidade, UF_CHOICES, TipoAtividade,\
     Atividade
 from django.contrib.admin.widgets import AdminFileWidget
@@ -28,12 +28,6 @@ class FormPlus(Form):
 class ServidorForm(ModelForm):
     class Meta:
         model = Servidor
-        exclude = ('user',)
-
-
-class PesquisadorForm(ModelForm):
-    class Meta:
-        model = Pesquisador
         exclude = ('user',)
 
 

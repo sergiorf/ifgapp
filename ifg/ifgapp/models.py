@@ -243,13 +243,6 @@ class Inventor(PessoaFisica):
         return u'%s (%s)' % (self.nome, self.cpf) if self.cpf else u'%s' % self.nome
 
 
-class Pesquisador(PessoaFisica):
-
-    class Meta:
-        verbose_name = u'Pesquisador'
-        verbose_name_plural = u'Pesquisador'
-
-
 class AreaConhecimento(models.Model):
     codigo = models.CharField(u'Código', max_length=8, unique=True)
     descricao = models.CharField(u'Descrição', max_length=255)

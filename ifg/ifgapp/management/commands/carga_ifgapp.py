@@ -2,7 +2,7 @@
 from django.core.management.base import BaseCommand
 from django.core.files import File
 from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, \
-    Grupo, Permissao, Servidor, Pesquisador, Inventor, Categoria, Subcategoria, Instituicao, \
+    Grupo, Permissao, Servidor, Inventor, Categoria, Subcategoria, Instituicao, \
     TipoAtividade, Atividade, Tecnologia, Tarefa
 from ifgapp.utils import create_obj
 import string
@@ -64,11 +64,6 @@ class Command(BaseCommand):
                 nome=u'servidor%s' % index,
                 email=u'servidor%s@ifg.com.br' % index,
                 matricula=u'ABCD1234%s' % index,
-                grupo=grupo,
-            ))
-            create_obj(dict(nome=u'pesquisador%s' % index), Pesquisador, dict(
-                nome=u'pesquisador%s' % index,
-                email=u'pesquisador%s@ifg.com.br' % index,
                 grupo=grupo,
             ))
             inv = create_obj(dict(nome=u'inventor%s' % index), Inventor, dict(

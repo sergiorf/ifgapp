@@ -9,8 +9,6 @@
     </table>
 {% elif klass_name == "Servidor" %}
    <a href= '{% url "adicionar_servidor" %}'>Adicionar servidor</a>
-{% elif klass_name == "Aluno" %}
-   <a href= '{% url "adicionar_pesquisador" %}'>Adicionar pesquisador</a>
 {% endif %}
 {% if objects_tolist %}
     <table id="usuarios">
@@ -23,10 +21,6 @@
                     <td>{{ usuario.matricula }}</td>
                     <td><a href='{% url "edit_servidor" usuario.id %}' class="see_detail">Editar</a></td>
                     <td><a href='{% url "remover_servidor" usuario.id %}' class="see_detail">Remover</a></td>
-                {% elif usuario|isinst:"ifgapp.models.Pesquisador" %}
-                    <td>{{ usuario.cpf }}</td>
-                    <td><a href='{% url "edit_pesquisador" usuario.id %}' class="see_detail">Editar</a></td>
-                    <td><a href='{% url "remover_pesquisador" usuario.id %}' class="see_detail">Remover</a></td>
                 {% elif usuario|isinst:"ifgapp.models.Inventor" %}
                     <td>{{ usuario.telefone }}</td>
                     <td><a href='{% url "edit_inventor" usuario.id %}' class="see_detail">Editar</a></td>

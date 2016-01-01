@@ -1,4 +1,4 @@
-from models import Servidor, Pesquisador, Inventor
+from models import Servidor, Inventor
 try:
     from functools import wraps
 except:

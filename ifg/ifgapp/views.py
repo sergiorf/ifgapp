@@ -9,9 +9,9 @@ from decorators import has_permission
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ValidationError
 from django.template import RequestContext
-from models import Permissao, Pesquisador, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
+from models import Permissao, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
     Instituicao, Arquivo, TecnologiaAnexo, Contrato
-from forms import GrupoForm, ServidorForm, PesquisadorForm, InventorForm, TecnologiaForm, TarefaForm, InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, InventorSearchForm, InstituicaoSearchForm, TarefaSearchForm, ContratoSearchForm
+from forms import GrupoForm, ServidorForm, InventorForm, TecnologiaForm, TarefaForm, InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, InventorSearchForm, InstituicaoSearchForm, TarefaSearchForm, ContratoSearchForm
 from django.http import HttpResponse
 from utils import to_ascii, get_query
 import os
@@ -26,12 +26,6 @@ class SearchField(object):
 @login_required()
 def index(request):
     return render_to_response('index.html', locals())
-
-
-@login_required()
-@has_permission([Permissao.VER_PESSOA])
-def listing_pesquisadores(request):
-    return __listing_objects(request, Pesquisador.objects.all(), 'usuario_list.html', "Pesquisador")
 
 
 @login_required()
@@ -78,11 +72,6 @@ def edit_servidor(request, pk):
 
 
 @login_required()
-def edit_pesquisador(request, pk):
-    return __edit_object(request, pk, Pesquisador, 'pesquisador_edit.html', "lista_pesquisadores")
-
-
-@login_required()
 def edit_inventor(request, pk):
     return __edit_object(request, pk, Inventor, 'inventor_edit.html', "lista_inventores")
 
@@ -118,11 +107,6 @@ def remover_servidor(request, pk):
 
 
 @login_required()
-def remover_pesquisador(request, pk):
-    return __remover_object(request, pk, Pesquisador, 'lista_pesquisadores')
-
-
-@login_required()
 def remover_inventor(request, pk):
     return __remover_object(request, pk, Inventor, 'lista_inventores')
 
@@ -155,11 +139,6 @@ def remover_instituicao(request, pk):
 @login_required()
 def adicionar_servidor(request):
     return __adicionar_obj(request, ServidorForm, listing_servidores, 'servidor_add.html')
-
-
-@login_required()
-def adicionar_pesquisador(request):
-    return __adicionar_obj(request, PesquisadorForm, listing_servidores, 'pesquisador_add.html')
 
 
 @login_required()
