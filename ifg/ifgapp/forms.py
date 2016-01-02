@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm, FileField, CharField, Form, ChoiceField, ModelChoiceField, DateInput,\
     IntegerField, DateField
-from models import Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
+from models import Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa, MetaTarefa, \
     Contrato, Categoria, AreaConhecimento, SubAreaConhecimento, Especialidade, UF_CHOICES, TipoAtividade,\
     Atividade
 from django.contrib.admin.widgets import AdminFileWidget
@@ -103,6 +103,13 @@ class TecnologiaSearchForm(Form):
                                         widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
     concessao_end = DateField(label='Concessão do Pedido (até)', required=False,
                                       widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
+
+
+class MetaTarefaForm(autocomplete_light.ModelForm):
+
+    class Meta:
+        model = MetaTarefa
+        fields = '__all__'
 
 
 class TarefaForm(autocomplete_light.ModelForm):

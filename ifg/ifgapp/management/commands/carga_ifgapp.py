@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 from django.core.files import File
 from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, \
     Grupo, Permissao, Servidor, Inventor, Categoria, Subcategoria, Instituicao, \
-    TipoAtividade, Atividade, Tecnologia, Tarefa
+    TipoAtividade, Atividade, Tecnologia, Tarefa, MetaTarefa
 from ifgapp.utils import create_obj
 import string
 import os
@@ -29,6 +29,7 @@ class Command(BaseCommand):
             grupo.permissoes.add(p)
         self.create_test_objs(10, grupo)
         Command.create_instituicoes()
+        Command.insert_metatarefas()
 
     @staticmethod
     def create_instituicoes():
@@ -210,3 +211,7 @@ class Command(BaseCommand):
                         descricao=desc,
                     ))
                     #print '------%s, %s' % (code, desc)
+
+    @staticmethod
+    def insert_metatarefas():
+        pass

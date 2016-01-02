@@ -450,17 +450,21 @@ class Tarefa(models.Model):
         super(Tarefa, self).clean()
 
 
-class TipoTarefa(models.Model):
+class MetaTarefa(models.Model):
+    PATENTES = u'00'
+    SOFTWARE = u'01'
+    MARCAS = u'02'
+    GERAL = u'03'
     CATEGORIAS = (
-        (u'00', u'Patentes'),
-        (u'01', u'Software'),
-        (u'02', u'Marcas'),
-        (u'03', u'Geral'),
+        (PATENTES, u'Patentes'),
+        (SOFTWARE, u'Software'),
+        (MARCAS, u'Marcas'),
+        (GERAL, u'Geral'),
     )
     nome = models.CharField(u'Título', max_length=120, unique=True)
     prazoemdias = models.PositiveIntegerField(u'Prazo em dias', null=True, blank=True)
     categoria = models.CharField(u'Categoria', max_length=2, null=True, blank=True, choices=CATEGORIAS)
-    apartirde = models.TextField(u'A partir de', blank=True)
+    ref_tecnologia_field = models.CharField(max_length=120, blank=True)
 
 
 class Contrato(models.Model):
