@@ -243,6 +243,13 @@ class Inventor(PessoaFisica):
         return u'%s (%s)' % (self.nome, self.cpf) if self.cpf else u'%s' % self.nome
 
 
+class Pesquisador(PessoaFisica):
+
+    class Meta:
+        verbose_name = u'Pesquisador'
+        verbose_name_plural = u'Pesquisador'
+
+
 class AreaConhecimento(models.Model):
     codigo = models.CharField(u'Código', max_length=8, unique=True)
     descricao = models.CharField(u'Descrição', max_length=255)
@@ -329,13 +336,18 @@ class Tecnologia(models.Model):
         (u'05', u'Pedido deferido'),
         (u'06', u'Prazo para recurso'),
     )
+
+    class Meta:
+        ordering = ('data_cadastro',)
+
+
     nome = models.CharField(u'Título', max_length=120, unique=True)
     categoria = models.ForeignKey(Categoria, null=True, blank=True)
     subcategoria = ChainedForeignKey(Subcategoria, chained_field='categoria',
                                      chained_model_field="categoria", null=True, blank=True)
     solicitacao_protecao = models.DateField(u'Data de solicitação da proteção', blank=True, null=True)
     reuniao_com_comissao = models.DateField(u'Data da reunião com Comissão', blank=True, null=True)
-    pedido = models.DateField(u'Data do protocolo do pedido', default=datetime.now)
+    pedido = models.DateField(u'Data do protocolo do pedido', blank=True, null=True)
     numero_processo = models.CharField(u'Número de processo', max_length=8, default=utils.gen_protocol, unique=True)
     orgao_registro = models.CharField(u'Órgão de registro', max_length=6, choices=ORGAOS_REGISTRO, default=INPI)
     area_conhecimento = models.ForeignKey(AreaConhecimento, verbose_name=u'Área do Conhecimento',
@@ -349,13 +361,14 @@ class Tecnologia(models.Model):
     criador = models.ForeignKey(Inventor, verbose_name=u'Criador Responsável', related_name=u'Tecnologia_criador')
     cocriadores = models.ManyToManyField('ifgapp.Inventor', verbose_name=u'Co-criador(es)',
                                          blank=True, null=True, related_name=u'Tecnologia_cocriador')
-    observacao = models.TextField(u'Observação', help_text=help_text.observacao, blank=True)
+    observacao = models.TextField(u'Observação', blank=True)
     status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
     concessao = models.DateField(u'Data em que o pedido foi concedido', blank=True, null=True)
     formulario_pedido = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf],
                                          max_length=255)
     ata_reuniao_comissao_avaliadora = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf],
                                                        max_length=255)
+    data_cadastro = models.DateTimeField(u'Data de cadastro no sistema', default=datetime.now)
 
     def __unicode__(self):
         return u'%s' % self.nome
@@ -393,6 +406,11 @@ class Atividade(models.Model):
 
 
 class Tarefa(models.Model):
+
+    class Meta:
+        ordering = ('realizacao_final',)
+
+
     AGUARDANDO_INICIO = '00'
     EM_ANDAMENTO = '01'
     FINALIZADA = '02'
@@ -451,20 +469,16 @@ class Tarefa(models.Model):
 
 
 class MetaTarefa(models.Model):
-    PATENTES = u'00'
-    SOFTWARE = u'01'
-    MARCAS = u'02'
-    GERAL = u'03'
     CATEGORIAS = (
-        (PATENTES, u'Patentes'),
-        (SOFTWARE, u'Software'),
-        (MARCAS, u'Marcas'),
-        (GERAL, u'Geral'),
+        (u'00', u'Patentes'),
+        (u'01', u'Software'),
+        (u'02', u'Marcas'),
+        (u'03', u'Geral'),
     )
     nome = models.CharField(u'Título', max_length=120, unique=True)
     prazoemdias = models.PositiveIntegerField(u'Prazo em dias', null=True, blank=True)
     categoria = models.CharField(u'Categoria', max_length=2, null=True, blank=True, choices=CATEGORIAS)
-    ref_tecnologia_field = models.CharField(max_length=120, blank=True)
+    apartirde = models.TextField(u'A partir de', blank=True)
 
 
 class Contrato(models.Model):
@@ -497,7 +511,7 @@ class Contrato(models.Model):
         super(Contrato, self).clean()
 
 
-
+#help_text=help_text.observacao, 
 
 
 

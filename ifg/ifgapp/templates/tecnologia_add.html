@@ -1,18 +1,26 @@
 {% extends "base.html" %}
+{% load pagination_tags %}
+{% load staticfiles %}
 {% block content %}
-    <a href="{% url 'lista_tecnologias' %}">Tecnologia</a>
-    <h1>Adicionar uma Tecnologia</h1>
-    <form id="tecnologia_form" method="post" action="/adicionar/tecnologia/" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-        {% for field in form.visible_fields %}
-            {{ field.errors }}
-            {{ field.help_text }}
-            {{ field.label }}
-            {{ field }}
-        {% endfor %}
-        <input type="submit" name="submit" value="Adicionar Tecnologia" />
-    </form>
+    <div class="all">
+        <div class="section">
+            <h2>Adicionar uma tecnologia</h2>
+            <p class="opcao"><img src="{% static 'images/back-1.png' %}"><a href="{% url 'lista_tecnologias' %}">Voltar</a></p>
+        </div>
+        <div class="lista">
+             <form id="tecnologia_form" class="formulario" method="post" action="/adicionar/tecnologia/" enctype="multipart/form-data">
+                
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+                {% for field in form.visible_fields %}
+                        {{ field.errors }}
+                        {{ field.help_text }}
+                    <p class="campo">{{ field.label }} {{ field }}</p>
+                {% endfor %}
+                <br><p class="submit"><input type="submit" name="submit" value="Adicionar Tecnologia" /></p>
+            </form>
+        </div>   
+    </div>  
 {% endblock %}

@@ -19,169 +19,280 @@ ul li {
 	visibility: hidden;
 }
 
-/* --------------- MENU LATERAL -------------- */
+/*---------------- CONTAINER ------------- */
 
 *{
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
-#menu {
+#container {
+	outline: 2px solid red; 
+	width: 100%;
+	height: 100%;
 	position: fixed;
+	clear: both;
+	overflow: auto;
+}
+
+/* --------------- MENU LATERAL -------------- */
+
+#menu {
+	position: absolute;
+	float: left;
 	background: #333333;
 	width: 300px;
 	height: 100%;
 }
 
-/* */
-
 #sgpi {
 	/* outline: 1px solid red; */
 	width: 100%;
-	height: 12%;
+	height: 70px;
+	margin-top: 5%;
 }
 
 #sgpi img {
-	margin-top: 5px;
 	margin-left: 5px;
-	/* outline: 1px solid red; */
-	width: 130px;
-	height: 70px;
+	/* outline: 1px solid red;  */
+	width: 140px;
+	height: 99%;
 }
 
-/* --------------- USER PROFILE -------------- */
+/* ------------- Menu lateral divisões -------------- */
 
-#userProfile {
-	/* outline: 1px solid red; */
-	width: 100%;
-	height: 80px;
-}
+	/* --------------- USER PROFILE -------------- */
 
-#userProfile p {
-	/* outline: 1px solid red; */
-	padding: 15px;
-	margin: 15px;
-	color: white;
-	background-color: #1c1c1c;
-}
+	#userProfile {
+		/* outline: 1px solid red; */
+		width: 100%;
+		height: 60px;
+		margin-top: 8%;
+	}
 
-/* ----------------- NAV GLOBAL -------------- */
+	#userProfile p {
+		/* outline: 1px solid red; */
+		padding: 15px;
+		margin: 15px;
+		color: white;
+		background-color: #1c1c1c;
+	}
 
-#navglobal {
-	 /* outline: 1px solid red; */
-}
+	/* ----------------- NAV GLOBAL -------------- */
 
-#navglobal .icon {
-	/* outline: 1px solid red; */
-	margin: 15px;
-	margin-top: 3px;
-	width: 90%;
-	height: 30px;
-}
+	#navglobal {
+		 /* outline: 1px solid red; */
+		 margin-top: 8%;
+	}
 
-.icon img {
-	/* outline: 1px solid red; */
-	width: 30px;
-	height: 30px;
-	margin: 5px;
-	float: left;
-}
+	#navglobal .icon {
+		/* outline: 1px solid red; */
+		margin: 15px;
+		margin-top: 3px;
+		width: 90%;
+		height: 30px;
+	}
 
-#navglobal .icon a {
-	/* outline: 1px solid red; */
-	width: 70%;
-	height: 25px;
-	padding-top: 7px;
-	color: white;
-	float: left;
-	margin-left: 40px;
-	font-size: 17px;
-	border-bottom: thin solid #333333;
-	-- webkit-transition: all .4s;
-	-o-transition: all .4s;
-	transition: all .4s;
-}
+	.icon img {
+		/* outline: 1px solid red; */
+		width: 30px;
+		height: 30px;
+		margin: 5px;
+		float: left;
+	}
 
-#navglobal .icon a:hover {
-	border-bottom: thin solid #9c9c9c;
-}
+	#navglobal .icon a {
+		/* outline: 1px solid red; */
+		width: 70%;
+		height: 25px;
+		padding-top: 7px;
+		color: white;
+		float: left;
+		margin-left: 40px;
+		font-size: 17px;
+		border-bottom: thin solid #333333;
+		-- webkit-transition: all .4s;
+		-o-transition: all .4s;
+		transition: all .4s;
+	}
 
-/* ---------------- NAVIGATION -------------- */
+	#navglobal .icon a:hover {
+		border-bottom: thin solid #9c9c9c;
+	}
 
-#navigation {
-	line-height: 55px;
-	margin-top: 30px;
-	/* outline: 1px solid red; */
-}
+	/* ---------------- NAVIGATION -------------- */
 
-#navigation ul {
-	width: 100%;
-	display: block;
-}
+	#navigation {
+		line-height: 55px;
+		margin-top: 12%;
+		/* outline: 1px solid red; */
+	}
 
-#navigation ul li a {
-	color: white;
-	font-size: 16px;
-	display: block;
-	width: 100%;
-}
+	#navigation ul {
+		width: 100%;
+		display: block;
+	}
 
-#navigation ul li {
-	padding-left: 2em;
-	box-shadow: 3px 0 #333333 inset;
-	-- webkit-transition: all .6s;
-	-o-transition: all .6s;
-	transition: all .6s;
-}
+	#navigation ul li a {
+		color: white;
+		font-size: 16px;
+		display: block;
+		width: 100%;
+	}
 
-#navigation ul li:hover {
-	box-shadow: 350px 0 #696969 inset;
-}
+	#navigation ul li {
+		padding-left: 2em;
+		box-shadow: 3px 0 #333333 inset;
+		-- webkit-transition: all .6s;
+		-o-transition: all .6s;
+		transition: all .6s;
+	}
 
-p.navigation {
-	position: relative;
-	padding: 15px;
-	padding-right: 35px;
-	float: right;
-	overflow: hidden;
-}
+	#navigation ul li:hover {
+		box-shadow: 350px 0 #696969 inset;
+	}
 
-/* --------------- DJANGO ICON --------------- */
-
-#djangoIcon {
-	width: 100px;
-	height: 25px;
-	margin: auto;
-}
+	p.navigation {
+		position: relative;
+		padding: 15px;
+		padding-right: 35px;
+		float: right;
+		overflow: hidden;
+	}
 
 /* ----------------- CONTENT ----------------- */
 
 #content {
-	 outline: 1px solid red; 
+	/* outline: 1px solid blue; */
+	margin-top: 15px;
+	width: 80%;
+	height: 98%;
 	float: right;
-	margin-left: 320px;
-	margin-top: 20px;
-	height: 95%;
-	width: 75%;
+	clear: both;
 	position: absolute;
+	margin-left: 320px;
 }
+
+/* -------------- Content subdivisões ----------------- */
+
+	/* ------------------ ALL ---------------- */
+
+	.all {
+		width: 97%;
+		height: 90%;
+		margin: 0 auto;
+		margin-bottom: 15px;
+		background: #FFFFFF;
+	}
+
+	.section {
+		width: 100%;
+		margin: 10px;
+		overflow: auto;
+	}
+
+	.section h2 {
+		width: 97%;
+		margin-top: 5px;
+		border-bottom: thin groove #009900;
+	}
+
+	.section p {
+		margin-top: 8px;
+	}
+
+	.section a {
+		color: #33CCFF;
+	}
+
+	.section a:hover {
+		color: #3366FF;
+	}
+
+	/* ------------- FORMULARIOS -------------- */
+
+	.lista {
+		/* outline: 1px solid red; */
+		margin-left: 10px;
+		width: 95%;
+		overflow: auto; 
+		max-height: 88%;
+	}
+
+	.errors {
+		/* outline: 1px solid red; */
+		text-align: right;
+	}
+
+	.campo {
+		/* outline: 1px solid blue; */
+		max-width: 200px;
+		display: block;
+		margin-bottom: 8px;
+		margin-left: 10px;
+	}
+
+	/* ------------- BOTOES -------------- */
+
+	.all input[type="submit"]{
+		color: #000;
+		/* outline: 1px solid blue; */
+		background-color: #F5F5F5;
+		border: 1px solid gray; 
+		border-radius: 5px;
+	    width: 100%;
+		height: 100%;
+	}
+
+	.all input[type="submit"]:hover {
+		background-color: #DCDCDC;
+	}
+
+	.submit {
+		/* outline: 1px solid red; */
+		width: 150px;
+		height: 38px;
+		margin: 0 auto;
+		margin-top: 15px;
+	}
+
+	.opcao {
+		/* outline: 1px solid red; */
+		float: right;
+		margin-right: 45px;
+	}
+
+	.opcao a {
+		color: #000;
+		font-size: 16px;
+		margin-left: 8px;
+	}
+
+	.opcao a:hover {
+		color: #c0c0c0;
+	}
+
+	.opcao img {
+		width: 22px;
+		height: 22px;
+	}
 
 /* ----------------- FOOTER ------------------ */
 
 #footer {
 	/* outline: 1px solid red; */
 	width: 97%;
-	height: 50px;
-	float: right;
-	margin-right: 15px;
-	border-top: 2px solid #696969;
-	margin-top: 8px;
+	height: 60px;
+	margin: 0 auto;
+	border-top: 2px solid #999999;
 }
 
 #footer p {
+	/* outline: 1px solid red; */
+	margin: 0;
+	margin-top: 3px;
 	text-align: center;
 	color: #9c9c9c;
-	margin-top: 5px;
 }
 
 #footer p a {
@@ -192,11 +303,18 @@ p.navigation {
 	color: #228b22;
 }
 
-/* ------------------ ALL ---------------- */
+/* 
+		background: #38B0DE;
+	    border: 1px solid #007FFF; 
+	    border-radius: 5px; 
+	    font-size: 80%;
+	    padding: 0 5px; 
 
-.all {
-	width: 97%;
-	height: 90%;
-	margin: 0 auto;
-	background: #FFFFFF;
-}
+	    width: 130px;
+		height: 25px;
+		background: #38B0DE;
+	    border: 1px solid #007FFF;
+	    border-radius: 3px;
+	    text-align: center;
+	    padding: 4px;
+	    display: inline-block;  */

@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load pagination_tags %}
+{% load staticfiles %}
 {% block content %}
-    <div class="all">
-    <div class="options">
-        <p class="titulo"><b>Opções</b></p>
-        <p><a href='{% url "adicionar_tecnologia" %}'>Adicionar Tecnologia</a></p>
-        <p><a href="{% url 'search_tecnologia' %}">Buscar Tecnologia</a></p>
+<div class="all">
+    <div class="section">
+        <h2>Tecnologias</h2>
+        <p class="opcao"><img src="{% static 'images/search-0.png' %}"><a href="{% url 'search_tecnologia' %}">Buscar Tecnologia</a></p>
+        <p class="opcao"><img src="{% static 'images/add-0.png' %}"><a href="{% url 'adicionar_tecnologia' %}">Adicionar Tecnologia</a></p>
     </div>
     {% if objects_tolist %}
         <table id="tecnologias">

@@ -30,6 +30,11 @@ body.login ul li {
 	list-style: none;
 }
 
+.oculto {
+    display: none;
+    visibility: hidden;
+}
+
 /*---------------------- Divs -------------------- */
 
 /* CONTAINER */
@@ -72,12 +77,12 @@ body.login .form-row a {
 }
 
 body.login .form-row label {
-    clear: left;
+    /* clear: left; */
     color: #666666 !important;
     font-weight: normal !important;
     line-height: 1em;
-    padding: 0 5px 0 0;
-    text-align: left !important;
+    padding: 0 5px;
+    /* text-align: left !important; */
     margin-bottom: 5px;
 }
 

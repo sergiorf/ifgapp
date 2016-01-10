@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm, FileField, CharField, Form, ChoiceField, ModelChoiceField, DateInput,\
     IntegerField, DateField
-from models import Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa, MetaTarefa, \
+from models import Pesquisador, Servidor, Grupo, Tecnologia, Instituicao, PessoaFisica, Inventor, Tarefa,\
     Contrato, Categoria, AreaConhecimento, SubAreaConhecimento, Especialidade, UF_CHOICES, TipoAtividade,\
     Atividade
 from django.contrib.admin.widgets import AdminFileWidget
@@ -28,6 +28,12 @@ class FormPlus(Form):
 class ServidorForm(ModelForm):
     class Meta:
         model = Servidor
+        exclude = ('user',)
+
+
+class PesquisadorForm(ModelForm):
+    class Meta:
+        model = Pesquisador
         exclude = ('user',)
 
 
@@ -61,7 +67,7 @@ class TecnologiaForm(autocomplete_light.ModelForm):
 
     class Meta:
         model = Tecnologia
-        fields = '__all__'
+        exclude = ('data_cadastro',)
         widgets = {
             'solicitacao_protecao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'reuniao_com_comissao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
@@ -105,13 +111,6 @@ class TecnologiaSearchForm(Form):
                                       widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
 
 
-class MetaTarefaForm(autocomplete_light.ModelForm):
-
-    class Meta:
-        model = MetaTarefa
-        fields = '__all__'
-
-
 class TarefaForm(autocomplete_light.ModelForm):
     anexo = FileField(label='Anexo', widget=AdminFileWidget, max_length=200, required=False)
 
@@ -149,7 +148,7 @@ class ContratoForm(autocomplete_light.ModelForm):
 
     class Meta:
         model = Contrato
-        fields = '__all__'
+        exclude = ('codigo',)
         widgets = {
             'assinatura_acordo': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
             'vigencia_inicio': DateInput(attrs={'size': '90', 'id': 'datepicker'}),

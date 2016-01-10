@@ -18,11 +18,11 @@
     <div id="container">
         <div id="menu">
             <div id="sgpi">
-                <h2 class="oculto">Sistema de Proteção Intelectual</h2>
+                <h1 class="oculto">Sistema de Proteção Intelectual</h1>
                 <img src="{% static 'images/sgpi-final-logo.png' %}">
            </div>
            <div id="userProfile">
-                <p>Olá, {{ user.get_username }} !</p>
+                <p>Bem vindo, {{ user.get_username }} !</p>
            </div>
            <div id="navglobal">
                  <div class="icon"><img src="{% static 'images/logout-1.png' %}"><a href="/accounts/logout">Sair</a></div>
@@ -36,17 +36,14 @@
                     <li><a href="{% url 'lista_instituicoes' %}">Instituições</a></li>
                     <li><a href="{% url 'lista_tarefas' %}">Tarefas</a></li>
                     <li><a href="{% url 'lista_contratos' %}">Contratos</a></li>
-                    <li><a href="{% url 'lista_metatarefas' %}">Meta Tarefas</a></li>
                 </ul>
            </div>
-
         </div>
         <div id="content">
           {% block content %}{% endblock %}
           <div id="footer">
             <p>Desenvolvimento: <a href="http://www.ifg.edu.br">Instituto Federal de Goiás</a></p>
             <p>IFG &copy; 2015</p>
-          </div>
         </div>
     </div>
 </body>

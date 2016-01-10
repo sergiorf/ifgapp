@@ -2,6 +2,7 @@
 {% load staticfiles %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
 	<title>SGI: Sistema de Gestão da Inovação</title>
 	{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
@@ -12,7 +13,7 @@
 <body class="login">
 <div id="container">
     <div id="content">
-        <h2 class="oculto">Sistema de Proteção Intelectual</h2>
+        <h1 class="oculto">Sistema de Proteção Intelectual</h1>
         {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
             <p class="errornote">
                 {% blocktrans count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
@@ -55,7 +56,7 @@
         <div id="servicos">
             <p>Opções</p>
             <ul id="services">
-                <li><a href="/comum/solicitar_trocar_senha/">Solicitar mudanÃ§a de senha</a></li>
+                <li><a href="/comum/solicitar_trocar_senha/">Solicitar mudança de senha</a></li>
             </ul>
         </div>
     </div>

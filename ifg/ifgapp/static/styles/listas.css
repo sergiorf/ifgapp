@@ -8,16 +8,16 @@
 	margin-left: auto;
 }
 
-.options {
+/* .options {
 	width: 20%;
 	height: 20%;
-	float: right;
+	float: left;
 	margin: 6px;
 	background: #D9D9FF;
 }
 
 .options p {
-	/* outline: 1px solid red; */
+	 outline: 1px solid red; 
 	font-size: 18px;
 	line-height: 35px;
 	display: block;
@@ -37,3 +37,5 @@
 .options p a:hover {
 	color: #00BFFF;
 };
+
+*/

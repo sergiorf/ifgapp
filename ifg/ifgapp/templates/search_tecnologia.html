@@ -1,32 +1,46 @@
 {% extends "base.html" %}
+{% load pagination_tags %}
+{% load staticfiles %}
 {% block content %}
-    <a href="{% url 'lista_tecnologias' %}">Tecnologias</a>
-    <h1>Buscar Tecnologia</h1>
-    <form id="tecnologia_search_form" method="post" action="/search/tecnologia/" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-        {% for field in form.visible_fields %}
-            {{ field.help_text }}
-            {{ field.label }}
-            {{ field }}
-        {% endfor %}
-        <input type="submit" value="Search">
-    </form>
-    {% if objects_tolist %}
-    <table id="tecnologias">
-        {% for tecnologia in objects_tolist %}
-            <tr>
-                <td>{{ tecnologia.nome }}</td>
-                <td>{{ tecnologia.categoria }}</td>
-                <td>{{ tecnologia.numero_processo }}</td>
-                <td><a href='{% url "edit_tecnologia" tecnologia.id %}' class="see_detail">Editar</a></td>
-                <td><a href='{% url "remover_tecnologia" tecnologia.id %}' class="see_detail">Remover</a></td>
-            </tr>
-        {% endfor %}
-     </table>
-    {% else %}
-        <p>Nenhuma tecnologia!!! :(</p>
-    {% endif %}
+<div class="all">
+    <div class="section">
+        <h2>Buscar Tecnologia</h2>
+        <p class="opcao"><img src="{% static 'images/back-1.png' %}"><a href="{% url 'lista_tecnologias' %}">Voltar</a></p>
+    </div>
+    <div class="lista">
+        <form id="tecnologia_search_form" method="post" action="/search/tecnologia/" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                 {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+                {{ field.help_text }}
+                <p class="campo">{{ field.label }}{{ field }}</p>
+            {% endfor %}
+            <br><p class="submit"><input type="submit" value="Buscar"></p>
+        </form>
+    </div>
+    <div class="section">
+        <h2>Resultados</h2>
+    </div>
+    <div class="lista">
+        {% if objects_tolist %}
+        <table id="tecnologias">
+            {% for tecnologia in objects_tolist %}
+                <tr>
+                    <td>{{ tecnologia.nome }}</td>
+                    <td>{{ tecnologia.categoria }}</td>
+                    <td>{{ tecnologia.numero_processo }}</td>
+                    <td><a href='{% url "edit_tecnologia" tecnologia.id %}' class="see_detail">Editar</a></td>
+                    <td><a href='{% url "remover_tecnologia" tecnologia.id %}' class="see_detail">Remover</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p class="empty">Nenhuma tecnologia cadastrada.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
+
+    

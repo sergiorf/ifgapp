@@ -13,7 +13,7 @@ from models import Permissao, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
     Instituicao, Arquivo, TecnologiaAnexo, Contrato, MetaTarefa
 from forms import GrupoForm, ServidorForm, InventorForm, TecnologiaForm, \
     TarefaForm, InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, \
-    InventorSearchForm, InstituicaoSearchForm, TarefaSearchForm, ContratoSearchForm, MetaTarefaForm
+    InventorSearchForm, InstituicaoSearchForm, TarefaSearchForm, ContratoSearchForm
 from django.http import HttpResponse
 from utils import to_ascii, get_query
 import os

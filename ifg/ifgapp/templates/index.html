@@ -1,7 +1,38 @@
 {% extends "base.html" %}
 {% load pagination_tags %}
+{% load staticfiles %}
 {% block content %}
 	<div class="all">
-		<p class="empty">Hello World!</p>
+		<div class="section">
+			<h2>Próximas tarefas</h2>
+		</div>
+		<div class="lista">
+			{% if objects_tolist %}
+			{% autopaginate objects_tolist 6 %}
+				{% for tarefas in objects_tolist %}
+					<p><a href='{% url "edit_tarefa" tarefa.id %}' class="see_detail">{{ tarefa.nome }}</a>
+					<br>{{ tarefa.atividade }}
+					<br> {{ tarefa.realizacao_final }}</p>
+				{% endfor %}
+			{% else %}
+				<p class="empty">Nenhuma tarefa cadastrada.</p>
+			{% endif %}
+		</div>
+		<div class="section">
+			<h2>Tecnologias recentes</h2>
+		</div>
+		<div class="lista">
+			{% if objects_tolist %}
+				{% autopaginate objects_tolist 6 %}
+				{% for tarefas in objects_tolist %}
+					<p><a href='{% url "edit_tecnologia" tecnologia.id %}' class="see_detail">
+					{{ tecnologia.nome }}</a>
+					<br> {{ tecnologia.categoria }} 
+					<br> {{ tecnologia.numero_processo }}</p>
+				{% endfor %}
+			{% else %}
+				<p class="empty">Nenhuma tecnologia cadastrada.<br>Para criar uma nova tecnologia, <a href='{% url "adicionar_tecnologia" %}'>clique aqui</a>.</p>
+			{% endif %}
+		</div>
 	</div>
 {% endblock %}
