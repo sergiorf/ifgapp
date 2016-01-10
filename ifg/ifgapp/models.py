@@ -335,6 +335,8 @@ class Tecnologia(models.Model):
         (u'04', u'Pedido indeferido'),
         (u'05', u'Pedido deferido'),
         (u'06', u'Prazo para recurso'),
+        (u'07', u'Arquivado temporariamente'),
+        (u'08', u'Arquivado'),
     )
 
     class Meta:
@@ -347,8 +349,9 @@ class Tecnologia(models.Model):
                                      chained_model_field="categoria", null=True, blank=True)
     solicitacao_protecao = models.DateField(u'Data de solicitação da proteção', blank=True, null=True)
     reuniao_com_comissao = models.DateField(u'Data da reunião com Comissão', blank=True, null=True)
-    pedido = models.DateField(u'Data do protocolo do pedido', blank=True, null=True)
-    numero_processo = models.CharField(u'Número de processo', max_length=8, default=utils.gen_protocol, unique=True)
+    pedido = models.DateField(u'Data do depósito do pedido', blank=True, null=True)
+    numero_pedido = models.CharField(u'Número do pedido', max_length=8, default=utils.gen_num_pedido, unique=True)
+    numero_protocolo = models.CharField(u'Número do protocolo', max_length=8, default=utils.gen_num_protocolo, unique=True)
     orgao_registro = models.CharField(u'Órgão de registro', max_length=6, choices=ORGAOS_REGISTRO, default=INPI)
     area_conhecimento = models.ForeignKey(AreaConhecimento, verbose_name=u'Área do Conhecimento',
                                           related_name=u'area_conhecimento', null=True, blank=True)
@@ -362,7 +365,7 @@ class Tecnologia(models.Model):
     cocriadores = models.ManyToManyField('ifgapp.Inventor', verbose_name=u'Co-criador(es)',
                                          blank=True, null=True, related_name=u'Tecnologia_cocriador')
     observacao = models.TextField(u'Observação', blank=True)
-    status = models.CharField(u'Status', max_length=2, null=True, blank=True, choices=STATUS)
+    status = models.CharField(u'Status do pedido', max_length=2, null=True, blank=True, choices=STATUS)
     concessao = models.DateField(u'Data em que o pedido foi concedido', blank=True, null=True)
     formulario_pedido = models.FileField(upload_to=utils.doc_location, validators=[validate_file_ispdf],
                                          max_length=255)

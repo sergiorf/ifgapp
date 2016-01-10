@@ -38,10 +38,16 @@ def mkdir_p(path):
             raise
 
 
-def gen_protocol():
+def gen_num_pedido():
     d = uuid.uuid4()
     res = d.hex
     return 'BR' + res[0:6]
+
+
+def gen_num_protocolo():
+    d = uuid.uuid4()
+    res = d.hex
+    return res[0:8]
 
 
 def gen_random():
