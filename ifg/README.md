@@ -73,11 +73,13 @@ ver 0.09
 - Criar a entidade MetaTarefa. Essa entidade contém a descrição das tarefas automáticas. O intuito é
 criar as tarefas automáticas a partir de dados e não de código.
 
+ver 0.10
++ Corrigir bug para visualizar páginas quando logado como superuser. -> ok
+- Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo. -> ok
+
 ver 0.10 (PLANNED)
 -----------------------------
 - Finalizar automatização de Tarefas.
-- Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo.
-- Permitir salvar os anexos antes de o objeto ser salvado (usar o nome único).
 
 
 

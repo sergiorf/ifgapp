@@ -155,42 +155,42 @@ def remover_instituicao(request, pk):
 
 @login_required()
 def adicionar_servidor(request):
-    return __adicionar_obj(request, ServidorForm, listing_servidores, 'servidor_add.html')
+    return __adicionar_obj(request, ServidorForm, 'lista_servidores', 'servidor_add.html')
 
 
 @login_required()
 def adicionar_inventor(request):
-    return __adicionar_obj(request, InventorForm, listing_inventores, 'inventor_add.html')
+    return __adicionar_obj(request, InventorForm, 'lista_inventores', 'inventor_add.html')
 
 
 @login_required()
 def adicionar_grupo(request):
-    return __adicionar_obj(request, GrupoForm, listing_grupos, 'grupo_add.html')
+    return __adicionar_obj(request, GrupoForm, 'lista_grupos', 'grupo_add.html')
 
 
 @login_required()
 def adicionar_tecnologia(request):
-    return __adicionar_obj(request, TecnologiaForm, listing_tecnologias, 'tecnologia_add.html')
+    return __adicionar_obj(request, TecnologiaForm, 'lista_tecnologias', 'tecnologia_add.html')
 
 
 @login_required()
 def adicionar_tarefa(request):
-    return __adicionar_obj(request, TarefaForm, listing_tarefas, 'tarefa_add.html')
+    return __adicionar_obj(request, TarefaForm, 'lista_tarefas', 'tarefa_add.html')
 
 
 @login_required()
 def adicionar_metatarefa(request):
-    return __adicionar_obj(request, MetaTarefaForm, listing_metatarefas, 'metatarefa_add.html')
+    return __adicionar_obj(request, MetaTarefaForm, 'lista_metatarefas', 'metatarefa_add.html')
 
 
 @login_required()
 def adicionar_contrato(request):
-    return __adicionar_obj(request, ContratoForm, listing_contratos, 'contrato_add.html')
+    return __adicionar_obj(request, ContratoForm, 'lista_contratos', 'contrato_add.html')
 
 
 @login_required()
 def adicionar_instituicao(request):
-    return __adicionar_obj(request, InstituicaoForm, listing_instituicoes, 'instituicao_add.html')
+    return __adicionar_obj(request, InstituicaoForm, 'lista_instituicoes', 'instituicao_add.html')
 
 
 @login_required()
@@ -314,13 +314,13 @@ def __remover_object(request, pk, obj_klass, list_url):
     return render(request, 'confirm_delete.html', {'object': obj})
 
 
-def __adicionar_obj(request, form_klass, listing_fn, template_name):
+def __adicionar_obj(request, form_klass, list_url, template_name):
     context = RequestContext(request)
     if request.method == 'POST':
         form = form_klass(request.POST, request.FILES)
         if form.is_valid():
             form.save(commit=True)
-            return listing_fn(request)
+            return HttpResponseRedirect(reverse(list_url))
         #Not working with chained selects
         #else:
         #    print form
