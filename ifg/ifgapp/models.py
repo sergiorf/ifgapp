@@ -12,6 +12,9 @@ from datetime import datetime
 from utils import mkdir_p
 from validators import validate_file_ispdf, validate_telefone
 from collections import defaultdict
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+import tarefas_automaticas
 
 
 class Arquivo(models.Model):
@@ -469,6 +472,11 @@ class Tarefa(models.Model):
         if len(errors):
             raise ValidationError(errors)
         super(Tarefa, self).clean()
+
+
+@receiver(post_save, sender=Tecnologia, dispatch_uid="update_tarefas_automaticas")
+def update_tarefas_automaticas(sender, instance, **kwargs):
+    tarefas_automaticas.cria_tarefas(instance)
 
 
 class MetaTarefa(models.Model):

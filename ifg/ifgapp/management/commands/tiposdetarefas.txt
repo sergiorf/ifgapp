@@ -1,5 +1,0 @@
-1ª anuidade;PATENTES;36;meses;pedido;;
-Anuidades;PATENTES;jan-mar;;;1ªanuidade;
-Pedido de exame;PATENTES;36;meses;solicitacao_protecao;;
-Desarquivamento: exame não solicitado;PATENTES;60;dias;solicitacao_protecao;;
-

@@ -29,7 +29,6 @@ class Command(BaseCommand):
             grupo.permissoes.add(p)
         self.create_test_objs(10, grupo)
         Command.create_instituicoes()
-        Command.insert_metatarefas()
 
     @staticmethod
     def create_instituicoes():
@@ -212,6 +211,3 @@ class Command(BaseCommand):
                     ))
                     #print '------%s, %s' % (code, desc)
 
-    @staticmethod
-    def insert_metatarefas():
-        pass
