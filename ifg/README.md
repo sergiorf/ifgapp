@@ -96,7 +96,7 @@ ver 0.12 (PLANNED)
 - Nos resultados da busca, ao invés de "editar" e "remover", gostaria que houvesse apenas um "ver detalhes",
   que, aliás, eu não sei onde está. Só consigo visualizar detalhes dos objetos clicando em "editar"
   e deixando inalterado.
-
+- Bug: Fazer os formulários de 'Ver detales' readonly.
 
 
 

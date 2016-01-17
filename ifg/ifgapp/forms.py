@@ -107,6 +107,22 @@ class TecnologiaForm(autocomplete_light.ModelForm):
         return self.cleaned_data
 
 
+class TecnologiaVerForm(ModelForm):
+    formulario_pedido = FileField(label='Formulário do pedido', widget=AdminFileWidget, max_length=200, required=True)
+    ata_reuniao_comissao_avaliadora = FileField(label='Ata da reunião com Comissão Avaliadora', widget=AdminFileWidget,
+                                                max_length=200, required=True)
+
+    class Meta:
+        model = Tecnologia
+        exclude = ('data_cadastro',)
+        widgets = {
+            'solicitacao_protecao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'reuniao_com_comissao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'pedido': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'concessao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+        }
+
+
 class TecnologiaSearchForm(Form):
     nome = CharField(label=u'Título', required=False)
     categoria = ModelChoiceField(queryset=Categoria.objects.all(), required=False)
