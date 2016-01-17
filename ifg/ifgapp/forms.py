@@ -196,7 +196,21 @@ class TarefaSearchForm(Form):
     conclusao_end = DateField(label='Conclusão (até)', required=False,
                                       widget=DateInput(attrs={'size': '90', 'id': 'datepicker'}))
 
+
 class ContratoForm(autocomplete_light.ModelForm):
+    copia_contrato = FileField(label='Cópia do contrato', widget=AdminFileWidget, max_length=200, required=False)
+
+    class Meta:
+        model = Contrato
+        exclude = ('codigo',)
+        widgets = {
+            'assinatura_acordo': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'vigencia_inicio': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'vigencia_fim': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+        }
+
+
+class ContratoVerForm(ModelForm):
     copia_contrato = FileField(label='Cópia do contrato', widget=AdminFileWidget, max_length=200, required=False)
 
     class Meta:

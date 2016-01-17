@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^ver/tecnologia/(?P<pk>\d+)/$', 'ifgapp.views.ver_tecnologia', name='ver_tecnologia'),
     url(r'^ver/instituicao/(?P<pk>\d+)/$', 'ifgapp.views.ver_instituicao', name='ver_instituicao'),
     url(r'^ver/tarefa/(?P<pk>\d+)/$', 'ifgapp.views.ver_tarefa', name='ver_tarefa'),
+    url(r'^ver/contrato/(?P<pk>\d+)/$', 'ifgapp.views.ver_contrato', name='ver_contrato'),
 
     url(r'^servidor/(?P<pk>\d+)/$', 'ifgapp.views.edit_servidor', name='edit_servidor'),
     url(r'^inventor/(?P<pk>\d+)/$', 'ifgapp.views.edit_inventor', name='edit_inventor'),
