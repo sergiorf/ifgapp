@@ -1,9 +1,21 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
-    <a href="{% url "lista_inventores" %}">Inventores</a>
-    <h1>Editar um inventor</h1>
-    <form method="post" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
-    </form>
+<div class="all">
+	<div class="section">
+        <h2>Editar inventor</h2>
+        <p class="opcao"><img src="{% static 'images/back-1.png' %}"><a href="{% url 'lista_inventores' %}">Voltar</a></p>
+    </div>
+    <div class="lista" id="inventor_edit">
+    	<form method="post">{% csrf_token %}
+	        {% for field in form.visible_fields %}
+                <p><strong><font color="red">{{ field.errors }}</font></strong></p>
+                <p><strong>{{ field.help_text }}</strong></p>
+                <p class="campo">{{ field.label }}</p>
+                <p class="campo">{{ field }}</p>
+            {% endfor %}
+	        <br><p class="submit"><input type="submit" name="submit" value="Concluído" /></p>
+	    </form>
+    </div>
+ </div>  
 {% endblock %}

@@ -14,10 +14,12 @@
                 {{ hidden }}
             {% endfor %}
             {% for field in form.visible_fields %}
-                {{ field.help_text }}
-                <p class="campo">{{ field.label }}{{ field }}</p>
+                <p><strong><font color="red">{{ field.errors }}</font></strong></p>
+                <p><strong>{{ field.help_text }}</strong></p>
+                <p class="campo">{{ field.label }}</p>
+                <p class="campo">{{ field }}</p>
             {% endfor %}
-            <br><p class="submit"><input type="submit" value="Search"></p>
+            <br><p class="submit"><input type="submit" value="Pesquisar"></p>
         </form>
     </div>
     <div class="section">
@@ -26,11 +28,18 @@
     <div class="lista">
         {% if objects_tolist %}
         <table id="contratos">
+            <tr>
+                <th>Código</th>
+                <th>Modalidade</th>
+                <th>Tecnologia</th>
+                <th></th>
+                <th></th>
+            </tr>
             {% for contrato in objects_tolist %}
                 <tr>
                     <td>{{ contrato.codigo }}</td>
-                    <td>{{ contrato.tecnologia }}</td>
                     <td>{{ contrato.modalidade }}</td>
+                    <td>{{ contrato.tecnologia }}</td>
                     <td><a href='{% url "edit_contrato" contrato.id %}' class="see_detail">Editar</a></td>
                     <td><a href='{% url "remover_contrato" contrato.id %}' class="see_detail">Remover</a></td>
                 </tr>

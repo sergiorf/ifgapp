@@ -186,7 +186,8 @@ ul li {
 	}
 
 	.section {
-		width: 100%;
+		/* outline: 1px solid red; */
+		width: 99%;
 		margin: 10px;
 		overflow: auto;
 	}
@@ -212,25 +213,64 @@ ul li {
 	/* ------------- FORMULARIOS -------------- */
 
 	.lista {
-		/* outline: 1px solid red; */
+		/* outline: 1px solid blue; */
 		margin-left: 10px;
-		width: 95%;
+		width: 97%;
 		overflow: auto; 
-		max-height: 88%;
+		max-height: 36%;
 	}
 
-	.errors {
-		/* outline: 1px solid red; */
-		text-align: right;
+	#contrato_form, #grupo_form, #instituicao_form, #tarefa_form {
+		max-height: 80%;
 	}
+
+	#tecnologia_form {
+		max-height: 75%;
+	}
+
+	#instituicao_edit, #grupo_edit, #contrato_edit, #inventor_edit, #servidor_edit, #tarefa_edit {
+		max-height: 80%;
+	}
+
+	#tecnologia_edit {
+		max-height: 75%;
+	}
+
+	/* ----- Parágrafos ----- */
 
 	.campo {
 		/* outline: 1px solid blue; */
-		max-width: 200px;
 		display: block;
 		margin-bottom: 8px;
-		margin-left: 10px;
+	} 
+
+	.empty {
+		/* outline: 1px solid red; */
+		padding-top: 20px;
+		font-size: 20px;
+		text-align: center;
+		width: 15em;
+		margin-right: auto;
+		margin-left: auto;
 	}
+
+	table {
+		/* border: 1px solid green; */
+		margin-top: 8px;
+		/* outline: 1px solid red; */
+		width: 100%;
+		max-height: 80%;
+	}
+
+	table td {
+		text-align: center;
+	}
+
+	table th {
+		padding-bottom: 4px;
+		background-color: #ADD8E6;
+	}
+	
 
 	/* ------------- BOTOES -------------- */
 
@@ -253,7 +293,8 @@ ul li {
 		width: 150px;
 		height: 38px;
 		margin: 0 auto;
-		margin-top: 15px;
+		margin-top: 10px;
+		margin-bottom: 2px;
 	}
 
 	.opcao {

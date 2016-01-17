@@ -8,23 +8,33 @@
         <p class="opcao"><img src="{% static 'images/search-0.png' %}"><a href="{% url 'search_tecnologia' %}">Buscar Tecnologia</a></p>
         <p class="opcao"><img src="{% static 'images/add-0.png' %}"><a href="{% url 'adicionar_tecnologia' %}">Adicionar Tecnologia</a></p>
     </div>
-    {% if objects_tolist %}
-        <table id="tecnologias">
-            {% autopaginate objects_tolist 8 %}
-            {% for tecnologia in objects_tolist %}
-                <tr>
-                    <td>{{ tecnologia.nome }}</td>
-                    <td>{{ tecnologia.categoria }}</td>
-                    <td>{{ tecnologia.numero_processo }}</td>
-                    <td><a href='{% url "edit_tecnologia" tecnologia.id %}' class="see_detail">Editar</a></td>
-                    <td><a href='{% url "remover_tecnologia" tecnologia.id %}' class="see_detail">Remover</a></td>
-                    <tr><td><a href='{% url "adicionar_tarefa" %}'>Adicionar Tarefa</a></td></tr>
+    <div class="lista">
+        {% if objects_tolist %}
+            <table id="tecnologias">
+                 <tr>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Número do processo</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            {% endfor %}
-         </table>
-         {% paginate %}
-    {% else %}
-        <p class="empty">Nenhuma tecnologia cadastrada.<br>Vamos começar?</p>
-    {% endif %}
+                {% autopaginate objects_tolist 12 %}
+                {% for tecnologia in objects_tolist %}
+                    <tr>
+                        <td>{{ tecnologia.nome }}</td>
+                        <td>{{ tecnologia.categoria }}</td>
+                        <td>{{ tecnologia.numero_processo }}</td>
+                        <td><a href='{% url "edit_tecnologia" tecnologia.id %}' class="see_detail">Editar</a></td>
+                        <td><a href='{% url "remover_tecnologia" tecnologia.id %}' class="see_detail">Remover</a></td>
+                        <td><a href='{% url "adicionar_tarefa" %}'>Adicionar Tarefa</a></td>
+                    </tr>
+                {% endfor %}
+             </table>
+             {% paginate %}
+        {% else %}
+            <p class="empty">Nenhuma tecnologia cadastrada.<br>Vamos começar?</p>
+        {% endif %}
+    </div>
     </div>
 {% endblock %}

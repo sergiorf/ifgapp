@@ -11,7 +11,6 @@
 	{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
     <link rel="shortcut icon" href="/static/comum/img/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="{% static 'styles/geral.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/listas.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Dosis:400,300,500,200' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -22,7 +21,7 @@
                 <img src="{% static 'images/sgpi-final-logo.png' %}">
            </div>
            <div id="userProfile">
-                <p>Bem vindo, {{ user.get_username }} !</p>
+                <p>Bem vindo, {{ user.get_name }} !</p>
            </div>
            <div id="navglobal">
                  <div class="icon"><img src="{% static 'images/logout-1.png' %}"><a href="/accounts/logout">Sair</a></div>

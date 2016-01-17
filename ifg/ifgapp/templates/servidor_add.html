@@ -1,18 +1,26 @@
 {% extends "base.html" %}
+{% load pagination_tags %}
+{% load staticfiles %}
 {% block content %}
-    <a href="{% url "lista_servidores" %}">Servidores</a>
-    <h1>Adicionar um servidor</h1>
-    <form id="servidor_form" method="post" action="/adicionar/servidor/">
-        {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-        {% for field in form.visible_fields %}
-            {{ field.errors }}
-            {{ field.help_text }}
-            {{ field.label }}
-            {{ field }}
-        {% endfor %}
-        <input type="submit" name="submit" value="Adicionar servidor" />
-    </form>
+<div class="all">
+    <div class="section">
+        <h2>Adicionar um servidor</h2>
+        <p class="opcao"><img src="{% static 'images/back-1.png' %}"><a href="{% url "lista_servidores" %}">Voltar</a></p>
+    </div>
+    <div class="lista" id="servidor_form">
+        <form id="servidor_form" method="post" action="/adicionar/servidor/">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+               <p><strong><font color="red">{{ field.errors }}</font></strong></p>
+                <p><strong>{{ field.help_text }}</strong></p>
+                <p class="campo">{{ field.label }}</p>
+                <p class="campo">{{ field }}</p>
+            {% endfor %}
+            <br><p class="submit"><input type="submit" name="submit" value="Adicionar Servidor" /></p>
+        </form>
+    </div>
+</div> 
 {% endblock %}

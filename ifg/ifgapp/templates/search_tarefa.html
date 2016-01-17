@@ -14,10 +14,12 @@
                 {{ hidden }}
             {% endfor %}
             {% for field in form.visible_fields %}
-                {{ field.help_text }}
-                <p class="campo">{{ field.label }}{{ field }}</p>
+                <p><strong><font color="red">{{ field.errors }}</font></strong></p>
+                <p><strong>{{ field.help_text }}</strong></p>
+                <p class="campo">{{ field.label }}</p>
+                <p class="campo">{{ field }}</p>
             {% endfor %}
-            <br><p class="submit"><input type="submit" value="Search"></p>
+            <br><p class="submit"><input type="submit" value="Pesquisar"></p>
         </form>
     </div>
     <div class="section">

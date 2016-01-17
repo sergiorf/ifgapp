@@ -7,22 +7,33 @@
         <h2>Tarefas</h2>
         <p class="opcao"><img src="{% static 'images/search-0.png' %}"><a href="{% url 'search_tarefa' %}">Buscar Tarefa</a></p>
     </div>
-    {% if objects_tolist %}
-        <table id="tarefas">
-            {% autopaginate objects_tolist 8 %}
-            {% for tarefa in objects_tolist %}
-                <tr>
-                    <td>{{ tarefa.nome }}</td>
-                    <td>{{ tarefa.tecnologia.nome }}</td>
-                    <td>{{ tarefa.realizacao_inicio }}</td>
-                    <td><a href='{% url "edit_tarefa" tarefa.id %}' class="see_detail">Editar</a></td>
-                    <td><a href='{% url "remover_tarefa" tarefa.id %}' class="see_detail">Remover</a></td>
+    <div class="lista">
+        {% if objects_tolist %}
+            <table id="tarefas">
+                 <tr>
+                    <th>Nome</th>
+                    <th>Tecnologia</th>
+                    <th>Data de início</th>
+                    <th>Data de término</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            {% endfor %}
-         </table>
-         {% paginate %}
-    {% else %}
-        <p class="empty">Nenhuma tarefa cadastrada.<br>Para criar uma nova tarefa, vá ao menu <i>Tecnologias</i> e selecione uma tecnologia</p>
-    {% endif %}
+                {% autopaginate objects_tolist 8 %}
+                {% for tarefa in objects_tolist %}
+                    <tr>
+                        <td>{{ tarefa.nome }}</td>
+                        <td>{{ tarefa.tecnologia.nome }}</td>
+                        <td>{{ tarefa.realizacao_inicio }}</td>
+                        <td>{{ tarefa.realizacao_final }}</td>
+                        <td><a href='{% url "edit_tarefa" tarefa.id %}' class="see_detail">Editar</a></td>
+                        <td><a href='{% url "remover_tarefa" tarefa.id %}' class="see_detail">Remover</a></td>
+                    </tr>
+                {% endfor %}
+             </table>
+             {% paginate %}
+        {% else %}
+            <p class="empty">Nenhuma tarefa cadastrada.<br>Para criar uma nova tarefa, vá ao menu <strong><i>Tecnologias</strong></i> e selecione uma tecnologia</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

@@ -7,16 +7,17 @@
         <h2>Adicionar uma tarefa</h2>
         <p class="opcao"><img src="{% static 'images/back-1.png' %}"><a href="{% url 'lista_tarefas' %}">Voltar</a></p>
     </div>
-    <div class="lista">
+    <div class="lista" id="tarefa_form">
         <form id="tarefa_form" method="post" action="/adicionar/tarefa/" enctype="multipart/form-data">
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
             {% for field in form.visible_fields %}
-                {{ field.errors }}
-                {{ field.help_text }}
-                <p class="campo">{{ field.label }}{{ field }}</p>
+                <p><strong><font color="red">{{ field.errors }}</strong></font></p>
+                <p>{{ field.help_text }}</p>
+                <p class="campo">{{ field.label }}</p>
+                <p class="campo">{{ field }}</p>
             {% endfor %}
             <br><p class="submit"><input type="submit" name="submit" value="Adicionar Tarefa" /></p>
         </form>

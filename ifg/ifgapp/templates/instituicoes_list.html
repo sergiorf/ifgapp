@@ -8,21 +8,29 @@
         <p class="opcao"><img src="{% static 'images/search-0.png' %}"><a href="{% url 'search_instituicao' %}">Buscar Instituição</a></p>
         <p class="opcao"><img src="{% static 'images/add-0.png' %}"><a href="{% url 'adicionar_instituicao' %}">Adicionar Instituição</a></p>
     </div>
-    {% if objects_tolist %}
-        <table id="instituicao">
-            {% autopaginate objects_tolist 8 %}
-            {% for instituicao in objects_tolist %}
+    <div class="lista">
+        {% if objects_tolist %}
+            <table id="instituicao">
                 <tr>
-                    <td>{{ instituicao.nome }}</td>
-                    <td>{{ instituicao.sigla }}</td>
-                    <td><a href='{% url "edit_instituicao" instituicao.id %}' class="see_detail">Editar</a></td>
-                    <td><a href='{% url "remover_instituicao" instituicao.id %}' class="see_detail">Remover</a></td>
+                    <th>Nome</th>
+                    <th>Sigla</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            {% endfor %}
-         </table>
-         {% paginate %}
-    {% else %}
-        <p class="empty">Nenhuma instituição cadastrada.<br>Vamos começar?</p>
-    {% endif %}
+                {% autopaginate objects_tolist 8 %}
+                {% for instituicao in objects_tolist %}
+                    <tr>
+                        <td>{{ instituicao.nome }}</td>
+                        <td>{{ instituicao.sigla }}</td>
+                        <td><a href='{% url "edit_instituicao" instituicao.id %}' class="see_detail">Editar</a></td>
+                        <td><a href='{% url "remover_instituicao" instituicao.id %}' class="see_detail">Remover</a></td>
+                    </tr>
+                {% endfor %}
+             </table>
+             {% paginate %}
+        {% else %}
+            <p class="empty">Nenhuma instituição cadastrada.<br>Vamos começar?</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

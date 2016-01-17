@@ -7,17 +7,19 @@
         <h2>Buscar Tecnologia</h2>
         <p class="opcao"><img src="{% static 'images/back-1.png' %}"><a href="{% url 'lista_tecnologias' %}">Voltar</a></p>
     </div>
-    <div class="lista">
+    <div class="lista" id="tecnologia_search_form">
         <form id="tecnologia_search_form" method="post" action="/search/tecnologia/" enctype="multipart/form-data">
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
                  {{ hidden }}
             {% endfor %}
             {% for field in form.visible_fields %}
-                {{ field.help_text }}
-                <p class="campo">{{ field.label }}{{ field }}</p>
+                <p><strong><font color="red">{{ field.errors }}</font></strong></p>
+                <p><strong>{{ field.help_text }}</strong></p>
+                <p class="campo">{{ field.label }}</p>
+                <p class="campo">{{ field }}</p>
             {% endfor %}
-            <br><p class="submit"><input type="submit" value="Buscar"></p>
+            <br><p class="submit"><input type="submit" value="Pesquisar"></p>
         </form>
     </div>
     <div class="section">
@@ -26,6 +28,13 @@
     <div class="lista">
         {% if objects_tolist %}
         <table id="tecnologias">
+            <tr>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Número do processo</th>
+                <th></th>
+                <th></th>
+            </tr>
             {% for tecnologia in objects_tolist %}
                 <tr>
                     <td>{{ tecnologia.nome }}</td>

@@ -1,32 +1,53 @@
 {% extends "base.html" %}
+{% load pagination_tags %}
+{% load staticfiles %}
 {% block content %}
-    <a href="{% url 'lista_inventores' %}">Inventores</a>
-    <h1>Buscar Inventor</h1>
-    <form id="inventor_search_form" method="post" action="/search/inventor/" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-        {% for field in form.visible_fields %}
-            {{ field.help_text }}
-            {{ field.label }}
-            {{ field }}
-        {% endfor %}
-        <input type="submit" value="Search">
-    </form>
-    {% if objects_tolist %}
-    <table id="inventores">
-        {% for usuario in objects_tolist %}
+<div class="all">
+    <div class="section">
+        <h2>Buscar Inventor</h2>
+        <p class="opcao"><img src="{% static 'images/back-1.png' %}"><a href="{% url 'lista_inventores' %}">Voltar</a></p>
+    </div>
+    <div class="lista" id="inventor_search_form">
+        <form id="inventor_search_form" method="post" action="/search/inventor/" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+               <p><strong><font color="red">{{ field.errors }}</font></strong></p>
+                <p><strong>{{ field.help_text }}</strong></p>
+                <p class="campo">{{ field.label }}</p>
+                <p class="campo">{{ field }}</p>
+            {% endfor %}
+            <br><p class="submit"><input type="submit" value="Pesquisar"></p>
+        </form>
+    </div>
+    <div class="section">
+        <h2>Resultados</h2>
+    </div>
+    <div class="lista">
+        {% if objects_tolist %}
+        <table id="inventores">
             <tr>
-                <td>{{ usuario.username }}</td>
-                <td>{{ usuario.email }}</td>
-                <td>{{ usuario.telefone }}</td>
-                <td><a href='{% url "edit_inventor" usuario.id %}' class="see_detail">Editar</a></td>
-                <td><a href='{% url "remover_inventor" usuario.id %}' class="see_detail">Remover</a></td>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th></th>
+                <th></th>
             </tr>
-        {% endfor %}
-     </table>
-    {% else %}
-        <p>Nenhum inventor!!! :(</p>
-    {% endif %}
+            {% for usuario in objects_tolist %}
+                <tr>
+                    <td>{{ usuario.username }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.telefone }}</td>
+                    <td><a href='{% url "edit_inventor" usuario.id %}' class="see_detail">Editar</a></td>
+                    <td><a href='{% url "remover_inventor" usuario.id %}' class="see_detail">Remover</a></td>
+                </tr>
+            {% endfor %}
+         </table>
+        {% else %}
+            <p class="empty">Nenhum inventor cadastrado.</p>
+        {% endif %}
+    </div>
+</div>    
 {% endblock %}

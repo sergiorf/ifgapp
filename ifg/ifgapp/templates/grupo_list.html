@@ -5,22 +5,29 @@
 <div class="all">
     <div class="section">
         <h2>Grupos</h2>
-        <p class="opcao"><img src="{% static 'images/add-0.png' %}"><a href="{% url 'adicionar_grupo' %}">Criar Grupo</a></p>
+        <p class="opcao"><img src="{% static 'images/add-0.png' %}"><a href="{% url 'grupo_add' %}">Criar Grupo</a></p>
     </div>
-    {% if objects_tolist %}
-        <table id="grupos">
-            {% autopaginate objects_tolist 8 %}
-            {% for grupo in objects_tolist %}
+    <div class="lista">
+        {% if objects_tolist %}
+            <table id="grupos">
                 <tr>
-                    <td>{{ grupo.nome }}</td>
-                    <td><a href='{% url "edit_grupo" grupo.id %}' class="see_detail">Editar</a></td>
-                    <td><a href='{% url "remover_grupo" grupo.id %}' class="see_detail">Remover</a></td>
+                    <th>Nome</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            {% endfor %}
-         </table>
-         {% paginate %}
-    {% else %}
-        <p class="empty">Nenhum grupo cadastrado.<br>Vamos começar?</p>
-    {% endif %}
+                {% autopaginate objects_tolist 8 %}
+                {% for grupo in objects_tolist %}
+                    <tr>
+                        <td>{{ grupo.nome }}</td>
+                        <td><a href='{% url "edit_grupo" grupo.id %}' class="see_detail">Editar</a></td>
+                        <td><a href='{% url "remover_grupo" grupo.id %}' class="see_detail">Remover</a></td>
+                    </tr>
+                {% endfor %}
+             </table>
+             {% paginate %}
+        {% else %}
+            <p class="empty">Nenhum grupo cadastrado.<br>Vamos começar?</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
