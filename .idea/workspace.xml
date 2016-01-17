@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e304dea1-b943-45d6-8129-3436e914f113" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/servidor_ver.html" />
       <change type="DELETED" beforePath="C:\dev\ifgapp\ifg\docs\~$stema_protecao_intelectual_v10.odt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/README.md" afterPath="$PROJECT_DIR$/ifg/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/forms.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/urls.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/views.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ifgapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,21 +37,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="7446" max-vertical-offset="8874">
+              <caret line="438" column="10" selection-start-line="438" selection-start-column="4" selection-end-line="438" selection-end-column="10" />
+              <folding>
+                <element signature="e#24#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.76" vertical-offset="1379" max-vertical-offset="1955">
-              <caret line="94" column="2" selection-start-line="94" selection-start-column="2" selection-end-line="94" selection-end-column="2" />
+            <state vertical-scroll-proportion="-18.28" vertical-offset="1277" max-vertical-offset="1989">
+              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="tarefas_automaticas.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/tarefas_automaticas.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="2227">
+              <caret line="46" column="69" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
+              <folding>
+                <element signature="e#24#72#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1088">
-              <caret line="38" column="82" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="82" />
+            <state vertical-scroll-proportion="0.4765784" vertical-offset="55" max-vertical-offset="1122">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,8 +84,8 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4466" max-vertical-offset="6341">
-              <caret line="270" column="4" selection-start-line="270" selection-start-column="4" selection-end-line="270" selection-end-column="4" />
+            <state vertical-scroll-proportion="-9.285714" vertical-offset="1066" max-vertical-offset="6613">
+              <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding>
                 <element signature="e#24#71#0" expanded="true" />
               </folding>
@@ -68,38 +96,50 @@
       <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="927" max-vertical-offset="3383">
-              <caret line="3" column="105" selection-start-line="3" selection-start-column="105" selection-end-line="3" selection-end-column="105" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="3502">
+              <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+              <folding>
+                <element signature="e#24#158#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="servidor_ver.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/servidor_ver.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="425">
+              <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inventor_edit.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/inventor_edit.html">
+      <file leaf-file-name="servidor_edit.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/servidor_edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="442">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_contrato.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.6153846" vertical-offset="366" max-vertical-offset="969">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="instituicao_edit.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/instituicao_edit.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="442">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search_tarefa.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/search_tarefa.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="15.692307" vertical-offset="408" max-vertical-offset="850">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search_contrato.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.08582834" vertical-offset="315" max-vertical-offset="969">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,7 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/ifg/ifgapp/templates/login.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/atividades.txt" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/tarefa_edit.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/tarefa_list.html" />
@@ -148,7 +187,6 @@
         <option value="$PROJECT_DIR$/ifg/ifgapp/error_text.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/usuario_list.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/tests/test_pessoas.py" />
-        <option value="$PROJECT_DIR$/ifg/ifgapp/forms.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/metatarefa_add.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/metatarefa_edit.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/metatarefas_list.html" />
@@ -159,16 +197,18 @@
         <option value="$PROJECT_DIR$/ifg/ifgapp/utils.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/tarefas_automaticas.txt" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/__init__.py" />
-        <option value="$PROJECT_DIR$/ifg/ifgapp/views.py" />
-        <option value="$PROJECT_DIR$/ifg/ifgapp/urls.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/models.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/maintain_tarefas.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/tarefas_automaticas.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/base.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/grupo_list.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/management/commands/carga_ifgapp.py" />
-        <option value="$PROJECT_DIR$/ifg/README.md" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html" />
+        <option value="$PROJECT_DIR$/ifg/README.md" />
+        <option value="$PROJECT_DIR$/ifg/ifgapp/urls.py" />
+        <option value="$PROJECT_DIR$/ifg/ifgapp/views.py" />
+        <option value="$PROJECT_DIR$/ifg/ifgapp/forms.py" />
+        <option value="$PROJECT_DIR$/ifg/ifgapp/templates/servidor_ver.html" />
       </list>
     </option>
   </component>
@@ -721,20 +761,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/management/commands/areasconhecimento.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="22406">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/tarefa_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="391">
-          <caret line="13" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/tecnologia_edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="425">
@@ -923,16 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.214285" vertical-offset="6936" max-vertical-offset="8874">
-          <caret line="438" column="10" selection-start-line="438" selection-start-column="4" selection-end-line="438" selection-end-column="10" />
-          <folding>
-            <element signature="e#24#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/db/models/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6741" max-vertical-offset="17374">
@@ -979,16 +995,6 @@
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="e#24#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/tarefas_automaticas.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2227">
-          <caret line="46" column="69" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
-          <folding>
-            <element signature="e#24#72#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1041,14 +1047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/servidor_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/servidor_add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
@@ -1088,24 +1086,52 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.76" vertical-offset="1379" max-vertical-offset="1955">
-          <caret line="94" column="2" selection-start-line="94" selection-start-column="2" selection-end-line="94" selection-end-column="2" />
+        <state vertical-scroll-proportion="-18.28" vertical-offset="1277" max-vertical-offset="1989">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/urls.py">
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/tarefas_automaticas.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1088">
-          <caret line="38" column="82" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="82" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2227">
+          <caret line="46" column="69" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
+          <folding>
+            <element signature="e#24#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7446" max-vertical-offset="8874">
+          <caret line="438" column="10" selection-start-line="438" selection-start-column="4" selection-end-line="438" selection-end-column="10" />
+          <folding>
+            <element signature="e#24#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.6153846" vertical-offset="366" max-vertical-offset="969">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/instituicao_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="491">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4466" max-vertical-offset="6341">
-          <caret line="270" column="4" selection-start-line="270" selection-start-column="4" selection-end-line="270" selection-end-column="4" />
+        <state vertical-scroll-proportion="-9.285714" vertical-offset="1066" max-vertical-offset="6613">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
             <element signature="e#24#71#0" expanded="true" />
           </folding>
@@ -1114,16 +1140,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1029" max-vertical-offset="3383">
-          <caret line="3" column="105" selection-start-line="3" selection-start-column="105" selection-end-line="3" selection-end-column="105" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="3502">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+          <folding>
+            <element signature="e#24#158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/servidor_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="442">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html">
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/servidor_ver.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.08582834" vertical-offset="315" max-vertical-offset="969">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="425">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/ifgapp/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4765784" vertical-offset="55" max-vertical-offset="1122">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>

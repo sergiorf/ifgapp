@@ -31,6 +31,13 @@ class ServidorForm(ModelForm):
         exclude = ('user',)
 
 
+class ServidorVerForm(ModelForm):
+    class Meta:
+        model = Servidor
+        exclude = ('user',)
+        readonly = tuple()
+
+
 class PesquisadorForm(ModelForm):
     class Meta:
         model = Pesquisador

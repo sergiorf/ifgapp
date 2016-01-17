@@ -69,6 +69,11 @@ def listing_instituicoes(request):
 
 
 @login_required()
+def ver_servidor(request, pk):
+    return __ver_object(request, pk, Servidor, 'servidor_ver.html', "lista_servidores")
+
+
+@login_required()
 def edit_servidor(request, pk):
     return __edit_object(request, pk, Servidor, 'servidor_edit.html', "lista_servidores")
 
@@ -266,6 +271,17 @@ def logout_user(request):
 
 def __listing_objects(request, queryset, template, klass_name=None):
     return render(request, template, {'objects_tolist': queryset, "klass_name": klass_name})
+
+
+def __ver_object(request, pk, obj_klass, template_name, list_url):
+    obj = get_object_or_404(obj_klass, pk=pk)
+    form_klass = obj_klass.__name__ + "VerForm"
+    constructor = globals()[form_klass]
+    form = constructor(request.POST or None, request.FILES or None, instance=obj)
+    aux = []
+    if isinstance(obj, Tecnologia):
+        aux = TecnologiaAnexo.objects.select_related().filter(tecnologia=obj)
+    return render(request, template_name, {'form': form, 'object': obj, 'aux': aux})
 
 
 def __edit_object(request, pk, obj_klass, template_name, list_url):

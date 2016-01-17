@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="all">
+	<div class="section">
+        <h2>Ver servidor</h2>
+        <p class="opcao"><img src="{% static 'images/back-1.png' %}"><a href="{% url 'lista_servidores' %}">Voltar</a></p>
+    </div>
+    <div class="lista" id="servidor_ver">
+    	<form method="post">{% csrf_token %}
+	        {% for field in form.visible_fields %}
+                <p><strong><font color="red">{{ field.errors }}</font></strong></p>
+                <p><strong>{{ field.help_text }}</strong></p>
+                <p class="campo">{{ field.label }}</p>
+                <p class="campo">{{ field }}</p>
+            {% endfor %}
+	    </form>
+    </div>
+ </div>  
+{% endblock %}
