@@ -14,7 +14,7 @@ from models import Permissao, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
 from forms import GrupoForm, ServidorForm, InventorForm, TecnologiaForm, \
     TarefaForm, InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, \
     InventorSearchForm, InstituicaoSearchForm, TarefaSearchForm, ContratoSearchForm, \
-    ServidorVerForm, InventorVerForm
+    ServidorVerForm, InventorVerForm, GrupoVerForm
 from django.http import HttpResponse
 from utils import to_ascii, get_query
 import os
@@ -75,13 +75,18 @@ def ver_servidor(request, pk):
 
 
 @login_required()
-def edit_servidor(request, pk):
-    return __edit_object(request, pk, Servidor, 'servidor_edit.html', "lista_servidores")
+def ver_inventor(request, pk):
+    return __ver_object(request, pk, Inventor, 'inventor_ver.html', "lista_inventores")
 
 
 @login_required()
-def ver_inventor(request, pk):
-    return __ver_object(request, pk, Inventor, 'inventor_ver.html', "lista_inventores")
+def ver_grupo(request, pk):
+    return __ver_object(request, pk, Grupo, 'grupo_ver.html', "lista_grupos")
+
+
+@login_required()
+def edit_servidor(request, pk):
+    return __edit_object(request, pk, Servidor, 'servidor_edit.html', "lista_servidores")
 
 
 @login_required()

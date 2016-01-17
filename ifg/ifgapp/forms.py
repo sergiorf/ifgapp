@@ -78,6 +78,12 @@ class GrupoForm(ModelForm):
         exclude = ('group',)
 
 
+class GrupoVerForm(ModelForm):
+    class Meta:
+        model = Grupo
+        exclude = ('group',)
+
+
 class TecnologiaForm(autocomplete_light.ModelForm):
     formulario_pedido = FileField(label='Formulário do pedido', widget=AdminFileWidget, max_length=200, required=True)
     ata_reuniao_comissao_avaliadora = FileField(label='Ata da reunião com Comissão Avaliadora', widget=AdminFileWidget,
