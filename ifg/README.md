@@ -79,10 +79,13 @@ ver 0.10
 - Bug: Criar uma Tecnologia, então aparece a lista de Tecnologias, clicar no Next.. o form aparece de novo.
 - Atualizações no modelo conforme à v.11 das especificações.
 
-ver 0.11 (PLANNED)
+ver 0.11
 -----------------------------
 - Finalizar módulo de Tarefas automáticas.
-
+- Criar grupos de teste.
+- Bug: Typo no template de lista de grupos.
+- Remover o modelo MetaTarefa (deprecated).
+- Adicionar opção 'Servidores' no tab de navegação.
 
 
 

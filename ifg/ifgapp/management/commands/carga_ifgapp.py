@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 from django.core.files import File
 from ifgapp.models import AreaConhecimento, SubAreaConhecimento, Especialidade, \
     Grupo, Permissao, Servidor, Inventor, Categoria, Subcategoria, Instituicao, \
-    TipoAtividade, Atividade, Tecnologia, Tarefa, MetaTarefa
+    TipoAtividade, Atividade, Tecnologia, Tarefa
 from ifgapp.utils import create_obj
 import string
 import os
@@ -16,9 +16,18 @@ class Command(BaseCommand):
         Command.insert_areacon()
         Command.insert_categorias()
         Command.insert_atividades()
+        Command.create_grupo(u'Coordenação-Cite')
+        Command.create_grupo(u'Equipe-Cite')
+        Command.create_grupo(u'Inventores')
+        admin = Command.create_grupo(u'Admin')
+        self.create_test_objs(10, admin)
+        Command.create_instituicoes()
+
+    @staticmethod
+    def create_grupo(nome):
         index = 1
-        grupo = create_obj(dict(nome=u'Admin'), Grupo, dict(
-            nome=u'Admin',
+        grupo = create_obj(dict(nome=nome), Grupo, dict(
+            nome=nome,
         ))
         for perm in Permissao.all_permissions:
             p = create_obj(dict(codigo=index), Permissao, dict(
@@ -27,8 +36,7 @@ class Command(BaseCommand):
             ))
             index += 1
             grupo.permissoes.add(p)
-        self.create_test_objs(10, grupo)
-        Command.create_instituicoes()
+        return grupo
 
     @staticmethod
     def create_instituicoes():
@@ -73,17 +81,20 @@ class Command(BaseCommand):
                 vinculo_ifg=u'02',
                 grupo=grupo,
             ))
-            tec = Command.create_tecnologia(index, inv)
+            categoria = Categoria.objects.get(pk=1)
+            tec = Command.create_tecnologia(index, categoria, inv)
             Command.create_tarefas(index, tec)
 
     @staticmethod
-    def create_tecnologia(index, inventor):
+    def create_tecnologia(index, categoria, inventor):
         nome = u'tec_%s' % index
         q = Tecnologia.objects.filter(nome=nome)
         if not q.exists():
             tec = Tecnologia()
             tec.nome = nome
             tec.criador = inventor
+            tec.categoria = categoria
+            tec.pedido = datetime.date.today()
             path = os.path.abspath(os.path.dirname(__file__))
             filename = "pdf-sample.pdf"
             with open(os.path.join(path, filename), 'rb') as attachment:
