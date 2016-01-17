@@ -14,7 +14,7 @@ from validators import validate_file_ispdf, validate_telefone
 from collections import defaultdict
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-import tarefas_automaticas
+from dateutil.relativedelta import relativedelta
 
 
 class Arquivo(models.Model):
@@ -474,11 +474,6 @@ class Tarefa(models.Model):
         super(Tarefa, self).clean()
 
 
-@receiver(post_save, sender=Tecnologia, dispatch_uid="update_tarefas_automaticas")
-def update_tarefas_automaticas(sender, instance, **kwargs):
-    tarefas_automaticas.cria_tarefas(instance)
-
-
 class MetaTarefa(models.Model):
     CATEGORIAS = (
         (u'00', u'Patentes'),
@@ -522,7 +517,50 @@ class Contrato(models.Model):
         super(Contrato, self).clean()
 
 
-#help_text=help_text.observacao, 
+#help_text=help_text.observacao,
+
+#---------- Tarefas Automáticas
+
+@receiver(post_save, sender=Tecnologia, dispatch_uid="update_tarefas_automaticas")
+def update_tarefas_automaticas(sender, instance, **kwargs):
+    cria_tarefas(instance)
+
+
+class MetaTarefa():
+    def __init__(self, nome, tipo_atividade_pk, atividade_pk, shift):
+        self.nome = nome
+        self.tipo_atividade_pk = tipo_atividade_pk
+        self.atividade_pk = atividade_pk
+        self.shift = shift
+
+
+def cria_tarefas(tecnologia):
+    if tecnologia.categoria_id == 5:
+        cria_tarefas_marca(tecnologia)
+    else:
+        pass
+
+
+def cria_tarefas_marca(tecnologia):
+    ANUIDADE = u'1a Anuidade'
+    tarefas = {
+        ANUIDADE: MetaTarefa(nome=ANUIDADE, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+36))
+    }
+    if tecnologia.pedido is not None:
+        tf = Tarefa.objects.get(nome=ANUIDADE)
+        if tf is None:
+            cria_tarefa(tecnologia, tecnologia.pedido, tarefas[ANUIDADE])
+
+
+def cria_tarefa(tecnologia, start_dt, meta_tarefa):
+    tf = Tarefa()
+    tf.nome = meta_tarefa.nome
+    tf.tecnologia = tecnologia
+    tf.tipo_atividade = meta_tarefa.tipo_atividade_pk
+    tf.atividade = meta_tarefa.atividade_pk
+    tf.realizacao_inicio = start_dt
+    tf.realizacao_final = start_dt + meta_tarefa.shift
+    tf.save()
 
 
 
