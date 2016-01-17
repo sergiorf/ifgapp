@@ -12,10 +12,6 @@ from datetime import datetime
 from utils import mkdir_p
 from validators import validate_file_ispdf, validate_telefone
 from collections import defaultdict
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from dateutil.relativedelta import relativedelta
-from tarefas_automaticas import MetaTarefa
 
 
 class Arquivo(models.Model):
@@ -508,40 +504,8 @@ class Contrato(models.Model):
 
 #help_text=help_text.observacao,
 
-#---------- Tarefas Automáticas
-
-@receiver(post_save, sender=Tecnologia, dispatch_uid="update_tarefas_automaticas")
-def update_tarefas_automaticas(sender, instance, **kwargs):
-    cria_tarefas(instance)
 
 
-def cria_tarefas(tecnologia):
-    if tecnologia.categoria_id == 5:
-        cria_tarefas_marca(tecnologia)
-    else:
-        pass
-
-
-def cria_tarefas_marca(tecnologia):
-    ANUIDADE = u'1a Anuidade'
-    tarefas = {
-        ANUIDADE: MetaTarefa(nome=ANUIDADE, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+36))
-    }
-    if tecnologia.pedido is not None:
-        q = Tarefa.objects.filter(nome=ANUIDADE)
-        if not q.exists():
-            cria_tarefa(tecnologia, tecnologia.pedido, tarefas[ANUIDADE])
-
-
-def cria_tarefa(tecnologia, start_dt, meta_tarefa):
-    tf = Tarefa()
-    tf.nome = meta_tarefa.nome
-    tf.tecnologia = tecnologia
-    tf.tipo_atividade = TipoAtividade.objects.get(pk=meta_tarefa.tipo_atividade_pk)
-    tf.atividade = Atividade.objects.get(pk=meta_tarefa.atividade_pk)
-    tf.realizacao_inicio = start_dt
-    tf.realizacao_final = start_dt + meta_tarefa.shift
-    tf.save()
 
 
 

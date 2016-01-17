@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import datetime
-from ifgapp.models import Tarefa
+from ifgapp.models import Tarefa, Tecnologia
 from django.core.management.base import BaseCommand
+from ifgapp.tarefas_automaticas import cria_tarefas
 
 
 class Command(BaseCommand):
@@ -11,3 +12,5 @@ class Command(BaseCommand):
             t.status = Tarefa.NAO_REALIZADA
             t.clean()
             t.save()
+        for tec in Tecnologia.objects.all():
+            cria_tarefas(tec)
