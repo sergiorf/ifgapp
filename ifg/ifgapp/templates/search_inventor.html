@@ -14,7 +14,6 @@
                 {{ hidden }}
             {% endfor %}
             {% for field in form.visible_fields %}
-               <p><strong><font color="red">{{ field.errors }}</font></strong></p>
                 <p><strong>{{ field.help_text }}</strong></p>
                 <p class="campo">{{ field.label }}</p>
                 <p class="campo">{{ field }}</p>
@@ -40,8 +39,7 @@
                     <td>{{ usuario.username }}</td>
                     <td>{{ usuario.email }}</td>
                     <td>{{ usuario.telefone }}</td>
-                    <td><a href='{% url "edit_inventor" usuario.id %}' class="see_detail">Editar</a></td>
-                    <td><a href='{% url "remover_inventor" usuario.id %}' class="see_detail">Remover</a></td>
+                    <td><a href='{% url "ver_inventor" usuario.id %}' class="see_detail">Ver detalhes</a></td>
                 </tr>
             {% endfor %}
          </table>

@@ -54,6 +54,17 @@ class InventorForm(autocomplete_light.ModelForm):
         exclude = ('user',)
 
 
+class InventorVerForm(autocomplete_light.ModelForm):
+    doc_comprobatorio = FileField(label='Documento Comprobatório', widget=AdminFileWidget, max_length=200,
+                                  required=False)
+    docs_pessoais = FileField(label='Documentos Pessoais', widget=AdminFileWidget, max_length=200, required=False)
+
+    class Meta:
+        model = Inventor
+        exclude = ('user',)
+        readonly = tuple()
+
+
 class InventorSearchForm(Form):
     nome = CharField(label=u'Nome', required=False)
     cpf = CharField(label=u'CPF', required=False)

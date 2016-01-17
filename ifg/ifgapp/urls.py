@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^contratos', 'ifgapp.views.listing_contratos', name='lista_contratos'),
 
     url(r'^ver/servidor/(?P<pk>\d+)/$', 'ifgapp.views.ver_servidor', name='ver_servidor'),
+    url(r'^ver/inventor/(?P<pk>\d+)/$', 'ifgapp.views.ver_inventor', name='ver_inventor'),
 
     url(r'^servidor/(?P<pk>\d+)/$', 'ifgapp.views.edit_servidor', name='edit_servidor'),
     url(r'^inventor/(?P<pk>\d+)/$', 'ifgapp.views.edit_inventor', name='edit_inventor'),
