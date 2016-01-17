@@ -17,6 +17,7 @@ PEDIDO_EXAME = u'Pedido de exame'
 DESARQUIVAMENTO_EXAME = u'Desarquivamento: exame não solicitado'
 PRIMEIRA_REITERACAO = u'1a reiteração de exigência'
 SEGUNDA_REITERACAO = u'2a reiteração de exigência'
+ENVIO_DOCS = u'Envio de documentos não obrigatórios do pedido'
 Tarefas = {
     PRIMEIRA_ANUIDADE: MetaTarefa(nome=PRIMEIRA_ANUIDADE, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+36)),
     ANUIDADE: MetaTarefa(nome=ANUIDADE, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+3)),
@@ -25,14 +26,29 @@ Tarefas = {
     DESARQUIVAMENTO_EXAME: MetaTarefa(nome=DESARQUIVAMENTO_EXAME, tipo_atividade_pk=1, atividade_pk=4, shift=relativedelta(days=+60)),
     PRIMEIRA_REITERACAO: MetaTarefa(nome=PRIMEIRA_REITERACAO, tipo_atividade_pk=2, atividade_pk=5, shift=relativedelta(days=+60)),
     SEGUNDA_REITERACAO: MetaTarefa(nome=SEGUNDA_REITERACAO, tipo_atividade_pk=2, atividade_pk=5, shift=relativedelta(days=+60)),
+    ENVIO_DOCS: MetaTarefa(nome=ENVIO_DOCS, tipo_atividade_pk=2, atividade_pk=11, shift=relativedelta(days=+60)),
 }
 
 
 def cria_tarefas(tecnologia):
-    if tecnologia.categoria_id == 5:
-        criar_tarefas_marca(tecnologia)
+    if tecnologia.categoria_id == 2:
+        criar_tarefas_patentes(tecnologia)
     elif tecnologia.categoria.id == 1:
         criar_tarefas_software(tecnologia)
+    elif tecnologia.categoria.id == 5:
+        criar_tarefas_marcas(tecnologia)
+    else:
+        criar_tarefas_geral(tecnologia)
+
+
+def criar_tarefas_geral(tecnologia):
+    envio_docs = get_tarefa(tecnologia, ENVIO_DOCS)
+    if not envio_docs:
+        cria_tarefa(tecnologia, tecnologia.pedido, Tarefas[ENVIO_DOCS])
+
+
+def criar_tarefas_marcas(tecnologia):
+    pass
 
 
 def criar_tarefas_software(tecnologia):
@@ -47,7 +63,7 @@ def criar_tarefas_software(tecnologia):
                 cria_tarefa(tecnologia, primeira_reiteracao.realizacao_final, Tarefas[SEGUNDA_REITERACAO])
 
 
-def criar_tarefas_marca(tecnologia):
+def criar_tarefas_patentes(tecnologia):
     if tecnologia.pedido is not None:
         anuidade = get_last_anuidade(tecnologia)
         if anuidade is None:
