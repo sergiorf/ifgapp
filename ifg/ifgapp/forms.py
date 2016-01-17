@@ -221,6 +221,12 @@ class InstituicaoForm(ModelForm):
         fields = '__all__'
 
 
+class InstituicaoVerForm(ModelForm):
+    class Meta:
+        model = Instituicao
+        fields = '__all__'
+
+
 class InstituicaoSearchForm(Form):
     nome = CharField(label=u'Nome')
     sigla = CharField(label=u'Sigla')
