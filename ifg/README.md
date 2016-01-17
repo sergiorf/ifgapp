@@ -87,6 +87,14 @@ ver 0.11
 - Remover o modelo MetaTarefa (deprecated).
 - Adicionar opção 'Servidores' no tab de navegação.
 
+ver 0.12 (PLANNED)
+-----------------------------
+- Mostrar messagem de erro: "usuário ou senha incorretos" quando login falha.
+- Resolver questão com as tarefas automáticas de tipo Marca.
+- Se possível, gostaria de diferenciar nos formulários de busca os resultados para quando
+  não houver nenhuma tecnologia cadastrada, ou nenhuma tecnologia encontrada correspondente aos filtros.
+
+
 
 
 

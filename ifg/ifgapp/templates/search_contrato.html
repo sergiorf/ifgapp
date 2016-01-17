@@ -14,7 +14,6 @@
                 {{ hidden }}
             {% endfor %}
             {% for field in form.visible_fields %}
-                <p><strong><font color="red">{{ field.errors }}</font></strong></p>
                 <p><strong>{{ field.help_text }}</strong></p>
                 <p class="campo">{{ field.label }}</p>
                 <p class="campo">{{ field }}</p>
