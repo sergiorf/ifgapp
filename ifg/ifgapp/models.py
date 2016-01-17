@@ -547,8 +547,8 @@ def cria_tarefas_marca(tecnologia):
         ANUIDADE: MetaTarefa(nome=ANUIDADE, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+36))
     }
     if tecnologia.pedido is not None:
-        tf = Tarefa.objects.get(nome=ANUIDADE)
-        if tf is None:
+        q = Tarefa.objects.filter(nome=ANUIDADE)
+        if not q.exists():
             cria_tarefa(tecnologia, tecnologia.pedido, tarefas[ANUIDADE])
 
 
@@ -556,8 +556,8 @@ def cria_tarefa(tecnologia, start_dt, meta_tarefa):
     tf = Tarefa()
     tf.nome = meta_tarefa.nome
     tf.tecnologia = tecnologia
-    tf.tipo_atividade = meta_tarefa.tipo_atividade_pk
-    tf.atividade = meta_tarefa.atividade_pk
+    tf.tipo_atividade = TipoAtividade.objects.get(pk=meta_tarefa.tipo_atividade_pk)
+    tf.atividade = Atividade.objects.get(pk=meta_tarefa.atividade_pk)
     tf.realizacao_inicio = start_dt
     tf.realizacao_final = start_dt + meta_tarefa.shift
     tf.save()
