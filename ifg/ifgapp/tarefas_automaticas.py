@@ -15,23 +15,39 @@ ANUIDADE = u'Anuidade'
 DESARQUIVAMENTO = u'Desarquivamento: anuidade não paga'
 PEDIDO_EXAME = u'Pedido de exame'
 DESARQUIVAMENTO_EXAME = u'Desarquivamento: exame não solicitado'
+PRIMEIRA_REITERACAO = u'1a reiteração de exigência'
+SEGUNDA_REITERACAO = u'2a reiteração de exigência'
 Tarefas = {
     PRIMEIRA_ANUIDADE: MetaTarefa(nome=PRIMEIRA_ANUIDADE, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+36)),
     ANUIDADE: MetaTarefa(nome=ANUIDADE, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+3)),
     DESARQUIVAMENTO: MetaTarefa(nome=DESARQUIVAMENTO, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+3)),
     PEDIDO_EXAME: MetaTarefa(nome=PEDIDO_EXAME, tipo_atividade_pk=1, atividade_pk=4, shift=relativedelta(months=+36)),
     DESARQUIVAMENTO_EXAME: MetaTarefa(nome=DESARQUIVAMENTO_EXAME, tipo_atividade_pk=1, atividade_pk=4, shift=relativedelta(days=+60)),
+    PRIMEIRA_REITERACAO: MetaTarefa(nome=PRIMEIRA_REITERACAO, tipo_atividade_pk=2, atividade_pk=5, shift=relativedelta(days=+60)),
+    SEGUNDA_REITERACAO: MetaTarefa(nome=SEGUNDA_REITERACAO, tipo_atividade_pk=2, atividade_pk=5, shift=relativedelta(days=+60)),
 }
 
 
 def cria_tarefas(tecnologia):
     if tecnologia.categoria_id == 5:
-        cria_tarefas_marca(tecnologia)
-    else:
-        pass
+        criar_tarefas_marca(tecnologia)
+    elif tecnologia.categoria.id == 1:
+        criar_tarefas_software(tecnologia)
 
 
-def cria_tarefas_marca(tecnologia):
+def criar_tarefas_software(tecnologia):
+    ultima_exigencia = get_last_by_atividade(tecnologia, 5)
+    if ultima_exigencia and ultima_exigencia.status == Tarefa.NAO_REALIZADA:
+        primeira_reiteracao = get_tarefa(tecnologia, PRIMEIRA_REITERACAO)
+        if not primeira_reiteracao:
+            cria_tarefa(tecnologia, ultima_exigencia.realizacao_final, Tarefas[PRIMEIRA_REITERACAO])
+        elif primeira_reiteracao.status == Tarefa.NAO_REALIZADA:
+            segunda_reiteracao = get_tarefa(tecnologia, SEGUNDA_REITERACAO)
+            if not segunda_reiteracao:
+                cria_tarefa(tecnologia, primeira_reiteracao.realizacao_final, Tarefas[SEGUNDA_REITERACAO])
+
+
+def criar_tarefas_marca(tecnologia):
     if tecnologia.pedido is not None:
         anuidade = get_last_anuidade(tecnologia)
         if anuidade is None:
@@ -46,6 +62,15 @@ def cria_tarefas_marca(tecnologia):
             cria_tarefa(tecnologia, tecnologia.pedido, Tarefas[PEDIDO_EXAME])
         elif tf.status == Tarefa.NAO_REALIZADA:
             cria_tarefa(tecnologia, tf.realizacao_final, Tarefas[DESARQUIVAMENTO_EXAME])
+
+
+def get_last_by_atividade(tecnologia, tipo_atividade_pk):
+    tipo_atividade = Atividade.objects.get(pk=tipo_atividade_pk)
+    q = Tarefa.objects.filter(tecnologia=tecnologia).filter(atividade=tipo_atividade).order_by('realizacao_inicio')
+    if len(q) > 0:
+        return q[0]
+    else:
+        return None
 
 
 def get_last_anuidade(tecnologia):
@@ -70,7 +95,10 @@ def cria_tarefa(tecnologia, start_dt, meta_tarefa):
 
 def cria_tarefa2(tecnologia, start_dt, anuidade_nr, meta_tarefa):
     tf = Tarefa()
-    tf.nome = str(anuidade_nr) + u'a ' + meta_tarefa.nome
+    if anuidade_nr > 0:
+        tf.nome = str(anuidade_nr) + u'a ' + meta_tarefa.nome
+    else:
+        tf.nome = meta_tarefa.nome
     tf.tecnologia = tecnologia
     tf.anuidade_nr = anuidade_nr
     tf.tipo_atividade = TipoAtividade.objects.get(pk=meta_tarefa.tipo_atividade_pk)
