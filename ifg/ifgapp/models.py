@@ -15,6 +15,7 @@ from collections import defaultdict
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from dateutil.relativedelta import relativedelta
+from tarefas_automaticas import MetaTarefa
 
 
 class Arquivo(models.Model):
@@ -433,6 +434,7 @@ class Tarefa(models.Model):
     atividade = ChainedForeignKey(Atividade, chained_field='tipo_atividade',
                                      chained_model_field="tipo_atividade", null=True, blank=True)
     codigo = models.PositiveIntegerField(u'Código', null=True, blank=True)
+    anuidade_nr = models.PositiveIntegerField(u'Anuidade', null=True, blank=True)
     descricao = models.TextField(u'Descrição', null=True, blank=True)
     realizacao_inicio = models.DateField(u'Data de início da realização da tarefa', blank=True, null=True)
     realizacao_final = models.DateField(u'Data limite para realização da tarefa', blank=True, null=True)
@@ -474,19 +476,6 @@ class Tarefa(models.Model):
         super(Tarefa, self).clean()
 
 
-class MetaTarefa(models.Model):
-    CATEGORIAS = (
-        (u'00', u'Patentes'),
-        (u'01', u'Software'),
-        (u'02', u'Marcas'),
-        (u'03', u'Geral'),
-    )
-    nome = models.CharField(u'Título', max_length=120, unique=True)
-    prazoemdias = models.PositiveIntegerField(u'Prazo em dias', null=True, blank=True)
-    categoria = models.CharField(u'Categoria', max_length=2, null=True, blank=True, choices=CATEGORIAS)
-    apartirde = models.TextField(u'A partir de', blank=True)
-
-
 class Contrato(models.Model):
     MODALIDADES = (
         (u'00', u'Assistência técnica e científica'),
@@ -524,14 +513,6 @@ class Contrato(models.Model):
 @receiver(post_save, sender=Tecnologia, dispatch_uid="update_tarefas_automaticas")
 def update_tarefas_automaticas(sender, instance, **kwargs):
     cria_tarefas(instance)
-
-
-class MetaTarefa():
-    def __init__(self, nome, tipo_atividade_pk, atividade_pk, shift):
-        self.nome = nome
-        self.tipo_atividade_pk = tipo_atividade_pk
-        self.atividade_pk = atividade_pk
-        self.shift = shift
 
 
 def cria_tarefas(tecnologia):

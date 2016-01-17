@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import ValidationError
 from django.template import RequestContext
 from models import Permissao, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
-    Instituicao, Arquivo, TecnologiaAnexo, Contrato, MetaTarefa
+    Instituicao, Arquivo, TecnologiaAnexo, Contrato
 from forms import GrupoForm, ServidorForm, InventorForm, TecnologiaForm, \
     TarefaForm, InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, \
     InventorSearchForm, InstituicaoSearchForm, TarefaSearchForm, ContratoSearchForm
@@ -59,11 +59,6 @@ def listing_tarefas(request):
 
 
 @login_required()
-def listing_metatarefas(request):
-    return __listing_objects(request, MetaTarefa.objects.all(), 'metatarefas_list.html', "MetaTarefa")
-
-
-@login_required()
 def listing_contratos(request):
     return __listing_objects(request, Contrato.objects.all(), 'contratos_list.html', "Contrato")
 
@@ -96,11 +91,6 @@ def edit_tecnologia(request, pk):
 @login_required()
 def edit_tarefa(request, pk):
     return __edit_object(request, pk, Tarefa, 'tarefa_edit.html', "lista_tarefas")
-
-
-@login_required()
-def edit_metatarefa(request, pk):
-    return __edit_object(request, pk, MetaTarefa, 'metatarefa_edit.html', "lista_metatarefas")
 
 
 @login_required()
@@ -139,11 +129,6 @@ def remover_tarefa(request, pk):
 
 
 @login_required()
-def remover_metatarefa(request, pk):
-    return __remover_object(request, pk, MetaTarefa, 'lista_metatarefas')
-
-
-@login_required()
 def remover_contrato(request, pk):
     return __remover_object(request, pk, Contrato, 'lista_contratos')
 
@@ -176,11 +161,6 @@ def adicionar_tecnologia(request):
 @login_required()
 def adicionar_tarefa(request):
     return __adicionar_obj(request, TarefaForm, 'lista_tarefas', 'tarefa_add.html')
-
-
-@login_required()
-def adicionar_metatarefa(request):
-    return __adicionar_obj(request, MetaTarefaForm, 'lista_metatarefas', 'metatarefa_add.html')
 
 
 @login_required()
