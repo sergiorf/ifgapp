@@ -164,6 +164,19 @@ class TarefaForm(autocomplete_light.ModelForm):
         }
 
 
+class TarefaVerForm(ModelForm):
+    anexo = FileField(label='Anexo', widget=AdminFileWidget, max_length=200, required=False)
+
+    class Meta:
+        model = Tarefa
+        fields = '__all__'
+        widgets = {
+            'realizacao_inicio': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'realizacao_final': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+            'conclusao': DateInput(attrs={'size': '90', 'id': 'datepicker'}),
+        }
+
+
 class TarefaSearchForm(Form):
     nome = CharField(label=u'Título')
     tipo_atividade = ModelChoiceField(queryset=TipoAtividade.objects.all())
