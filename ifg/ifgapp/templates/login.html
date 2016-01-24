@@ -46,6 +46,7 @@
                     <input type="submit" value="{% trans 'Log in' %}" />
                 </div>
                 <div class="form-row">
+                    {% if error %}<p class="errornote">{{ error }}</p>{% endif %}
                     <a href="/comum/solicitar_trocar_senha/">Esqueceu sua senha?</a>
                 </div>
             </form>

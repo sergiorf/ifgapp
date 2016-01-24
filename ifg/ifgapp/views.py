@@ -273,6 +273,7 @@ def visualizar_arquivo(request, arquivo_id):
 
 def login_user(request):
     state = "Por favor autentique-se..."
+    error = None
     username = password = ''
     if request.POST:
         username = request.POST.get('username')
@@ -287,10 +288,10 @@ def login_user(request):
                 else:
                     return HttpResponseRedirect("/")
             else:
-                state = "Your account is not active, please contact the site admin."
+                error = "Your account is not active, please contact the site admin."
         else:
-            state = "Senha ou nome de usuário incorretos."
-    return render_to_response('login.html', {'state': state, 'username': username, 'next': request.GET.get('next')})
+            error = "Senha ou nome de usuário incorretos."
+    return render_to_response('login.html', {'state': state, 'error': error, 'username': username, 'next': request.GET.get('next')})
 
 
 def logout_user(request):
