@@ -94,12 +94,9 @@ ver 0.12
 -----------------------------
 - Mostrar messagem de erro: "usuário ou senha incorretos" quando login falha.
 - Resolver questão com as tarefas automáticas de tipo Marca.
-
-ver 0.13
------------------------------
 - Se possível, gostaria de diferenciar nos formulários de busca os resultados para quando
   não houver nenhuma tecnologia cadastrada, ou nenhuma tecnologia encontrada correspondente aos filtros.
-- Bug: Fazer os formulários de 'Ver detalhes' readonly.
+
 
 
 

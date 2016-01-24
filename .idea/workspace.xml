@@ -4,13 +4,6 @@
     <list default="true" id="e304dea1-b943-45d6-8129-3436e914f113" name="Default" comment="">
       <change type="DELETED" beforePath="C:\dev\ifgapp\ifg\docs\~$stema_protecao_intelectual_v10.odt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/README.md" afterPath="$PROJECT_DIR$/ifg/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/search_instituicao.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/search_instituicao.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/search_inventor.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/search_inventor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/search_tarefa.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/search_tarefa.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/templates/search_tecnologia.html" afterPath="$PROJECT_DIR$/ifg/ifgapp/templates/search_tecnologia.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ifg/ifgapp/views.py" afterPath="$PROJECT_DIR$/ifg/ifgapp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ifgapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,10 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_contrato.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="search_contrato.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30226701" vertical-offset="611" max-vertical-offset="1020">
+            <state vertical-scroll-proportion="-4.6153846" vertical-offset="611" max-vertical-offset="1020">
               <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
               <folding />
             </state>
@@ -101,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifg/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.8" vertical-offset="1396" max-vertical-offset="2040">
-              <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.5742093" vertical-offset="1379" max-vertical-offset="1989">
+              <caret line="95" column="58" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -198,13 +191,13 @@
         <option value="$PROJECT_DIR$/ifg/ifgapp/models.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/tarefas_automaticas.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/login.html" />
-        <option value="$PROJECT_DIR$/ifg/README.md" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/views.py" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/search_instituicao.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/search_inventor.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/search_tarefa.html" />
         <option value="$PROJECT_DIR$/ifg/ifgapp/templates/search_tecnologia.html" />
+        <option value="$PROJECT_DIR$/ifg/README.md" />
       </list>
     </option>
   </component>
@@ -1066,17 +1059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ifg/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.8" vertical-offset="1396" max-vertical-offset="2040">
-          <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/template/context.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1480" max-vertical-offset="2958">
@@ -1137,10 +1119,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ifg/ifgapp/templates/search_contrato.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30226701" vertical-offset="611" max-vertical-offset="1020">
+        <state vertical-scroll-proportion="-4.6153846" vertical-offset="611" max-vertical-offset="1020">
           <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ifg/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5742093" vertical-offset="1379" max-vertical-offset="1989">
+          <caret line="95" column="58" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
   </component>
