@@ -12,6 +12,7 @@ class MetaTarefa():
 
 PRIMEIRA_ANUIDADE = u'1a Anuidade'
 ANUIDADE = u'Anuidade'
+TAXA_DECENAL = u'Taxa Decenal'
 DESARQUIVAMENTO = u'Desarquivamento: anuidade não paga'
 PEDIDO_EXAME = u'Pedido de exame'
 DESARQUIVAMENTO_EXAME = u'Desarquivamento: exame não solicitado'
@@ -21,6 +22,7 @@ ENVIO_DOCS = u'Envio de documentos não obrigatórios do pedido'
 Tarefas = {
     PRIMEIRA_ANUIDADE: MetaTarefa(nome=PRIMEIRA_ANUIDADE, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+36)),
     ANUIDADE: MetaTarefa(nome=ANUIDADE, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+3)),
+    TAXA_DECENAL: MetaTarefa(nome=TAXA_DECENAL, tipo_atividade_pk=1, atividade_pk=4, shift=relativedelta(days=+60)),
     DESARQUIVAMENTO: MetaTarefa(nome=DESARQUIVAMENTO, tipo_atividade_pk=2, atividade_pk=7, shift=relativedelta(months=+3)),
     PEDIDO_EXAME: MetaTarefa(nome=PEDIDO_EXAME, tipo_atividade_pk=1, atividade_pk=4, shift=relativedelta(months=+36)),
     DESARQUIVAMENTO_EXAME: MetaTarefa(nome=DESARQUIVAMENTO_EXAME, tipo_atividade_pk=1, atividade_pk=4, shift=relativedelta(days=+60)),
@@ -48,7 +50,15 @@ def criar_tarefas_geral(tecnologia):
 
 
 def criar_tarefas_marcas(tecnologia):
-    pass
+    if tecnologia.pedido is not None:
+        taxa_decenal = get_last_by_name(tecnologia, TAXA_DECENAL)
+        shift = relativedelta(years=+10)
+        if taxa_decenal is None:
+            start_dt = tecnologia.pedido + shift
+            cria_tarefa2(tecnologia, start_dt, 1, Tarefas[TAXA_DECENAL])
+        elif taxa_decenal.status == Tarefa.FINALIZADA:
+            start_dt = taxa_decenal.realizacao_inicio + shift
+            cria_tarefa2(tecnologia, start_dt, taxa_decenal.numero+1, Tarefas[ANUIDADE])
 
 
 def criar_tarefas_software(tecnologia):
@@ -65,12 +75,12 @@ def criar_tarefas_software(tecnologia):
 
 def criar_tarefas_patentes(tecnologia):
     if tecnologia.pedido is not None:
-        anuidade = get_last_anuidade(tecnologia)
+        anuidade = get_last_by_name(tecnologia, ANUIDADE)
         if anuidade is None:
             cria_tarefa2(tecnologia, tecnologia.pedido, 1, Tarefas[PRIMEIRA_ANUIDADE])
         elif anuidade.status == Tarefa.FINALIZADA:
             start_dt = date(date.today().year+1, 1, 1)
-            cria_tarefa2(tecnologia, start_dt, anuidade.anuidade_nr+1, Tarefas[ANUIDADE])
+            cria_tarefa2(tecnologia, start_dt, anuidade.numero+1, Tarefas[ANUIDADE])
         elif anuidade.status == Tarefa.NAO_REALIZADA:
             cria_tarefa(tecnologia, anuidade.realizacao_final, Tarefas[DESARQUIVAMENTO])
         tf = get_tarefa(tecnologia, PEDIDO_EXAME)
@@ -89,8 +99,8 @@ def get_last_by_atividade(tecnologia, tipo_atividade_pk):
         return None
 
 
-def get_last_anuidade(tecnologia):
-    q = Tarefa.objects.filter(tecnologia=tecnologia).filter(nome__contains=ANUIDADE).order_by('realizacao_inicio')
+def get_last_by_name(tecnologia, nome):
+    q = Tarefa.objects.filter(tecnologia=tecnologia).filter(nome__contains=nome).order_by('realizacao_inicio')
     if len(q) > 0:
         return q[0]
     else:
@@ -109,14 +119,14 @@ def cria_tarefa(tecnologia, start_dt, meta_tarefa):
     return cria_tarefa2(tecnologia, start_dt, 0, meta_tarefa)
 
 
-def cria_tarefa2(tecnologia, start_dt, anuidade_nr, meta_tarefa):
+def cria_tarefa2(tecnologia, start_dt, numero, meta_tarefa):
     tf = Tarefa()
-    if anuidade_nr > 0:
-        tf.nome = str(anuidade_nr) + u'a ' + meta_tarefa.nome
+    if numero > 0:
+        tf.nome = str(numero) + u'a ' + meta_tarefa.nome
     else:
         tf.nome = meta_tarefa.nome
     tf.tecnologia = tecnologia
-    tf.anuidade_nr = anuidade_nr
+    tf.numero = numero
     tf.tipo_atividade = TipoAtividade.objects.get(pk=meta_tarefa.tipo_atividade_pk)
     tf.atividade = Atividade.objects.get(pk=meta_tarefa.atividade_pk)
     tf.realizacao_inicio = start_dt

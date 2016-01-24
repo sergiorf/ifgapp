@@ -86,6 +86,9 @@ ver 0.11
 - Bug: Typo no template de lista de grupos.
 - Remover o modelo MetaTarefa (deprecated).
 - Adicionar opção 'Servidores' no tab de navegação.
+- Nos resultados da busca, ao invés de "editar" e "remover", gostaria que houvesse apenas um "ver detalhes",
+  que, aliás, eu não sei onde está. Só consigo visualizar detalhes dos objetos clicando em "editar"
+  e deixando inalterado.
 
 ver 0.12 (PLANNED)
 -----------------------------
@@ -93,10 +96,7 @@ ver 0.12 (PLANNED)
 - Resolver questão com as tarefas automáticas de tipo Marca.
 - Se possível, gostaria de diferenciar nos formulários de busca os resultados para quando
   não houver nenhuma tecnologia cadastrada, ou nenhuma tecnologia encontrada correspondente aos filtros.
-- Nos resultados da busca, ao invés de "editar" e "remover", gostaria que houvesse apenas um "ver detalhes",
-  que, aliás, eu não sei onde está. Só consigo visualizar detalhes dos objetos clicando em "editar"
-  e deixando inalterado.
-- Bug: Fazer os formulários de 'Ver detales' readonly.
+- Bug: Fazer os formulários de 'Ver detalhes' readonly.
 
 
 

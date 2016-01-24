@@ -430,7 +430,7 @@ class Tarefa(models.Model):
     atividade = ChainedForeignKey(Atividade, chained_field='tipo_atividade',
                                      chained_model_field="tipo_atividade", null=True, blank=True)
     codigo = models.PositiveIntegerField(u'Código', null=True, blank=True)
-    anuidade_nr = models.PositiveIntegerField(u'Anuidade', null=True, blank=True)
+    numero = models.PositiveIntegerField(u'Numero', null=True, blank=True)
     descricao = models.TextField(u'Descrição', null=True, blank=True)
     realizacao_inicio = models.DateField(u'Data de início da realização da tarefa', blank=True, null=True)
     realizacao_final = models.DateField(u'Data limite para realização da tarefa', blank=True, null=True)
