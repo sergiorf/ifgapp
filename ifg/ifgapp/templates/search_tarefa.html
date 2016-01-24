@@ -35,8 +35,12 @@
                 </tr>
             {% endfor %}
         </table>
-        {% else %}
-            <p class="empty">Nenhuma tarefa cadastrada.</p>
+        {% elif method == 'POST' %}
+            {%if nothing_exists %}
+                <p class="empty">Nenhuma tarefa cadastrada.</p>
+            {% else %}
+                <p class="empty">Nenhuma tarefa encontrada.</p>
+            {% endif %}
         {% endif %}
     </div>      
 </div>

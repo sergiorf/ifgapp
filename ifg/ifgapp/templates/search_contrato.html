@@ -43,8 +43,12 @@
                 </tr>
             {% endfor %}
         </table>
-        {% else %}
-            <p class="empty">Nenhum contrato cadastrado.</p>
+        {% elif method == 'POST' %}
+            {%if nothing_exists %}
+                <p class="empty">Nenhum contrato cadastrado.</p>
+            {% else %}
+                <p class="empty">Nenhum contrato encontrado.</p>
+            {% endif %}
         {% endif %}
     </div>  
 </div>  

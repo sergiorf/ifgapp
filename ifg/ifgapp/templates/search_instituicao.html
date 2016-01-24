@@ -43,8 +43,12 @@
                 </tr>
             {% endfor %}
          </table>
-        {% else %}
-            <p class="empty">Nenhuma instituição cadastrada.</p>
+        {% elif method == 'POST' %}
+            {%if nothing_exists %}
+                <p class="empty">Nenhuma instituição cadastrada.</p>
+            {% else %}
+                <p class="empty">Nenhuma instituição encontrada.</p>
+            {% endif %}
         {% endif %}
     </div>
 </div>

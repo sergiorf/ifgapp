@@ -43,8 +43,12 @@
                 </tr>
             {% endfor %}
         </table>
-        {% else %}
-            <p class="empty">Nenhuma tecnologia cadastrada.</p>
+        {% elif method == 'POST' %}
+            {%if nothing_exists %}
+                <p class="empty">Nenhuma tecnologia cadastrada.</p>
+            {% else %}
+                <p class="empty">Nenhuma tecnologia encontrada.</p>
+            {% endif %}
         {% endif %}
     </div>
 </div>

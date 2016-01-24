@@ -388,8 +388,10 @@ def __search(request, obj_klass, template_name, field_set, range_date_set=[]):
     form_klass = obj_klass.__name__ + "SearchForm"
     constructor_frm = globals()[form_klass]
     if request.method == 'POST':
+        nothing_exists = True
         results = obj_klass.objects.all()
         if results:
+            nothing_exists = False
             for field_name, search_type in field_set:
                 v = request.POST.get(field_name, None)
                 if v:
@@ -412,6 +414,6 @@ def __search(request, obj_klass, template_name, field_set, range_date_set=[]):
                         results = results.filter(**{field_name+'__lte': end})
                     if not results:
                         break
-        return render_to_response(template_name, {'form': constructor_frm(request.POST), 'objects_tolist': results})
+        return render_to_response(template_name, {'form': constructor_frm(request.POST), 'nothing_exists': nothing_exists, 'method': request.method, 'objects_tolist': results})
     else:
         return render_to_response(template_name, {'form': constructor_frm()})

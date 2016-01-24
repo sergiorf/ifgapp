@@ -43,8 +43,12 @@
                 </tr>
             {% endfor %}
          </table>
-        {% else %}
-            <p class="empty">Nenhum inventor cadastrado.</p>
+        {% elif method == 'POST' %}
+            {%if nothing_exists %}
+                <p class="empty">Nenhum inventor cadastrado.</p>
+            {% else %}
+                <p class="empty">Nenhum inventor encontrado.</p>
+            {% endif %}
         {% endif %}
     </div>
 </div>    
