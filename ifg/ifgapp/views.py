@@ -30,7 +30,8 @@ class SearchField(object):
 @login_required()
 def index(request):
     perms = __get_permissions(request.user)
-    return render_to_response('index.html', {'perms': perms, 'ver_tecnologias': Permissao.VER_TECNOLOGIAS})
+    return render_to_response('index.html', {'perms': perms,
+        'ver_tecnologias': Permissao.VER_TECNOLOGIAS, 'ver_tecnologias_proprias': Permissao.VER_TECNOLOGIAS_PROPRIAS})
 
 
 @login_required()
@@ -53,7 +54,17 @@ def listing_grupos(request):
 
 @login_required()
 def listing_tecnologias(request):
-    return __listing_objects(request, Tecnologia.objects.order_by('nome').all(), 'tecnologias_list.html', "Tecnologia")
+    perms = __get_permissions(request.user)
+    techs = []
+    if Permissao.VER_TECNOLOGIAS not in perms and Permissao.VER_TECNOLOGIAS_PROPRIAS in perms:
+        try:
+            pessoa = PessoaFisica.objects.get(nome=request.user.username)
+            techs = Tecnologia.objects.filter(criador=pessoa).order_by('nome').all()
+        except Inventor.DoesNotExist:
+            pass
+    else:
+        techs = Tecnologia.objects.order_by('nome').all()
+    return __listing_objects(request, techs, 'tecnologias_list.html', "Tecnologia")
 
 
 @login_required()

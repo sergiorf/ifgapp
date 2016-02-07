@@ -369,8 +369,8 @@ class Tecnologia(models.Model):
                                       chained_model_field='subarea', blank=True, null=True)
     cotitulares = models.ManyToManyField('ifgapp.Instituicao', verbose_name=u'Instituições co-titulares',
                                          blank=True, null=True)
-    criador = models.ForeignKey(Inventor, verbose_name=u'Criador Responsável', related_name=u'Tecnologia_criador')
-    cocriadores = models.ManyToManyField('ifgapp.Inventor', verbose_name=u'Co-criador(es)',
+    criador = models.ForeignKey(PessoaFisica, verbose_name=u'Criador Responsável', related_name=u'Tecnologia_criador')
+    cocriadores = models.ManyToManyField('ifgapp.PessoaFisica', verbose_name=u'Co-criador(es)',
                                          blank=True, null=True, related_name=u'Tecnologia_cocriador')
     observacao = models.TextField(u'Observação', blank=True)
     status = models.CharField(u'Status do pedido', max_length=2, null=True, blank=True, choices=STATUS)
