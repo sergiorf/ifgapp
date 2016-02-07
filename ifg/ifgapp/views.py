@@ -33,15 +33,15 @@ def index(request):
 
 
 @login_required()
-@has_permission([Permissao.VER_PESSOAS])
 def listing_servidores(request):
-    return __listing_objects(request, Servidor.objects.all(), 'usuario_list.html', "Servidor")
+    servidores = __filter_pessoas(request, Servidor)
+    return __listing_objects(request, servidores, 'usuario_list.html', "Servidor")
 
 
 @login_required()
-@has_permission([Permissao.VER_PESSOAS])
 def listing_inventores(request):
-    return __listing_objects(request, Inventor.objects.all(), 'usuario_list.html', "Inventor")
+    inventores = __filter_pessoas(request, Inventor)
+    return __listing_objects(request, inventores, 'usuario_list.html', "Inventor")
 
 
 @login_required()
@@ -58,7 +58,7 @@ def listing_tecnologias(request):
         try:
             pessoa = PessoaFisica.objects.get(nome=request.user.username)
             techs = Tecnologia.objects.filter(criador=pessoa).order_by('nome').all()
-        except Inventor.DoesNotExist:
+        except PessoaFisica.DoesNotExist:
             pass
     else:
         techs = Tecnologia.objects.order_by('nome').all()
@@ -81,13 +81,11 @@ def listing_instituicoes(request):
 
 
 @login_required()
-@has_permission([Permissao.VER_PESSOAS])
 def ver_servidor(request, pk):
     return __ver_object(request, pk, Servidor, 'servidor_ver.html', "lista_servidores")
 
 
 @login_required()
-@has_permission([Permissao.VER_PESSOAS])
 def ver_inventor(request, pk):
     return __ver_object(request, pk, Inventor, 'inventor_ver.html', "lista_inventores")
 
@@ -98,7 +96,6 @@ def ver_grupo(request, pk):
 
 
 @login_required()
-@has_permission([Permissao.VER_TECNOLOGIAS])
 def ver_tecnologia(request, pk):
     return __ver_object(request, pk, Tecnologia, 'tecnologia_ver.html', "lista_tecnologias")
 
@@ -119,13 +116,11 @@ def ver_contrato(request, pk):
 
 
 @login_required()
-@has_permission([Permissao.VER_PESSOAS])
 def edit_servidor(request, pk):
     return __edit_object(request, pk, Servidor, 'servidor_edit.html', "lista_servidores")
 
 
 @login_required()
-@has_permission([Permissao.VER_PESSOAS])
 def edit_inventor(request, pk):
     return __edit_object(request, pk, Inventor, 'inventor_edit.html', "lista_inventores")
 
@@ -136,7 +131,6 @@ def edit_grupo(request, pk):
 
 
 @login_required()
-@has_permission([Permissao.MODIFICAR_TECNOLOGIAS])
 def edit_tecnologia(request, pk):
     return __edit_object(request, pk, Tecnologia, 'tecnologia_edit.html', "lista_tecnologias")
 
@@ -456,5 +450,20 @@ def __perms_dict(request):
     perms = __get_permissions(request.user)
     return dict({'perms': perms,
         'ver_techs': Permissao.VER_TECNOLOGIAS, 'ver_techs_proprias': Permissao.VER_TECNOLOGIAS_PROPRIAS,
-        'mod_techs': Permissao.MODIFICAR_TECNOLOGIAS, 'ver_pessoas': Permissao.VER_PESSOAS
+        'mod_techs': Permissao.MODIFICAR_TECNOLOGIAS, 'ver_pessoas': Permissao.VER_PESSOAS,
+        'ver_pessoas_mesmo_grupo' : Permissao.VER_PESSOAS_MESMO_GRUPO
     })
+
+
+def __filter_pessoas(request, userklass):
+    perms = __get_permissions(request.user)
+    pessoas = []
+    if Permissao.VER_PESSOAS not in perms and Permissao.VER_PESSOAS_MESMO_GRUPO in perms:
+        try:
+            pessoa = PessoaFisica.objects.get(nome=request.user.username)
+            pessoas = userklass.objects.filter(grupo=pessoa.grupo).order_by('nome').all()
+        except PessoaFisica.DoesNotExist:
+            pass
+    else:
+        pessoas = userklass.objects.all()
+    return pessoas

@@ -29,7 +29,7 @@
            </div>
            <div id="navigation">
                 <ul>
-                    {% if ver_pessoas in perms %}
+                    {% if ver_pessoas in perms or ver_pessoas_mesmo_grupo in perms %}
                         <li><a href="{% url 'lista_grupos' %}">Grupos</a></li>
                         <li><a href="{% url 'lista_inventores' %}">Inventores</a></li>
                         <li><a href="{% url 'lista_servidores' %}">Servidores</a></li>
