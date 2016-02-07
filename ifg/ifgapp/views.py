@@ -451,7 +451,8 @@ def __perms_dict(request):
     return dict({'perms': perms,
         'ver_techs': Permissao.VER_TECNOLOGIAS, 'ver_techs_proprias': Permissao.VER_TECNOLOGIAS_PROPRIAS,
         'mod_techs': Permissao.MODIFICAR_TECNOLOGIAS, 'ver_pessoas': Permissao.VER_PESSOAS,
-        'ver_pessoas_mesmo_grupo': Permissao.VER_PESSOAS_MESMO_GRUPO, 'mod_pessoas': Permissao.MODIFICAR_PESSOAS
+        'ver_pessoas_mesmo_grupo': Permissao.VER_PESSOAS_MESMO_GRUPO, 'mod_pessoas': Permissao.MODIFICAR_PESSOAS,
+        'ver_tarefas': Permissao.VER_TAREFAS
     })
 
 

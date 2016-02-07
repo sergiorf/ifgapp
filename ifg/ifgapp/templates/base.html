@@ -38,7 +38,9 @@
                         <li><a href="{% url 'lista_tecnologias' %}">Tecnologias</a></li>
                     {% endif %}
                     <li><a href="{% url 'lista_instituicoes' %}">Instituições</a></li>
-                    <li><a href="{% url 'lista_tarefas' %}">Tarefas</a></li>
+                    {% if ver_tarefas in perms %}
+                        <li><a href="{% url 'lista_tarefas' %}">Tarefas</a></li>
+                    {% endif %}
                     <li><a href="{% url 'lista_contratos' %}">Contratos</a></li>
                 </ul>
            </div>
