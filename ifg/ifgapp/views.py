@@ -17,7 +17,7 @@ from forms import GrupoForm, ServidorForm, InventorForm, TecnologiaForm, \
     ServidorVerForm, InventorVerForm, GrupoVerForm, TecnologiaVerForm, InstituicaoVerForm, \
     TarefaVerForm, ContratoVerForm
 from django.http import HttpResponse
-from utils import to_ascii, get_query
+from utils import to_ascii, get_query, merge_dicts
 import os
 
 
@@ -317,7 +317,9 @@ def logout_user(request):
 # PRIVATE
 
 def __listing_objects(request, queryset, template, klass_name=None):
-    return render(request, template, {'objects_tolist': queryset, "klass_name": klass_name})
+    x = {'objects_tolist': queryset, "klass_name": klass_name}
+    perms = __perms_dict(request)
+    return render(request, template, merge_dicts(x, perms))
 
 
 def __ver_object(request, pk, obj_klass, template_name, list_url):
@@ -328,7 +330,9 @@ def __ver_object(request, pk, obj_klass, template_name, list_url):
     aux = []
     if isinstance(obj, Tecnologia):
         aux = TecnologiaAnexo.objects.select_related().filter(tecnologia=obj)
-    return render(request, template_name, {'form': form, 'object': obj, 'aux': aux})
+    x = {'form': form, 'object': obj, 'aux': aux}
+    perms = __perms_dict(request)
+    return render(request, template_name, merge_dicts(x, perms))
 
 
 def __edit_object(request, pk, obj_klass, template_name, list_url):
@@ -346,7 +350,9 @@ def __edit_object(request, pk, obj_klass, template_name, list_url):
     aux = []
     if isinstance(obj, Tecnologia):
         aux = TecnologiaAnexo.objects.select_related().filter(tecnologia=obj)
-    return render(request, template_name, {'form': form, 'object': obj, 'aux': aux})
+    x = {'form': form, 'object': obj, 'aux': aux}
+    perms = __perms_dict(request)
+    return render(request, template_name, merge_dicts(x, perms))
 
 
 def __remover_object(request, pk, obj_klass, list_url):
@@ -442,3 +448,10 @@ def __get_permissions(user):
             return list(pessoa.grupo.permissoes.values_list('descricao', flat=True))
         except Inventor.DoesNotExist:
             return []
+
+
+def __perms_dict(request):
+    perms = __get_permissions(request.user)
+    return dict({'perms': perms,
+        'ver_tecnologias': Permissao.VER_TECNOLOGIAS, 'ver_tecnologias_proprias': Permissao.VER_TECNOLOGIAS_PROPRIAS
+    })
