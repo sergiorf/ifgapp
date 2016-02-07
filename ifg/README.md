@@ -110,8 +110,7 @@ present in the context menu.
 # VER_PESSOAS_MESMO_GRUPO: If present, user can only see users of her own group.
 # MODIFICAR_PESSOAS: If present, user can edit pessoas
 # VER_TAREFAS: If not present, user can't list tasks.
-
-# MODIFICAR_TAREFAS
+# MODIFICAR_TAREFAS: If present, user can edit tarefas.
 
 
 

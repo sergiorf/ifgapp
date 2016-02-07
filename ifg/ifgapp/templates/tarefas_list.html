@@ -25,8 +25,10 @@
                         <td>{{ tarefa.tecnologia.nome }}</td>
                         <td>{{ tarefa.realizacao_inicio }}</td>
                         <td>{{ tarefa.realizacao_final }}</td>
-                        <td><a href='{% url "edit_tarefa" tarefa.id %}' class="see_detail">Editar</a></td>
-                        <td><a href='{% url "remover_tarefa" tarefa.id %}' class="see_detail">Remover</a></td>
+                        {% if mod_tarefas in perms %}
+                            <td><a href='{% url "edit_tarefa" tarefa.id %}' class="see_detail">Editar</a></td>
+                            <td><a href='{% url "remover_tarefa" tarefa.id %}' class="see_detail">Remover</a></td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
              </table>
