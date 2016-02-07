@@ -102,12 +102,12 @@ ver 0.13
 -Criadores e CoCriadores de Tecnologias são PessoaFisica.
 -Criar as seguintes permissões:
 # VER_TECNOLOGIAS: If not present, user can't list tech. The tech option is not
-present in the home menu.
+present in the context menu.
 # VER_TECNOLOGIAS_PROPRIAS: If present, user can only access her own techs
 # MODIFICAR_TECNOLOGIAS: If present, user can edit techs
+# VER_PESSOAS: If not present, user can't list pessoas. The pessoas options are not
+present in the context menu.
 
-
-# VER_PESSOAS
 # VER_PESSOAS_MESMO_GRUPO
 # MODIFICAR_PESSOAS
 # MODIFICAR_PESSOAS_MESMO_GRUPO

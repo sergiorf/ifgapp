@@ -29,9 +29,11 @@
            </div>
            <div id="navigation">
                 <ul>
-                    <li><a href="{% url 'lista_grupos' %}">Grupos</a></li>
-                    <li><a href="{% url 'lista_inventores' %}">Inventores</a></li>
-                    <li><a href="{% url 'lista_servidores' %}">Servidores</a></li>
+                    {% if ver_pessoas in perms %}
+                        <li><a href="{% url 'lista_grupos' %}">Grupos</a></li>
+                        <li><a href="{% url 'lista_inventores' %}">Inventores</a></li>
+                        <li><a href="{% url 'lista_servidores' %}">Servidores</a></li>
+                    {% endif %}
                     {% if ver_techs in perms or ver_techs_proprias in perms %}
                         <li><a href="{% url 'lista_tecnologias' %}">Tecnologias</a></li>
                     {% endif %}

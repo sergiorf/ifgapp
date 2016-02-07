@@ -81,11 +81,13 @@ def listing_instituicoes(request):
 
 
 @login_required()
+@has_permission([Permissao.VER_PESSOAS])
 def ver_servidor(request, pk):
     return __ver_object(request, pk, Servidor, 'servidor_ver.html', "lista_servidores")
 
 
 @login_required()
+@has_permission([Permissao.VER_PESSOAS])
 def ver_inventor(request, pk):
     return __ver_object(request, pk, Inventor, 'inventor_ver.html', "lista_inventores")
 
@@ -117,11 +119,13 @@ def ver_contrato(request, pk):
 
 
 @login_required()
+@has_permission([Permissao.VER_PESSOAS])
 def edit_servidor(request, pk):
     return __edit_object(request, pk, Servidor, 'servidor_edit.html', "lista_servidores")
 
 
 @login_required()
+@has_permission([Permissao.VER_PESSOAS])
 def edit_inventor(request, pk):
     return __edit_object(request, pk, Inventor, 'inventor_edit.html', "lista_inventores")
 
@@ -452,5 +456,5 @@ def __perms_dict(request):
     perms = __get_permissions(request.user)
     return dict({'perms': perms,
         'ver_techs': Permissao.VER_TECNOLOGIAS, 'ver_techs_proprias': Permissao.VER_TECNOLOGIAS_PROPRIAS,
-        'mod_techs': Permissao.MODIFICAR_TECNOLOGIAS
+        'mod_techs': Permissao.MODIFICAR_TECNOLOGIAS, 'ver_pessoas': Permissao.VER_PESSOAS
     })
