@@ -20,7 +20,7 @@ def has_permission(permissions=[], home_url=None):
                     except Servidor.DoesNotExist:
                         try:
                             pessoa = Pesquisador.objects.get(nome=u.username)
-                        except Servidor.DoesNotExist:
+                        except Pesquisador.DoesNotExist:
                             return HttpResponseRedirect(reverse(home_url))
                 for desc in permissions:
                     print desc

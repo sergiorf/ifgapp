@@ -100,10 +100,14 @@ ver 0.12
 ver 0.13
 -----------------------------
 -Criar as seguintes permissões:
-# VER_TECNOLOGIA -> ok
+# VER_TECNOLOGIAS: If not present, user can't list tech. The tech option is not
+present in the home menu.
+
+
+
 # VER_TECNOLOGIAS_PROPRIAS
-# MODIFICAR_TECNOLOGIA -> ok
-# VER_PESSOA
+# MODIFICAR_TECNOLOGIAS -> ok
+# VER_PESSOAS
 # VER_PESSOAS_MESMO_GRUPO
 # MODIFICAR_PESSOAS
 # MODIFICAR_PESSOAS_MESMO_GRUPO

@@ -19,7 +19,7 @@ class Command(BaseCommand):
         Command.create_permissoes()
         Command.create_grupo(u'Coordenação-Cite', Permissao.all_permissions)
         Command.create_grupo(u'Equipe-Cite',
-                             [Permissao.VER_TECNOLOGIA, Permissao.MODIFICAR_TECNOLOGIA,
+                             [Permissao.VER_TECNOLOGIAS, Permissao.MODIFICAR_TECNOLOGIAS,
                               Permissao.VER_PESSOAS_MESMO_GRUPO, Permissao.MODIFICAR_PESSOAS_MESMO_GRUPO,
                               Permissao.VER_TAREFAS, Permissao.MODIFICAR_TAREFAS])
         Command.create_grupo(u'Inventores', [Permissao.VER_TECNOLOGIAS_PROPRIAS])

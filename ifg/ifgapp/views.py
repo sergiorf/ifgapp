@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import ValidationError
 from django.template import RequestContext
 from models import Permissao, Servidor, Inventor, Grupo, Tecnologia, Tarefa, \
-    Instituicao, Arquivo, TecnologiaAnexo, Contrato
+    Instituicao, Arquivo, TecnologiaAnexo, Contrato, PessoaFisica
 from forms import GrupoForm, ServidorForm, InventorForm, TecnologiaForm, \
     TarefaForm, InstituicaoForm, UploadArquivoForm, ContratoForm, TecnologiaSearchForm, \
     InventorSearchForm, InstituicaoSearchForm, TarefaSearchForm, ContratoSearchForm, \
@@ -29,23 +29,24 @@ class SearchField(object):
 
 @login_required()
 def index(request):
-    return render_to_response('index.html', locals())
+    perms = __get_permissions(request.user)
+    return render_to_response('index.html', {'perms': perms, 'ver_tecnologias': Permissao.VER_TECNOLOGIAS})
 
 
 @login_required()
-@has_permission([Permissao.VER_PESSOA])
+@has_permission([Permissao.VER_PESSOAS])
 def listing_servidores(request):
     return __listing_objects(request, Servidor.objects.all(), 'usuario_list.html', "Servidor")
 
 
 @login_required()
-@has_permission([Permissao.VER_PESSOA])
+@has_permission([Permissao.VER_PESSOAS])
 def listing_inventores(request):
     return __listing_objects(request, Inventor.objects.all(), 'usuario_list.html', "Inventor")
 
 
 @login_required()
-@has_permission([Permissao.VER_PESSOA])
+@has_permission([Permissao.VER_PESSOAS])
 def listing_grupos(request):
     return __listing_objects(request, Grupo.objects.all(), 'grupo_list.html', "Grupo")
 
@@ -86,7 +87,7 @@ def ver_grupo(request, pk):
 
 
 @login_required()
-@has_permission([Permissao.VER_TECNOLOGIA, Permissao.VER_TECNOLOGIAS_PROPRIAS])
+@has_permission([Permissao.VER_TECNOLOGIAS, Permissao.VER_TECNOLOGIAS_PROPRIAS])
 def ver_tecnologia(request, pk):
     return __ver_object(request, pk, Tecnologia, 'tecnologia_ver.html', "lista_tecnologias")
 
@@ -122,7 +123,7 @@ def edit_grupo(request, pk):
 
 
 @login_required()
-@has_permission([Permissao.MODIFICAR_TECNOLOGIA, Permissao.VER_TECNOLOGIAS_PROPRIAS])
+@has_permission([Permissao.MODIFICAR_TECNOLOGIAS, Permissao.VER_TECNOLOGIAS_PROPRIAS])
 def edit_tecnologia(request, pk):
     return __edit_object(request, pk, Tecnologia, 'tecnologia_edit.html', "lista_tecnologias")
 
@@ -419,3 +420,14 @@ def __search(request, obj_klass, template_name, field_set, range_date_set=[]):
         return render_to_response(template_name, {'form': constructor_frm(request.POST), 'nothing_exists': nothing_exists, 'method': request.method, 'objects_tolist': results})
     else:
         return render_to_response(template_name, {'form': constructor_frm()})
+
+
+def __get_permissions(user):
+    if user.is_superuser:
+        return Permissao.all_permissions
+    else:
+        try:
+            pessoa = PessoaFisica.objects.get(nome=user.username)
+            return list(pessoa.grupo.permissoes.values_list('descricao', flat=True))
+        except Inventor.DoesNotExist:
+            return []
