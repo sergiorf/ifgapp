@@ -32,7 +32,7 @@
                     <li><a href="{% url 'lista_grupos' %}">Grupos</a></li>
                     <li><a href="{% url 'lista_inventores' %}">Inventores</a></li>
                     <li><a href="{% url 'lista_servidores' %}">Servidores</a></li>
-                    {% if ver_tecnologias in perms or ver_tecnologias_proprias in perms %}
+                    {% if ver_techs in perms or ver_techs_proprias in perms %}
                         <li><a href="{% url 'lista_tecnologias' %}">Tecnologias</a></li>
                     {% endif %}
                     <li><a href="{% url 'lista_instituicoes' %}">Instituições</a></li>

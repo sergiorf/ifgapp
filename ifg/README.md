@@ -104,10 +104,9 @@ ver 0.13
 # VER_TECNOLOGIAS: If not present, user can't list tech. The tech option is not
 present in the home menu.
 # VER_TECNOLOGIAS_PROPRIAS: If present, user can only access her own techs
+# MODIFICAR_TECNOLOGIAS: If present, user can edit techs
 
 
-
-# MODIFICAR_TECNOLOGIAS -> ok
 # VER_PESSOAS
 # VER_PESSOAS_MESMO_GRUPO
 # MODIFICAR_PESSOAS

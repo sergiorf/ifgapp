@@ -25,9 +25,11 @@
                         <td>{{ tecnologia.nome }}</td>
                         <td>{{ tecnologia.categoria }}</td>
                         <td>{{ tecnologia.numero_processo }}</td>
-                        <td><a href='{% url "edit_tecnologia" tecnologia.id %}' class="see_detail">Editar</a></td>
-                        <td><a href='{% url "remover_tecnologia" tecnologia.id %}' class="see_detail">Remover</a></td>
-                        <td><a href='{% url "adicionar_tarefa" %}'>Adicionar Tarefa</a></td>
+                        {% if mod_techs in perms %}
+                            <td><a href='{% url "edit_tecnologia" tecnologia.id %}' class="see_detail">Editar</a></td>
+                            <td><a href='{% url "remover_tecnologia" tecnologia.id %}' class="see_detail">Remover</a></td>
+                            <td><a href='{% url "adicionar_tarefa" %}'>Adicionar Tarefa</a></td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
              </table>

@@ -29,9 +29,7 @@ class SearchField(object):
 
 @login_required()
 def index(request):
-    perms = __get_permissions(request.user)
-    return render_to_response('index.html', {'perms': perms,
-        'ver_tecnologias': Permissao.VER_TECNOLOGIAS, 'ver_tecnologias_proprias': Permissao.VER_TECNOLOGIAS_PROPRIAS})
+    return render_to_response('index.html', __perms_dict(request))
 
 
 @login_required()
@@ -98,7 +96,7 @@ def ver_grupo(request, pk):
 
 
 @login_required()
-@has_permission([Permissao.VER_TECNOLOGIAS, Permissao.VER_TECNOLOGIAS_PROPRIAS])
+@has_permission([Permissao.VER_TECNOLOGIAS])
 def ver_tecnologia(request, pk):
     return __ver_object(request, pk, Tecnologia, 'tecnologia_ver.html', "lista_tecnologias")
 
@@ -134,7 +132,7 @@ def edit_grupo(request, pk):
 
 
 @login_required()
-@has_permission([Permissao.MODIFICAR_TECNOLOGIAS, Permissao.VER_TECNOLOGIAS_PROPRIAS])
+@has_permission([Permissao.MODIFICAR_TECNOLOGIAS])
 def edit_tecnologia(request, pk):
     return __edit_object(request, pk, Tecnologia, 'tecnologia_edit.html', "lista_tecnologias")
 
@@ -453,5 +451,6 @@ def __get_permissions(user):
 def __perms_dict(request):
     perms = __get_permissions(request.user)
     return dict({'perms': perms,
-        'ver_tecnologias': Permissao.VER_TECNOLOGIAS, 'ver_tecnologias_proprias': Permissao.VER_TECNOLOGIAS_PROPRIAS
+        'ver_techs': Permissao.VER_TECNOLOGIAS, 'ver_techs_proprias': Permissao.VER_TECNOLOGIAS_PROPRIAS,
+        'mod_techs': Permissao.MODIFICAR_TECNOLOGIAS
     })
