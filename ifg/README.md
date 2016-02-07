@@ -97,7 +97,17 @@ ver 0.12
 - Se possível, gostaria de diferenciar nos formulários de busca os resultados para quando
   não houver nenhuma tecnologia cadastrada, ou nenhuma tecnologia encontrada correspondente aos filtros.
 
-
+ver 0.13
+-----------------------------
+-Criar as seguintes permissões:
+# Ver tarefas
+# Editar tarefas
+# Ver tecnologias
+# Ver tecnologia própria
+# Editar tecnologias
+# Editar pessoas
+# Ver pessoas do mesmo grupo
+# Editar pessoas do mesmo grupo
 
 
 

@@ -16,26 +16,36 @@ class Command(BaseCommand):
         Command.insert_areacon()
         Command.insert_categorias()
         Command.insert_atividades()
-        Command.create_grupo(u'Coordenação-Cite')
-        Command.create_grupo(u'Equipe-Cite')
-        Command.create_grupo(u'Inventores')
-        admin = Command.create_grupo(u'Admin')
+        Command.create_permissoes()
+        Command.create_grupo(u'Coordenação-Cite', Permissao.all_permissions)
+        Command.create_grupo(u'Equipe-Cite',
+                             [Permissao.VER_TECNOLOGIA, Permissao.MODIFICAR_TECNOLOGIA,
+                              Permissao.VER_PESSOAS_MESMO_GRUPO, Permissao.MODIFICAR_PESSOAS_MESMO_GRUPO,
+                              Permissao.VER_TAREFAS, Permissao.MODIFICAR_TAREFAS])
+        Command.create_grupo(u'Inventores', [Permissao.VER_TECNOLOGIAS_PROPRIAS])
+        admin = Command.create_grupo(u'Admin', Permissao.all_permissions)
         self.create_test_objs(10, admin)
         Command.create_instituicoes()
 
     @staticmethod
-    def create_grupo(nome):
+    def create_permissoes():
         index = 1
-        grupo = create_obj(dict(nome=nome), Grupo, dict(
-            nome=nome,
-        ))
         for perm in Permissao.all_permissions:
-            p = create_obj(dict(codigo=index), Permissao, dict(
+            create_obj(dict(codigo=index), Permissao, dict(
                 codigo=index,
                 descricao=perm
             ))
             index += 1
-            grupo.permissoes.add(p)
+
+    @staticmethod
+    def create_grupo(nome, permissoes):
+        grupo = create_obj(dict(nome=nome), Grupo, dict(
+            nome=nome,
+        ))
+        grupo.permissoes = []
+        for perm in permissoes:
+            p = Permissao.objects.filter(descricao=perm)
+            grupo.permissoes.add(p[0])
         return grupo
 
     @staticmethod

@@ -128,9 +128,17 @@ class Instituicao(models.Model):
 
 class Permissao(models.Model):
     VER_TECNOLOGIA = u'Ver Tecnologia'
-    VER_PESSOA = u'Ver Pessoa'
+    VER_TECNOLOGIAS_PROPRIAS = u'Ver Tecnologias Proprias'
     MODIFICAR_TECNOLOGIA = u'Modificar Tecnologia'
-    all_permissions = [VER_TECNOLOGIA, VER_PESSOA, MODIFICAR_TECNOLOGIA]
+    VER_PESSOA = u'Ver Pessoa'
+    VER_PESSOAS_MESMO_GRUPO = u'Ver Pessoas do mesmo grupo'
+    MODIFICAR_PESSOAS = u'Modificar Pessoas'
+    MODIFICAR_PESSOAS_MESMO_GRUPO = u'Modificar Pessoas do mesmo grupo'
+    VER_TAREFAS = u'Ver Tarefas'
+    MODIFICAR_TAREFAS = u'Modificar Tarefas'
+    all_permissions = [VER_TECNOLOGIA, VER_TECNOLOGIAS_PROPRIAS, MODIFICAR_TECNOLOGIA,
+                       VER_PESSOA, VER_PESSOAS_MESMO_GRUPO, MODIFICAR_PESSOAS, MODIFICAR_PESSOAS_MESMO_GRUPO,
+                       VER_TAREFAS, MODIFICAR_TAREFAS]
     codigo = models.CharField(u'Código', max_length=8, unique=True)
     descricao = models.CharField(u'Descrição', max_length=255)
 
