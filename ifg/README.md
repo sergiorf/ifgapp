@@ -108,8 +108,8 @@ present in the context menu.
 # VER_PESSOAS: If not present, user can't list pessoas. The pessoas options are not
 present in the context menu.
 # VER_PESSOAS_MESMO_GRUPO: If present, user can only see users of her own group.
+# MODIFICAR_PESSOAS: If present, user can edit pessoas
 
-# MODIFICAR_PESSOAS
 # MODIFICAR_PESSOAS_MESMO_GRUPO
 # VER_TAREFAS
 # MODIFICAR_TAREFAS
