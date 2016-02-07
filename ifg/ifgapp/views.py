@@ -86,6 +86,7 @@ def ver_grupo(request, pk):
 
 
 @login_required()
+@has_permission([Permissao.VER_TECNOLOGIA, Permissao.VER_TECNOLOGIAS_PROPRIAS])
 def ver_tecnologia(request, pk):
     return __ver_object(request, pk, Tecnologia, 'tecnologia_ver.html', "lista_tecnologias")
 
@@ -121,6 +122,7 @@ def edit_grupo(request, pk):
 
 
 @login_required()
+@has_permission([Permissao.MODIFICAR_TECNOLOGIA, Permissao.VER_TECNOLOGIAS_PROPRIAS])
 def edit_tecnologia(request, pk):
     return __edit_object(request, pk, Tecnologia, 'tecnologia_edit.html', "lista_tecnologias")
 

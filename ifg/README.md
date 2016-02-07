@@ -100,17 +100,15 @@ ver 0.12
 ver 0.13
 -----------------------------
 -Criar as seguintes permissões:
-# Ver tarefas
-# Editar tarefas
-# Ver tecnologias
-# Ver tecnologia própria
-# Editar tecnologias
-# Editar pessoas
-# Ver pessoas do mesmo grupo
-# Editar pessoas do mesmo grupo
-
-
-
+# VER_TECNOLOGIA -> ok
+# VER_TECNOLOGIAS_PROPRIAS
+# MODIFICAR_TECNOLOGIA -> ok
+# VER_PESSOA
+# VER_PESSOAS_MESMO_GRUPO
+# MODIFICAR_PESSOAS
+# MODIFICAR_PESSOAS_MESMO_GRUPO
+# VER_TAREFAS
+# MODIFICAR_TAREFAS
 
 
 
