@@ -372,7 +372,9 @@ def __adicionar_obj(request, form_klass, list_url, template_name):
         #    print form.errors
     else:
         form = form_klass()
-    return render_to_response(template_name, {'form': form}, context)
+    x = {'form': form}
+    perms = __perms_dict(request)
+    return render_to_response(template_name, merge_dicts(x, perms), context)
 
 
 @login_required()
